@@ -1,0 +1,264 @@
+{
+  "collection_date": "2026-09-30",
+  "timezone": "Asia/Shanghai",
+  "method": "Static PE parsing, Ghidra 11.4.1, Capstone; target code not executed",
+  "samples": [
+    {
+      "file": "xinput1_4.dll",
+      "bytes": 673720,
+      "sha256": "DDB1F0909C7092F06890674F90B5D4F1198724B05B4BF1E656B4063897340243",
+      "machine": "0x8664",
+      "imagebase": "0x180000000",
+      "entry_va": "0x1800440f4",
+      "entry_rva": "0x440f4",
+      "pe_timestamp_utc": "2026-03-13T07:56:25+00:00",
+      "signature_status_at_collection": "Valid",
+      "signer": "NewWnight Global Tech Co., Ltd",
+      "signer_certificate_location": "Changsha, Hunan, CN",
+      "certificate_issuer": "GlobalSign GCC R45 EV CodeSigning CA 2020",
+      "import_modules": [
+        "CRYPT32.dll",
+        "WS2_32.dll",
+        "KERNEL32.dll",
+        "ADVAPI32.dll",
+        "SHELL32.dll",
+        "ole32.dll"
+      ],
+      "exports_count": 78,
+      "exports_summary": "cJSON_*",
+      "sections": [
+        {
+          "name": ".text",
+          "rva": "0x1000",
+          "virtualsize": 443888,
+          "rawsize": 443904,
+          "entropy": 6.449484602473687,
+          "flags": "0x60000020"
+        },
+        {
+          "name": ".rdata",
+          "rva": "0x6e000",
+          "virtualsize": 121648,
+          "rawsize": 121856,
+          "entropy": 5.786950803685777,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".data",
+          "rva": "0x8c000",
+          "virtualsize": 84080,
+          "rawsize": 70144,
+          "entropy": 0.23460639735340214,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".pdata",
+          "rva": "0xa1000",
+          "virtualsize": 19416,
+          "rawsize": 19456,
+          "entropy": 5.812323379409074,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".fptable",
+          "rva": "0xa6000",
+          "virtualsize": 256,
+          "rawsize": 512,
+          "entropy": 0.0,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".rsrc",
+          "rva": "0xa7000",
+          "virtualsize": 920,
+          "rawsize": 1024,
+          "entropy": 3.4026197911401974,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".reloc",
+          "rva": "0xa8000",
+          "virtualsize": 2524,
+          "rawsize": 2560,
+          "entropy": 5.3530137400066,
+          "flags": "0x42000040"
+        }
+      ]
+    },
+    {
+      "file": "dwmapi.dll",
+      "bytes": 136120,
+      "sha256": "1CE49ED63AF004AD37A4D2921A5659A17001C4C0026D6245FCC0D543E9C265D0",
+      "machine": "0x8664",
+      "imagebase": "0x180000000",
+      "entry_va": "0x1800014a4",
+      "entry_rva": "0x14a4",
+      "pe_timestamp_utc": "2026-03-15T08:41:18+00:00",
+      "signature_status_at_collection": "Valid",
+      "signer": "NewWnight Global Tech Co., Ltd",
+      "signer_certificate_location": "Changsha, Hunan, CN",
+      "certificate_issuer": "GlobalSign GCC R45 EV CodeSigning CA 2020",
+      "import_modules": [
+        "KERNEL32.dll"
+      ],
+      "exports_count": 0,
+      "exports_summary": "none",
+      "sections": [
+        {
+          "name": ".text",
+          "rva": "0x1000",
+          "virtualsize": 69760,
+          "rawsize": 70144,
+          "entropy": 6.443528062084887,
+          "flags": "0x60000020"
+        },
+        {
+          "name": ".rdata",
+          "rva": "0x13000",
+          "virtualsize": 40234,
+          "rawsize": 40448,
+          "entropy": 4.742706302090466,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".data",
+          "rva": "0x1d000",
+          "virtualsize": 7024,
+          "rawsize": 3072,
+          "entropy": 1.930262954859993,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".pdata",
+          "rva": "0x1f000",
+          "virtualsize": 4680,
+          "rawsize": 5120,
+          "entropy": 4.696462574081848,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".fptable",
+          "rva": "0x21000",
+          "virtualsize": 256,
+          "rawsize": 512,
+          "entropy": 0.0,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".rsrc",
+          "rva": "0x22000",
+          "virtualsize": 248,
+          "rawsize": 512,
+          "entropy": 2.5197744002270213,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".reloc",
+          "rva": "0x23000",
+          "virtualsize": 1624,
+          "rawsize": 2048,
+          "entropy": 4.875069924199119,
+          "flags": "0x42000040"
+        }
+      ]
+    },
+    {
+      "file": "Core.decoded.dll",
+      "bytes": 2142720,
+      "sha256": "FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D",
+      "machine": "0x8664",
+      "imagebase": "0x180000000",
+      "entry_va": "0x180157ba0",
+      "entry_rva": "0x157ba0",
+      "pe_timestamp_utc": "2026-09-20T03:58:55+00:00",
+      "signature_status_at_collection": "NotSigned",
+      "signer": null,
+      "signer_certificate_location": null,
+      "certificate_issuer": null,
+      "import_modules": [
+        "RPCRT4.dll",
+        "SHELL32.dll",
+        "ole32.dll",
+        "USER32.dll",
+        "ADVAPI32.dll",
+        "WS2_32.dll",
+        "KERNEL32.dll",
+        "CRYPT32.dll"
+      ],
+      "exports_count": 78,
+      "exports_summary": "cJSON_*",
+      "sections": [
+        {
+          "name": ".text",
+          "rva": "0x1000",
+          "virtualsize": 1652988,
+          "rawsize": 1653248,
+          "entropy": 6.515371253699082,
+          "flags": "0x60000020"
+        },
+        {
+          "name": ".rdata",
+          "rva": "0x195000",
+          "virtualsize": 314984,
+          "rawsize": 315392,
+          "entropy": 5.915597610696614,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".data",
+          "rva": "0x1e2000",
+          "virtualsize": 49948,
+          "rawsize": 31232,
+          "entropy": 3.7234313535669945,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".pdata",
+          "rva": "0x1ef000",
+          "virtualsize": 65604,
+          "rawsize": 66048,
+          "entropy": 7.991485271264725,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".fptable",
+          "rva": "0x200000",
+          "virtualsize": 256,
+          "rawsize": 512,
+          "entropy": 0.0,
+          "flags": "0xc0000040"
+        },
+        {
+          "name": ".vmp0",
+          "rva": "0x201000",
+          "virtualsize": 66796,
+          "rawsize": 67072,
+          "entropy": 6.169206522008231,
+          "flags": "0x68000020"
+        },
+        {
+          "name": ".rsrc",
+          "rva": "0x212000",
+          "virtualsize": 469,
+          "rawsize": 512,
+          "entropy": 4.711413092530877,
+          "flags": "0x40000040"
+        },
+        {
+          "name": ".reloc",
+          "rva": "0x213000",
+          "virtualsize": 7496,
+          "rawsize": 7680,
+          "entropy": 5.439026422882202,
+          "flags": "0x42000040"
+        }
+      ]
+    }
+  ],
+  "encrypted_core": {
+    "bytes": 1147840,
+    "md5": "3c7b7eba52cfa28f15688d3b02b54843",
+    "sha256": "98e72795e969ba7c4cde6bdc239d3886925a522e415c96d3f532195637a26157"
+  },
+  "scope": "Hashes identify the collected files. PE timestamps are untrusted metadata; signature status is the local collection-time verification result."
+}

@@ -1,0 +1,524 @@
+EVIDENCE L-03, L-04
+Static Capstone x86-64 disassembly from original PE file bytes
+Sample: xinput1_4.dll
+SHA-256: ddb1f0909c7092f06890674f90b5d4f1198724b05b4bf1e656b4063897340243
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+
+WINDOW 0x180002C00 .. 0x180002D03 (end exclusive)
+VA 0x000180002C00 RVA 0x00002C00  48 89 5C 24 10                                  mov       qword ptr [rsp + 0x10], rbx
+VA 0x000180002C05 RVA 0x00002C05  57                                              push      rdi
+VA 0x000180002C06 RVA 0x00002C06  48 81 EC A0 02 00 00                            sub       rsp, 0x2a0
+VA 0x000180002C0D RVA 0x00002C0D  48 8B 05 2C 97 08 00                            mov       rax, qword ptr [rip + 0x8972c]
+VA 0x000180002C14 RVA 0x00002C14  48 33 C4                                        xor       rax, rsp
+VA 0x000180002C17 RVA 0x00002C17  48 89 84 24 90 02 00 00                         mov       qword ptr [rsp + 0x290], rax
+VA 0x000180002C1F RVA 0x00002C1F  48 8B D9                                        mov       rbx, rcx
+VA 0x000180002C22 RVA 0x00002C22  48 8D 94 24 80 00 00 00                         lea       rdx, [rsp + 0x80]
+VA 0x000180002C2A RVA 0x00002C2A  B9 04 01 00 00                                  mov       ecx, 0x104
+VA 0x000180002C2F RVA 0x00002C2F  FF 15 C3 B5 06 00                               call      qword ptr [rip + 0x6b5c3] ; IAT GetCurrentDirectoryW @ 0x18006E1F8
+VA 0x000180002C35 RVA 0x00002C35  4C 8B 0D D4 DB 09 00                            mov       r9, qword ptr [rip + 0x9dbd4]
+VA 0x000180002C3C RVA 0x00002C3C  4C 8D 05 7D 14 08 00                            lea       r8, [rip + 0x8147d]
+VA 0x000180002C43 RVA 0x00002C43  BA 11 00 00 00                                  mov       edx, 0x11
+VA 0x000180002C48 RVA 0x00002C48  48 8D 4C 24 50                                  lea       rcx, [rsp + 0x50]
+VA 0x000180002C4D RVA 0x00002C4D  E8 5E F9 FF FF                                  call      0x1800025b0
+VA 0x000180002C52 RVA 0x00002C52  48 8D 3D 3F 13 08 00                            lea       rdi, [rip + 0x8133f]
+VA 0x000180002C59 RVA 0x00002C59  48 8B CF                                        mov       rcx, rdi
+VA 0x000180002C5C RVA 0x00002C5C  48 8D 15 6D 14 08 00                            lea       rdx, [rip + 0x8146d]
+VA 0x000180002C63 RVA 0x00002C63  E8 A0 2A 04 00                                  call      0x180045708
+VA 0x000180002C68 RVA 0x00002C68  4C 8B C0                                        mov       r8, rax
+VA 0x000180002C6B RVA 0x00002C6B  BA 04 01 00 00                                  mov       edx, 0x104
+VA 0x000180002C70 RVA 0x00002C70  48 8B CB                                        mov       rcx, rbx
+VA 0x000180002C73 RVA 0x00002C73  48 85 C0                                        test      rax, rax
+VA 0x000180002C76 RVA 0x00002C76  75 27                                           jne       0x180002c9f
+VA 0x000180002C78 RVA 0x00002C78  48 8D 84 24 80 00 00 00                         lea       rax, [rsp + 0x80]
+VA 0x000180002C80 RVA 0x00002C80  48 89 7C 24 28                                  mov       qword ptr [rsp + 0x28], rdi
+VA 0x000180002C85 RVA 0x00002C85  4C 8D 0D 54 14 08 00                            lea       r9, [rip + 0x81454]
+VA 0x000180002C8C RVA 0x00002C8C  48 89 44 24 20                                  mov       qword ptr [rsp + 0x20], rax
+VA 0x000180002C91 RVA 0x00002C91  49 C7 C0 FF FF FF FF                            mov       r8, 0xffffffffffffffff
+VA 0x000180002C98 RVA 0x00002C98  E8 73 F9 FF FF                                  call      0x180002610
+VA 0x000180002C9D RVA 0x00002C9D  EB 43                                           jmp       0x180002ce2
+VA 0x000180002C9F RVA 0x00002C9F  48 83 C0 0E                                     add       rax, 0xe
+VA 0x000180002CA3 RVA 0x00002CA3  4C 8D 0D 46 14 08 00                            lea       r9, [rip + 0x81446]
+VA 0x000180002CAA RVA 0x00002CAA  48 89 44 24 40                                  mov       qword ptr [rsp + 0x40], rax
+VA 0x000180002CAF RVA 0x00002CAF  4C 2B C7                                        sub       r8, rdi
+VA 0x000180002CB2 RVA 0x00002CB2  49 D1 F8                                        sar       r8, 1
+VA 0x000180002CB5 RVA 0x00002CB5  48 8D 44 24 50                                  lea       rax, [rsp + 0x50]
+VA 0x000180002CBA RVA 0x00002CBA  48 89 44 24 38                                  mov       qword ptr [rsp + 0x38], rax
+VA 0x000180002CBF RVA 0x00002CBF  48 8D 84 24 80 00 00 00                         lea       rax, [rsp + 0x80]
+VA 0x000180002CC7 RVA 0x00002CC7  48 89 7C 24 30                                  mov       qword ptr [rsp + 0x30], rdi
+VA 0x000180002CCC RVA 0x00002CCC  44 89 44 24 28                                  mov       dword ptr [rsp + 0x28], r8d
+VA 0x000180002CD1 RVA 0x00002CD1  49 C7 C0 FF FF FF FF                            mov       r8, 0xffffffffffffffff
+VA 0x000180002CD8 RVA 0x00002CD8  48 89 44 24 20                                  mov       qword ptr [rsp + 0x20], rax
+VA 0x000180002CDD RVA 0x00002CDD  E8 2E F9 FF FF                                  call      0x180002610
+VA 0x000180002CE2 RVA 0x00002CE2  48 8B 8C 24 90 02 00 00                         mov       rcx, qword ptr [rsp + 0x290]
+VA 0x000180002CEA RVA 0x00002CEA  48 33 CC                                        xor       rcx, rsp
+VA 0x000180002CED RVA 0x00002CED  E8 2E 0E 04 00                                  call      0x180043b20
+VA 0x000180002CF2 RVA 0x00002CF2  48 8B 9C 24 B8 02 00 00                         mov       rbx, qword ptr [rsp + 0x2b8]
+VA 0x000180002CFA RVA 0x00002CFA  48 81 C4 A0 02 00 00                            add       rsp, 0x2a0
+VA 0x000180002D01 RVA 0x00002D01  5F                                              pop       rdi
+VA 0x000180002D02 RVA 0x00002D02  C3                                              ret       
+
+WINDOW 0x180002D10 .. 0x180002F10 (end exclusive)
+VA 0x000180002D10 RVA 0x00002D10  40 53                                           push      rbx
+VA 0x000180002D12 RVA 0x00002D12  48 81 EC 60 0B 00 00                            sub       rsp, 0xb60
+VA 0x000180002D19 RVA 0x00002D19  48 8B 05 20 96 08 00                            mov       rax, qword ptr [rip + 0x89620]
+VA 0x000180002D20 RVA 0x00002D20  48 33 C4                                        xor       rax, rsp
+VA 0x000180002D23 RVA 0x00002D23  48 89 84 24 50 0B 00 00                         mov       qword ptr [rsp + 0xb50], rax
+VA 0x000180002D2B RVA 0x00002D2B  48 8B D9                                        mov       rbx, rcx
+VA 0x000180002D2E RVA 0x00002D2E  48 85 C9                                        test      rcx, rcx
+VA 0x000180002D31 RVA 0x00002D31  0F 84 2C 02 00 00                               je        0x180002f63
+VA 0x000180002D37 RVA 0x00002D37  48 C7 C0 FF FF FF FF                            mov       rax, 0xffffffffffffffff
+VA 0x000180002D3E RVA 0x00002D3E  66 90                                           nop       
+VA 0x000180002D40 RVA 0x00002D40  48 FF C0                                        inc       rax
+VA 0x000180002D43 RVA 0x00002D43  80 3C 01 00                                     cmp       byte ptr [rcx + rax], 0
+VA 0x000180002D47 RVA 0x00002D47  75 F7                                           jne       0x180002d40
+VA 0x000180002D49 RVA 0x00002D49  48 85 C0                                        test      rax, rax
+VA 0x000180002D4C RVA 0x00002D4C  0F 84 11 02 00 00                               je        0x180002f63
+VA 0x000180002D52 RVA 0x00002D52  41 B8 04 01 00 00                               mov       r8d, 0x104
+VA 0x000180002D58 RVA 0x00002D58  48 89 BC 24 80 0B 00 00                         mov       qword ptr [rsp + 0xb80], rdi
+VA 0x000180002D60 RVA 0x00002D60  48 8D 94 24 30 01 00 00                         lea       rdx, [rsp + 0x130]
+VA 0x000180002D68 RVA 0x00002D68  48 8D 0D 49 14 08 00                            lea       rcx, [rip + 0x81449]
+VA 0x000180002D6F RVA 0x00002D6F  FF 15 4B B4 06 00                               call      qword ptr [rip + 0x6b44b] ; IAT GetEnvironmentVariableA @ 0x18006E1C0
+VA 0x000180002D75 RVA 0x00002D75  85 C0                                           test      eax, eax
+VA 0x000180002D77 RVA 0x00002D77  75 19                                           jne       0x180002d92
+VA 0x000180002D79 RVA 0x00002D79  4C 8D 05 48 14 08 00                            lea       r8, [rip + 0x81448]
+VA 0x000180002D80 RVA 0x00002D80  BA 04 01 00 00                                  mov       edx, 0x104
+VA 0x000180002D85 RVA 0x00002D85  48 8D 8C 24 30 01 00 00                         lea       rcx, [rsp + 0x130]
+VA 0x000180002D8D RVA 0x00002D8D  E8 2E D7 04 00                                  call      0x1800504c0
+VA 0x000180002D92 RVA 0x00002D92  48 8D 84 24 30 01 00 00                         lea       rax, [rsp + 0x130]
+VA 0x000180002D9A RVA 0x00002D9A  BA 04 01 00 00                                  mov       edx, 0x104
+VA 0x000180002D9F RVA 0x00002D9F  4C 8D 0D 32 14 08 00                            lea       r9, [rip + 0x81432]
+VA 0x000180002DA6 RVA 0x00002DA6  48 89 44 24 20                                  mov       qword ptr [rsp + 0x20], rax
+VA 0x000180002DAB RVA 0x00002DAB  49 C7 C0 FF FF FF FF                            mov       r8, 0xffffffffffffffff
+VA 0x000180002DB2 RVA 0x00002DB2  48 8D 8C 24 40 02 00 00                         lea       rcx, [rsp + 0x240]
+VA 0x000180002DBA RVA 0x00002DBA  E8 51 E2 FF FF                                  call      0x180001010
+VA 0x000180002DBF RVA 0x00002DBF  48 8D 15 32 14 08 00                            lea       rdx, [rip + 0x81432]
+VA 0x000180002DC6 RVA 0x00002DC6  48 8D 8C 24 40 02 00 00                         lea       rcx, [rsp + 0x240]
+VA 0x000180002DCE RVA 0x00002DCE  E8 61 C1 04 00                                  call      0x18004ef34
+VA 0x000180002DD3 RVA 0x00002DD3  48 8B F8                                        mov       rdi, rax
+VA 0x000180002DD6 RVA 0x00002DD6  48 85 C0                                        test      rax, rax
+VA 0x000180002DD9 RVA 0x00002DD9  75 37                                           jne       0x180002e12
+VA 0x000180002DDB RVA 0x00002DDB  48 8D 94 24 40 02 00 00                         lea       rdx, [rsp + 0x240]
+VA 0x000180002DE3 RVA 0x00002DE3  48 8D 0D 16 14 08 00                            lea       rcx, [rip + 0x81416]
+VA 0x000180002DEA RVA 0x00002DEA  E8 C1 E8 FF FF                                  call      0x1800016b0
+VA 0x000180002DEF RVA 0x00002DEF  33 C0                                           xor       eax, eax
+VA 0x000180002DF1 RVA 0x00002DF1  48 8B BC 24 80 0B 00 00                         mov       rdi, qword ptr [rsp + 0xb80]
+VA 0x000180002DF9 RVA 0x00002DF9  48 8B 8C 24 50 0B 00 00                         mov       rcx, qword ptr [rsp + 0xb50]
+VA 0x000180002E01 RVA 0x00002E01  48 33 CC                                        xor       rcx, rsp
+VA 0x000180002E04 RVA 0x00002E04  E8 17 0D 04 00                                  call      0x180043b20
+VA 0x000180002E09 RVA 0x00002E09  48 81 C4 60 0B 00 00                            add       rsp, 0xb60
+VA 0x000180002E10 RVA 0x00002E10  5B                                              pop       rbx
+VA 0x000180002E11 RVA 0x00002E11  C3                                              ret       
+VA 0x000180002E12 RVA 0x00002E12  49 C7 C1 FF FF FF FF                            mov       r9, 0xffffffffffffffff
+VA 0x000180002E19 RVA 0x00002E19  48 89 B4 24 78 0B 00 00                         mov       qword ptr [rsp + 0xb78], rsi
+VA 0x000180002E21 RVA 0x00002E21  4C 8B C3                                        mov       r8, rbx
+VA 0x000180002E24 RVA 0x00002E24  48 8D 4C 24 30                                  lea       rcx, [rsp + 0x30]
+VA 0x000180002E29 RVA 0x00002E29  BA 00 01 00 00                                  mov       edx, 0x100
+VA 0x000180002E2E RVA 0x00002E2E  E8 ED CA 04 00                                  call      0x18004f920
+VA 0x000180002E33 RVA 0x00002E33  BA 00 01 00 00                                  mov       edx, 0x100
+VA 0x000180002E38 RVA 0x00002E38  48 8D 4C 24 30                                  lea       rcx, [rsp + 0x30]
+VA 0x000180002E3D RVA 0x00002E3D  E8 4E CE 04 00                                  call      0x18004fc90
+VA 0x000180002E42 RVA 0x00002E42  4C 8B C7                                        mov       r8, rdi
+VA 0x000180002E45 RVA 0x00002E45  48 8D 8C 24 50 07 00 00                         lea       rcx, [rsp + 0x750]
+VA 0x000180002E4D RVA 0x00002E4D  BA 00 04 00 00                                  mov       edx, 0x400
+VA 0x000180002E52 RVA 0x00002E52  33 F6                                           xor       esi, esi
+VA 0x000180002E54 RVA 0x00002E54  E8 5F D6 04 00                                  call      0x1800504b8
+VA 0x000180002E59 RVA 0x00002E59  48 85 C0                                        test      rax, rax
+VA 0x000180002E5C RVA 0x00002E5C  0F 84 EA 00 00 00                               je        0x180002f4c
+VA 0x000180002E62 RVA 0x00002E62  0F 1F 40 00                                     nop       dword ptr [rax]
+VA 0x000180002E66 RVA 0x00002E66  66 66 0F 1F 84 00 00 00 00 00                   nop       word ptr [rax + rax]
+VA 0x000180002E70 RVA 0x00002E70  48 8D 8C 24 50 07 00 00                         lea       rcx, [rsp + 0x750]
+VA 0x000180002E78 RVA 0x00002E78  0F B6 01                                        movzx     eax, byte ptr [rcx]
+VA 0x000180002E7B RVA 0x00002E7B  3C 20                                           cmp       al, 0x20
+VA 0x000180002E7D RVA 0x00002E7D  74 04                                           je        0x180002e83
+VA 0x000180002E7F RVA 0x00002E7F  3C 09                                           cmp       al, 9
+VA 0x000180002E81 RVA 0x00002E81  75 05                                           jne       0x180002e88
+VA 0x000180002E83 RVA 0x00002E83  48 FF C1                                        inc       rcx
+VA 0x000180002E86 RVA 0x00002E86  EB F0                                           jmp       0x180002e78
+VA 0x000180002E88 RVA 0x00002E88  3C 23                                           cmp       al, 0x23
+VA 0x000180002E8A RVA 0x00002E8A  0F 84 88 00 00 00                               je        0x180002f18
+VA 0x000180002E90 RVA 0x00002E90  84 C0                                           test      al, al
+VA 0x000180002E92 RVA 0x00002E92  0F 84 80 00 00 00                               je        0x180002f18
+VA 0x000180002E98 RVA 0x00002E98  3C 0A                                           cmp       al, 0xa
+VA 0x000180002E9A RVA 0x00002E9A  74 7C                                           je        0x180002f18
+VA 0x000180002E9C RVA 0x00002E9C  49 C7 C1 FF FF FF FF                            mov       r9, 0xffffffffffffffff
+VA 0x000180002EA3 RVA 0x00002EA3  4C 8D 84 24 50 07 00 00                         lea       r8, [rsp + 0x750]
+VA 0x000180002EAB RVA 0x00002EAB  BA 00 04 00 00                                  mov       edx, 0x400
+VA 0x000180002EB0 RVA 0x00002EB0  48 8D 8C 24 50 03 00 00                         lea       rcx, [rsp + 0x350]
+VA 0x000180002EB8 RVA 0x00002EB8  E8 63 CA 04 00                                  call      0x18004f920
+VA 0x000180002EBD RVA 0x00002EBD  BA 00 04 00 00                                  mov       edx, 0x400
+VA 0x000180002EC2 RVA 0x00002EC2  48 8D 8C 24 50 03 00 00                         lea       rcx, [rsp + 0x350]
+VA 0x000180002ECA RVA 0x00002ECA  E8 C1 CD 04 00                                  call      0x18004fc90
+VA 0x000180002ECF RVA 0x00002ECF  48 8D 15 4A 13 08 00                            lea       rdx, [rip + 0x8134a]
+VA 0x000180002ED6 RVA 0x00002ED6  48 8D 8C 24 50 03 00 00                         lea       rcx, [rsp + 0x350]
+VA 0x000180002EDE RVA 0x00002EDE  E8 65 2B 04 00                                  call      0x180045a48
+VA 0x000180002EE3 RVA 0x00002EE3  48 85 C0                                        test      rax, rax
+VA 0x000180002EE6 RVA 0x00002EE6  75 19                                           jne       0x180002f01
+VA 0x000180002EE8 RVA 0x00002EE8  48 8D 15 41 13 08 00                            lea       rdx, [rip + 0x81341]
+VA 0x000180002EEF RVA 0x00002EEF  48 8D 8C 24 50 03 00 00                         lea       rcx, [rsp + 0x350]
+VA 0x000180002EF7 RVA 0x00002EF7  E8 4C 2B 04 00                                  call      0x180045a48
+VA 0x000180002EFC RVA 0x00002EFC  48 85 C0                                        test      rax, rax
+VA 0x000180002EFF RVA 0x00002EFF  74 17                                           je        0x180002f18
+VA 0x000180002F01 RVA 0x00002F01  48 8D 54 24 30                                  lea       rdx, [rsp + 0x30]
+VA 0x000180002F06 RVA 0x00002F06  48 8D 8C 24 50 03 00 00                         lea       rcx, [rsp + 0x350]
+
+WINDOW 0x1800039B0 .. 0x180003F1A (end exclusive)
+VA 0x0001800039B0 RVA 0x000039B0  48 89 5C 24 08                                  mov       qword ptr [rsp + 8], rbx
+VA 0x0001800039B5 RVA 0x000039B5  48 89 74 24 10                                  mov       qword ptr [rsp + 0x10], rsi
+VA 0x0001800039BA RVA 0x000039BA  48 89 7C 24 18                                  mov       qword ptr [rsp + 0x18], rdi
+VA 0x0001800039BF RVA 0x000039BF  55                                              push      rbp
+VA 0x0001800039C0 RVA 0x000039C0  41 54                                           push      r12
+VA 0x0001800039C2 RVA 0x000039C2  41 55                                           push      r13
+VA 0x0001800039C4 RVA 0x000039C4  41 56                                           push      r14
+VA 0x0001800039C6 RVA 0x000039C6  41 57                                           push      r15
+VA 0x0001800039C8 RVA 0x000039C8  48 8D AC 24 F0 F5 FF FF                         lea       rbp, [rsp - 0xa10]
+VA 0x0001800039D0 RVA 0x000039D0  48 81 EC 10 0B 00 00                            sub       rsp, 0xb10
+VA 0x0001800039D7 RVA 0x000039D7  48 8B 05 62 89 08 00                            mov       rax, qword ptr [rip + 0x88962]
+VA 0x0001800039DE RVA 0x000039DE  48 33 C4                                        xor       rax, rsp
+VA 0x0001800039E1 RVA 0x000039E1  48 89 85 00 0A 00 00                            mov       qword ptr [rbp + 0xa00], rax
+VA 0x0001800039E8 RVA 0x000039E8  48 8D 0D C9 09 08 00                            lea       rcx, [rip + 0x809c9]
+VA 0x0001800039EF RVA 0x000039EF  E8 BC DC FF FF                                  call      0x1800016b0
+VA 0x0001800039F4 RVA 0x000039F4  4C 8D 3D 1D 06 08 00                            lea       r15, [rip + 0x8061d]
+VA 0x0001800039FB RVA 0x000039FB  45 33 F6                                        xor       r14d, r14d
+VA 0x0001800039FE RVA 0x000039FE  49 8B F7                                        mov       rsi, r15
+VA 0x000180003A01 RVA 0x00003A01  4C 8D 25 28 06 08 00                            lea       r12, [rip + 0x80628]
+VA 0x000180003A08 RVA 0x00003A08  41 BD FF 00 00 00                               mov       r13d, 0xff
+VA 0x000180003A0E RVA 0x00003A0E  66 90                                           nop       
+VA 0x000180003A10 RVA 0x00003A10  48 8B 3E                                        mov       rdi, qword ptr [rsi]
+VA 0x000180003A13 RVA 0x00003A13  48 85 FF                                        test      rdi, rdi
+VA 0x000180003A16 RVA 0x00003A16  0F 84 96 00 00 00                               je        0x180003ab2
+VA 0x000180003A1C RVA 0x00003A1C  41 B8 07 00 00 00                               mov       r8d, 7
+VA 0x000180003A22 RVA 0x00003A22  48 8D 15 77 07 08 00                            lea       rdx, [rip + 0x80777]
+VA 0x000180003A29 RVA 0x00003A29  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003A2C RVA 0x00003A2C  E8 6F 90 06 00                                  call      0x18006caa0
+VA 0x000180003A31 RVA 0x00003A31  85 C0                                           test      eax, eax
+VA 0x000180003A33 RVA 0x00003A33  75 06                                           jne       0x180003a3b
+VA 0x000180003A35 RVA 0x00003A35  48 83 C7 07                                     add       rdi, 7
+VA 0x000180003A39 RVA 0x00003A39  EB 1D                                           jmp       0x180003a58
+VA 0x000180003A3B RVA 0x00003A3B  41 B8 08 00 00 00                               mov       r8d, 8
+VA 0x000180003A41 RVA 0x00003A41  48 8D 15 60 07 08 00                            lea       rdx, [rip + 0x80760]
+VA 0x000180003A48 RVA 0x00003A48  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003A4B RVA 0x00003A4B  E8 50 90 06 00                                  call      0x18006caa0
+VA 0x000180003A50 RVA 0x00003A50  85 C0                                           test      eax, eax
+VA 0x000180003A52 RVA 0x00003A52  75 04                                           jne       0x180003a58
+VA 0x000180003A54 RVA 0x00003A54  48 83 C7 08                                     add       rdi, 8
+VA 0x000180003A58 RVA 0x00003A58  0F B6 07                                        movzx     eax, byte ptr [rdi]
+VA 0x000180003A5B RVA 0x00003A5B  48 8B DF                                        mov       rbx, rdi
+VA 0x000180003A5E RVA 0x00003A5E  84 C0                                           test      al, al
+VA 0x000180003A60 RVA 0x00003A60  74 13                                           je        0x180003a75
+VA 0x000180003A62 RVA 0x00003A62  3C 2F                                           cmp       al, 0x2f
+VA 0x000180003A64 RVA 0x00003A64  74 0F                                           je        0x180003a75
+VA 0x000180003A66 RVA 0x00003A66  3C 3A                                           cmp       al, 0x3a
+VA 0x000180003A68 RVA 0x00003A68  74 0B                                           je        0x180003a75
+VA 0x000180003A6A RVA 0x00003A6A  0F B6 43 01                                     movzx     eax, byte ptr [rbx + 1]
+VA 0x000180003A6E RVA 0x00003A6E  48 FF C3                                        inc       rbx
+VA 0x000180003A71 RVA 0x00003A71  84 C0                                           test      al, al
+VA 0x000180003A73 RVA 0x00003A73  75 ED                                           jne       0x180003a62
+VA 0x000180003A75 RVA 0x00003A75  48 2B DF                                        sub       rbx, rdi
+VA 0x000180003A78 RVA 0x00003A78  48 8D 8D 00 02 00 00                            lea       rcx, [rbp + 0x200]
+VA 0x000180003A7F RVA 0x00003A7F  48 81 FB 00 01 00 00                            cmp       rbx, 0x100
+VA 0x000180003A86 RVA 0x00003A86  4C 8B C7                                        mov       r8, rdi
+VA 0x000180003A89 RVA 0x00003A89  BA 00 01 00 00                                  mov       edx, 0x100
+VA 0x000180003A8E RVA 0x00003A8E  49 0F 43 DD                                     cmovae    rbx, r13
+VA 0x000180003A92 RVA 0x00003A92  4C 8B CB                                        mov       r9, rbx
+VA 0x000180003A95 RVA 0x00003A95  E8 86 BE 04 00                                  call      0x18004f920
+VA 0x000180003A9A RVA 0x00003A9A  48 8D 8D 00 02 00 00                            lea       rcx, [rbp + 0x200]
+VA 0x000180003AA1 RVA 0x00003AA1  C6 84 1D 00 02 00 00 00                         mov       byte ptr [rbp + rbx + 0x200], 0
+VA 0x000180003AA9 RVA 0x00003AA9  E8 62 F2 FF FF                                  call      0x180002d10
+VA 0x000180003AAE RVA 0x00003AAE  85 C0                                           test      eax, eax
+VA 0x000180003AB0 RVA 0x00003AB0  75 53                                           jne       0x180003b05
+VA 0x000180003AB2 RVA 0x00003AB2  41 FF C6                                        inc       r14d
+VA 0x000180003AB5 RVA 0x00003AB5  48 83 C6 08                                     add       rsi, 8
+VA 0x000180003AB9 RVA 0x00003AB9  49 3B F4                                        cmp       rsi, r12
+VA 0x000180003ABC RVA 0x00003ABC  0F 8C 4E FF FF FF                               jl        0x180003a10
+VA 0x000180003AC2 RVA 0x00003AC2  4C 8D 4D E0                                     lea       r9, [rbp - 0x20]
+VA 0x000180003AC6 RVA 0x00003AC6  48 C7 45 E0 00 00 00 00                         mov       qword ptr [rbp - 0x20], 0
+VA 0x000180003ACE RVA 0x00003ACE  45 33 C0                                        xor       r8d, r8d
+VA 0x000180003AD1 RVA 0x00003AD1  48 8D 0D 80 67 07 00                            lea       rcx, [rip + 0x76780]
+VA 0x000180003AD8 RVA 0x00003AD8  33 D2                                           xor       edx, edx
+VA 0x000180003ADA RVA 0x00003ADA  FF 15 00 AA 06 00                               call      qword ptr [rip + 0x6aa00] ; IAT SHGetKnownFolderPath @ 0x18006E4E0
+VA 0x000180003AE0 RVA 0x00003AE0  85 C0                                           test      eax, eax
+VA 0x000180003AE2 RVA 0x00003AE2  78 49                                           js        0x180003b2d
+VA 0x000180003AE4 RVA 0x00003AE4  4C 8B 45 E0                                     mov       r8, qword ptr [rbp - 0x20]
+VA 0x000180003AE8 RVA 0x00003AE8  48 8D 0D F1 94 08 00                            lea       rcx, [rip + 0x894f1]
+VA 0x000180003AEF RVA 0x00003AEF  BA 00 80 00 00                                  mov       edx, 0x8000
+VA 0x000180003AF4 RVA 0x00003AF4  E8 D7 C3 04 00                                  call      0x18004fed0
+VA 0x000180003AF9 RVA 0x00003AF9  48 8B 4D E0                                     mov       rcx, qword ptr [rbp - 0x20]
+VA 0x000180003AFD RVA 0x00003AFD  FF 15 D5 AA 06 00                               call      qword ptr [rip + 0x6aad5] ; IAT CoTaskMemFree @ 0x18006E5D8
+VA 0x000180003B03 RVA 0x00003B03  EB 5F                                           jmp       0x180003b64
+VA 0x000180003B05 RVA 0x00003B05  4D 63 C6                                        movsxd    r8, r14d
+VA 0x000180003B08 RVA 0x00003B08  41 8D 56 01                                     lea       edx, [r14 + 1]
+VA 0x000180003B0C RVA 0x00003B0C  48 8D 0D 4D 07 08 00                            lea       rcx, [rip + 0x8074d]
+VA 0x000180003B13 RVA 0x00003B13  4F 8B 04 C7                                     mov       r8, qword ptr [r15 + r8*8]
+VA 0x000180003B17 RVA 0x00003B17  E8 94 DB FF FF                                  call      0x1800016b0
+VA 0x000180003B1C RVA 0x00003B1C  48 8D 0D AD 08 08 00                            lea       rcx, [rip + 0x808ad]
+VA 0x000180003B23 RVA 0x00003B23  E8 88 DB FF FF                                  call      0x1800016b0
+VA 0x000180003B28 RVA 0x00003B28  E9 BE 03 00 00                                  jmp       0x180003eeb
+VA 0x000180003B2D RVA 0x00003B2D  48 8D 1D AC 94 08 00                            lea       rbx, [rip + 0x894ac]
+VA 0x000180003B34 RVA 0x00003B34  45 33 C9                                        xor       r9d, r9d
+VA 0x000180003B37 RVA 0x00003B37  45 33 C0                                        xor       r8d, r8d
+VA 0x000180003B3A RVA 0x00003B3A  48 89 5C 24 20                                  mov       qword ptr [rsp + 0x20], rbx
+VA 0x000180003B3F RVA 0x00003B3F  BA 28 00 00 00                                  mov       edx, 0x28
+VA 0x000180003B44 RVA 0x00003B44  33 C9                                           xor       ecx, ecx
+VA 0x000180003B46 RVA 0x00003B46  FF 15 9C A9 06 00                               call      qword ptr [rip + 0x6a99c] ; IAT SHGetFolderPathW @ 0x18006E4E8
+VA 0x000180003B4C RVA 0x00003B4C  85 C0                                           test      eax, eax
+VA 0x000180003B4E RVA 0x00003B4E  79 14                                           jns       0x180003b64
+VA 0x000180003B50 RVA 0x00003B50  4C 8D 05 E1 04 08 00                            lea       r8, [rip + 0x804e1]
+VA 0x000180003B57 RVA 0x00003B57  BA 00 80 00 00                                  mov       edx, 0x8000
+VA 0x000180003B5C RVA 0x00003B5C  48 8B CB                                        mov       rcx, rbx
+VA 0x000180003B5F RVA 0x00003B5F  E8 6C C3 04 00                                  call      0x18004fed0
+VA 0x000180003B64 RVA 0x00003B64  33 D2                                           xor       edx, edx
+VA 0x000180003B66 RVA 0x00003B66  48 8D 8D 00 02 00 00                            lea       rcx, [rbp + 0x200]
+VA 0x000180003B6D RVA 0x00003B6D  41 B8 00 04 00 00                               mov       r8d, 0x400
+VA 0x000180003B73 RVA 0x00003B73  E8 08 8A 06 00                                  call      0x18006c580
+VA 0x000180003B78 RVA 0x00003B78  33 C9                                           xor       ecx, ecx
+VA 0x000180003B7A RVA 0x00003B7A  C6 45 EC 00                                     mov       byte ptr [rbp - 0x14], 0
+VA 0x000180003B7E RVA 0x00003B7E  33 C0                                           xor       eax, eax
+VA 0x000180003B80 RVA 0x00003B80  0F 57 C0                                        xorps     xmm0, xmm0
+VA 0x000180003B83 RVA 0x00003B83  0F A2                                           cpuid     
+VA 0x000180003B85 RVA 0x00003B85  0F 11 45 D0                                     movups    xmmword ptr [rbp - 0x30], xmm0
+VA 0x000180003B89 RVA 0x00003B89  89 4D E8                                        mov       dword ptr [rbp - 0x18], ecx
+VA 0x000180003B8C RVA 0x00003B8C  33 C9                                           xor       ecx, ecx
+VA 0x000180003B8E RVA 0x00003B8E  89 45 D0                                        mov       dword ptr [rbp - 0x30], eax
+VA 0x000180003B91 RVA 0x00003B91  B8 01 00 00 00                                  mov       eax, 1
+VA 0x000180003B96 RVA 0x00003B96  89 5D E0                                        mov       dword ptr [rbp - 0x20], ebx
+VA 0x000180003B99 RVA 0x00003B99  89 55 E4                                        mov       dword ptr [rbp - 0x1c], edx
+VA 0x000180003B9C RVA 0x00003B9C  0F A2                                           cpuid     
+VA 0x000180003B9E RVA 0x00003B9E  89 4D D8                                        mov       dword ptr [rbp - 0x28], ecx
+VA 0x000180003BA1 RVA 0x00003BA1  8B F8                                           mov       edi, eax
+VA 0x000180003BA3 RVA 0x00003BA3  48 8D 4D A0                                     lea       rcx, [rbp - 0x60]
+VA 0x000180003BA7 RVA 0x00003BA7  89 5D D4                                        mov       dword ptr [rbp - 0x2c], ebx
+VA 0x000180003BAA RVA 0x00003BAA  89 55 DC                                        mov       dword ptr [rbp - 0x24], edx
+VA 0x000180003BAD RVA 0x00003BAD  FF 15 3D A6 06 00                               call      qword ptr [rip + 0x6a63d] ; IAT GetSystemInfo @ 0x18006E1F0
+VA 0x000180003BB3 RVA 0x00003BB3  0F B6 4D C0                                     movzx     ecx, byte ptr [rbp - 0x40]
+VA 0x000180003BB7 RVA 0x00003BB7  4C 8D 4D E0                                     lea       r9, [rbp - 0x20]
+VA 0x000180003BBB RVA 0x00003BBB  89 4C 24 30                                     mov       dword ptr [rsp + 0x30], ecx
+VA 0x000180003BBF RVA 0x00003BBF  4C 8D 05 9A 04 08 00                            lea       r8, [rip + 0x8049a]
+VA 0x000180003BC6 RVA 0x00003BC6  8B DF                                           mov       ebx, edi
+VA 0x000180003BC8 RVA 0x00003BC8  48 8D 8D 00 02 00 00                            lea       rcx, [rbp + 0x200]
+VA 0x000180003BCF RVA 0x00003BCF  C1 FB 04                                        sar       ebx, 4
+VA 0x000180003BD2 RVA 0x00003BD2  BA 00 04 00 00                                  mov       edx, 0x400
+VA 0x000180003BD7 RVA 0x00003BD7  C1 FF 08                                        sar       edi, 8
+VA 0x000180003BDA RVA 0x00003BDA  83 E3 0F                                        and       ebx, 0xf
+VA 0x000180003BDD RVA 0x00003BDD  83 E7 0F                                        and       edi, 0xf
+VA 0x000180003BE0 RVA 0x00003BE0  89 5C 24 28                                     mov       dword ptr [rsp + 0x28], ebx
+VA 0x000180003BE4 RVA 0x00003BE4  89 7C 24 20                                     mov       dword ptr [rsp + 0x20], edi
+VA 0x000180003BE8 RVA 0x00003BE8  E8 93 EA FF FF                                  call      0x180002680
+VA 0x000180003BED RVA 0x00003BED  48 C7 C3 FF FF FF FF                            mov       rbx, 0xffffffffffffffff
+VA 0x000180003BF4 RVA 0x00003BF4  48 8D 85 00 02 00 00                            lea       rax, [rbp + 0x200]
+VA 0x000180003BFB RVA 0x00003BFB  48 8B FB                                        mov       rdi, rbx
+VA 0x000180003BFE RVA 0x00003BFE  66 90                                           nop       
+VA 0x000180003C00 RVA 0x00003C00  48 FF C7                                        inc       rdi
+VA 0x000180003C03 RVA 0x00003C03  80 3C 38 00                                     cmp       byte ptr [rax + rdi], 0
+VA 0x000180003C07 RVA 0x00003C07  75 F7                                           jne       0x180003c00
+VA 0x000180003C09 RVA 0x00003C09  45 33 C0                                        xor       r8d, r8d
+VA 0x000180003C0C RVA 0x00003C0C  85 FF                                           test      edi, edi
+VA 0x000180003C0E RVA 0x00003C0E  74 4D                                           je        0x180003c5d
+VA 0x000180003C10 RVA 0x00003C10  45 33 C9                                        xor       r9d, r9d
+VA 0x000180003C13 RVA 0x00003C13  4C 8D 15 EE 07 08 00                            lea       r10, [rip + 0x807ee]
+VA 0x000180003C1A RVA 0x00003C1A  66 0F 1F 44 00 00                               nop       word ptr [rax + rax]
+VA 0x000180003C20 RVA 0x00003C20  41 8B C8                                        mov       ecx, r8d
+VA 0x000180003C23 RVA 0x00003C23  4D 8D 49 01                                     lea       r9, [r9 + 1]
+VA 0x000180003C27 RVA 0x00003C27  B8 25 49 92 24                                  mov       eax, 0x24924925
+VA 0x000180003C2C RVA 0x00003C2C  41 F7 E0                                        mul       r8d
+VA 0x000180003C2F RVA 0x00003C2F  41 8B C0                                        mov       eax, r8d
+VA 0x000180003C32 RVA 0x00003C32  41 FF C0                                        inc       r8d
+VA 0x000180003C35 RVA 0x00003C35  2B C2                                           sub       eax, edx
+VA 0x000180003C37 RVA 0x00003C37  D1 E8                                           shr       eax, 1
+VA 0x000180003C39 RVA 0x00003C39  03 C2                                           add       eax, edx
+VA 0x000180003C3B RVA 0x00003C3B  C1 E8 02                                        shr       eax, 2
+VA 0x000180003C3E RVA 0x00003C3E  6B C0 07                                        imul      eax, eax, 7
+VA 0x000180003C41 RVA 0x00003C41  2B C8                                           sub       ecx, eax
+VA 0x000180003C43 RVA 0x00003C43  42 0F B6 04 11                                  movzx     eax, byte ptr [rcx + r10]
+VA 0x000180003C48 RVA 0x00003C48  42 32 84 0D FF 01 00 00                         xor       al, byte ptr [rbp + r9 + 0x1ff]
+VA 0x000180003C50 RVA 0x00003C50  42 88 84 0D FF 05 00 00                         mov       byte ptr [rbp + r9 + 0x5ff], al
+VA 0x000180003C58 RVA 0x00003C58  44 3B C7                                        cmp       r8d, edi
+VA 0x000180003C5B RVA 0x00003C5B  72 C3                                           jb        0x180003c20
+VA 0x000180003C5D RVA 0x00003C5D  48 8D 4C 24 40                                  lea       rcx, [rsp + 0x40]
+VA 0x000180003C62 RVA 0x00003C62  E8 29 8A 00 00                                  call      0x18000c690
+VA 0x000180003C67 RVA 0x00003C67  48 8D 4C 24 40                                  lea       rcx, [rsp + 0x40]
+VA 0x000180003C6C RVA 0x00003C6C  E8 FF 8A 00 00                                  call      0x18000c770
+VA 0x000180003C71 RVA 0x00003C71  44 8B C7                                        mov       r8d, edi
+VA 0x000180003C74 RVA 0x00003C74  48 8D 95 00 06 00 00                            lea       rdx, [rbp + 0x600]
+VA 0x000180003C7B RVA 0x00003C7B  48 8D 4C 24 40                                  lea       rcx, [rsp + 0x40]
+VA 0x000180003C80 RVA 0x00003C80  E8 1B 8B 00 00                                  call      0x18000c7a0
+VA 0x000180003C85 RVA 0x00003C85  48 8D 55 D0                                     lea       rdx, [rbp - 0x30]
+VA 0x000180003C89 RVA 0x00003C89  48 8D 4C 24 40                                  lea       rcx, [rsp + 0x40]
+VA 0x000180003C8E RVA 0x00003C8E  E8 5D 88 00 00                                  call      0x18000c4f0
+VA 0x000180003C93 RVA 0x00003C93  48 8D 4C 24 40                                  lea       rcx, [rsp + 0x40]
+VA 0x000180003C98 RVA 0x00003C98  E8 D3 89 00 00                                  call      0x18000c670
+VA 0x000180003C9D RVA 0x00003C9D  4C 8D 35 44 CB 09 00                            lea       r14, [rip + 0x9cb44]
+VA 0x000180003CA4 RVA 0x00003CA4  41 BC 10 00 00 00                               mov       r12d, 0x10
+VA 0x000180003CAA RVA 0x00003CAA  49 8B F6                                        mov       rsi, r14
+VA 0x000180003CAD RVA 0x00003CAD  48 8D 7D D0                                     lea       rdi, [rbp - 0x30]
+VA 0x000180003CB1 RVA 0x00003CB1  41 BD 03 00 00 00                               mov       r13d, 3
+VA 0x000180003CB7 RVA 0x00003CB7  66 0F 1F 84 00 00 00 00 00                      nop       word ptr [rax + rax]
+VA 0x000180003CC0 RVA 0x00003CC0  44 0F B6 0F                                     movzx     r9d, byte ptr [rdi]
+VA 0x000180003CC4 RVA 0x00003CC4  4C 8D 05 A5 03 08 00                            lea       r8, [rip + 0x803a5]
+VA 0x000180003CCB RVA 0x00003CCB  49 8B D5                                        mov       rdx, r13
+VA 0x000180003CCE RVA 0x00003CCE  48 8B CE                                        mov       rcx, rsi
+VA 0x000180003CD1 RVA 0x00003CD1  E8 AA E9 FF FF                                  call      0x180002680
+VA 0x000180003CD6 RVA 0x00003CD6  48 83 C6 02                                     add       rsi, 2
+VA 0x000180003CDA RVA 0x00003CDA  48 8D 7F 01                                     lea       rdi, [rdi + 1]
+VA 0x000180003CDE RVA 0x00003CDE  49 83 EC 01                                     sub       r12, 1
+VA 0x000180003CE2 RVA 0x00003CE2  75 DC                                           jne       0x180003cc0
+VA 0x000180003CE4 RVA 0x00003CE4  0F B6 05 FD CA 09 00                            movzx     eax, byte ptr [rip + 0x9cafd]
+VA 0x000180003CEB RVA 0x00003CEB  84 C0                                           test      al, al
+VA 0x000180003CED RVA 0x00003CED  0F 84 80 00 00 00                               je        0x180003d73
+VA 0x000180003CF3 RVA 0x00003CF3  48 BF 27 6D D4 53 D7 C3 E1 85                   movabs    rdi, 0x85e1c3d753d46d27
+VA 0x000180003CFD RVA 0x00003CFD  0F 1F 00                                        nop       dword ptr [rax]
+VA 0x000180003D00 RVA 0x00003D00  0F BE C8                                        movsx     ecx, al
+VA 0x000180003D03 RVA 0x00003D03  E8 94 C1 04 00                                  call      0x18004fe9c
+VA 0x000180003D08 RVA 0x00003D08  48 0F BE C8                                     movsx     rcx, al
+VA 0x000180003D0C RVA 0x00003D0C  48 33 D9                                        xor       rbx, rcx
+VA 0x000180003D0F RVA 0x00003D0F  F6 C3 01                                        test      bl, 1
+VA 0x000180003D12 RVA 0x00003D12  74 03                                           je        0x180003d17
+VA 0x000180003D14 RVA 0x00003D14  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D17 RVA 0x00003D17  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D1A RVA 0x00003D1A  F6 C3 01                                        test      bl, 1
+VA 0x000180003D1D RVA 0x00003D1D  74 03                                           je        0x180003d22
+VA 0x000180003D1F RVA 0x00003D1F  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D22 RVA 0x00003D22  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D25 RVA 0x00003D25  F6 C3 01                                        test      bl, 1
+VA 0x000180003D28 RVA 0x00003D28  74 03                                           je        0x180003d2d
+VA 0x000180003D2A RVA 0x00003D2A  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D2D RVA 0x00003D2D  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D30 RVA 0x00003D30  F6 C3 01                                        test      bl, 1
+VA 0x000180003D33 RVA 0x00003D33  74 03                                           je        0x180003d38
+VA 0x000180003D35 RVA 0x00003D35  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D38 RVA 0x00003D38  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D3B RVA 0x00003D3B  F6 C3 01                                        test      bl, 1
+VA 0x000180003D3E RVA 0x00003D3E  74 03                                           je        0x180003d43
+VA 0x000180003D40 RVA 0x00003D40  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D43 RVA 0x00003D43  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D46 RVA 0x00003D46  F6 C3 01                                        test      bl, 1
+VA 0x000180003D49 RVA 0x00003D49  74 03                                           je        0x180003d4e
+VA 0x000180003D4B RVA 0x00003D4B  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D4E RVA 0x00003D4E  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D51 RVA 0x00003D51  F6 C3 01                                        test      bl, 1
+VA 0x000180003D54 RVA 0x00003D54  74 03                                           je        0x180003d59
+VA 0x000180003D56 RVA 0x00003D56  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D59 RVA 0x00003D59  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D5C RVA 0x00003D5C  F6 C3 01                                        test      bl, 1
+VA 0x000180003D5F RVA 0x00003D5F  74 03                                           je        0x180003d64
+VA 0x000180003D61 RVA 0x00003D61  48 33 DF                                        xor       rbx, rdi
+VA 0x000180003D64 RVA 0x00003D64  41 0F B6 46 01                                  movzx     eax, byte ptr [r14 + 1]
+VA 0x000180003D69 RVA 0x00003D69  49 FF C6                                        inc       r14
+VA 0x000180003D6C RVA 0x00003D6C  48 D1 EB                                        shr       rbx, 1
+VA 0x000180003D6F RVA 0x00003D6F  84 C0                                           test      al, al
+VA 0x000180003D71 RVA 0x00003D71  75 8D                                           jne       0x180003d00
+VA 0x000180003D73 RVA 0x00003D73  48 F7 D3                                        not       rbx
+VA 0x000180003D76 RVA 0x00003D76  48 8D 4D F0                                     lea       rcx, [rbp - 0x10]
+VA 0x000180003D7A RVA 0x00003D7A  48 89 1D 8F CA 09 00                            mov       qword ptr [rip + 0x9ca8f], rbx
+VA 0x000180003D81 RVA 0x00003D81  E8 7A EE FF FF                                  call      0x180002c00
+VA 0x000180003D86 RVA 0x00003D86  33 C0                                           xor       eax, eax
+VA 0x000180003D88 RVA 0x00003D88  48 8D 3D A1 02 08 00                            lea       rdi, [rip + 0x802a1]
+VA 0x000180003D8F RVA 0x00003D8F  33 DB                                           xor       ebx, ebx
+VA 0x000180003D91 RVA 0x00003D91  85 C0                                           test      eax, eax
+VA 0x000180003D93 RVA 0x00003D93  75 1B                                           jne       0x180003db0
+VA 0x000180003D95 RVA 0x00003D95  49 8B 0F                                        mov       rcx, qword ptr [r15]
+VA 0x000180003D98 RVA 0x00003D98  33 D2                                           xor       edx, edx
+VA 0x000180003D9A RVA 0x00003D9A  85 DB                                           test      ebx, ebx
+VA 0x000180003D9C RVA 0x00003D9C  41 0F 44 D5                                     cmove     edx, r13d
+VA 0x000180003DA0 RVA 0x00003DA0  E8 8B F7 FF FF                                  call      0x180003530
+VA 0x000180003DA5 RVA 0x00003DA5  FF C3                                           inc       ebx
+VA 0x000180003DA7 RVA 0x00003DA7  49 83 C7 08                                     add       r15, 8
+VA 0x000180003DAB RVA 0x00003DAB  4C 3B FF                                        cmp       r15, rdi
+VA 0x000180003DAE RVA 0x00003DAE  7C E1                                           jl        0x180003d91
+VA 0x000180003DB0 RVA 0x00003DB0  48 8D 4D F0                                     lea       rcx, [rbp - 0x10]
+VA 0x000180003DB4 RVA 0x00003DB4  FF 15 16 A4 06 00                               call      qword ptr [rip + 0x6a416] ; IAT GetFileAttributesW @ 0x18006E1D0
+VA 0x000180003DBA RVA 0x00003DBA  83 F8 FF                                        cmp       eax, -1
+VA 0x000180003DBD RVA 0x00003DBD  75 51                                           jne       0x180003e10
+VA 0x000180003DBF RVA 0x00003DBF  C7 05 17 CA 09 00 01 00 00 00                   mov       dword ptr [rip + 0x9ca17], 1
+VA 0x000180003DC9 RVA 0x00003DC9  33 DB                                           xor       ebx, ebx
+VA 0x000180003DCB RVA 0x00003DCB  0F 1F 44 00 00                                  nop       dword ptr [rax + rax]
+VA 0x000180003DD0 RVA 0x00003DD0  83 3D 41 CA 09 00 00                            cmp       dword ptr [rip + 0x9ca41], 0
+VA 0x000180003DD7 RVA 0x00003DD7  75 24                                           jne       0x180003dfd
+VA 0x000180003DD9 RVA 0x00003DD9  48 8D 4D F0                                     lea       rcx, [rbp - 0x10]
+VA 0x000180003DDD RVA 0x00003DDD  FF 15 ED A3 06 00                               call      qword ptr [rip + 0x6a3ed] ; IAT GetFileAttributesW @ 0x18006E1D0
+VA 0x000180003DE3 RVA 0x00003DE3  83 F8 FF                                        cmp       eax, -1
+VA 0x000180003DE6 RVA 0x00003DE6  75 15                                           jne       0x180003dfd
+VA 0x000180003DE8 RVA 0x00003DE8  B9 0A 00 00 00                                  mov       ecx, 0xa
+VA 0x000180003DED RVA 0x00003DED  FF 15 ED A3 06 00                               call      qword ptr [rip + 0x6a3ed] ; IAT Sleep @ 0x18006E1E0
+VA 0x000180003DF3 RVA 0x00003DF3  FF C3                                           inc       ebx
+VA 0x000180003DF5 RVA 0x00003DF5  81 FB B8 0B 00 00                               cmp       ebx, 0xbb8
+VA 0x000180003DFB RVA 0x00003DFB  7C D3                                           jl        0x180003dd0
+VA 0x000180003DFD RVA 0x00003DFD  48 8D 4D F0                                     lea       rcx, [rbp - 0x10]
+VA 0x000180003E01 RVA 0x00003E01  FF 15 C9 A3 06 00                               call      qword ptr [rip + 0x6a3c9] ; IAT GetFileAttributesW @ 0x18006E1D0
+VA 0x000180003E07 RVA 0x00003E07  83 F8 FF                                        cmp       eax, -1
+VA 0x000180003E0A RVA 0x00003E0A  0F 84 DB 00 00 00                               je        0x180003eeb
+VA 0x000180003E10 RVA 0x00003E10  0F 57 C0                                        xorps     xmm0, xmm0
+VA 0x000180003E13 RVA 0x00003E13  48 8D 15 B2 04 08 00                            lea       rdx, [rip + 0x804b2]
+VA 0x000180003E1A RVA 0x00003E1A  48 8D 4D F0                                     lea       rcx, [rbp - 0x10]
+VA 0x000180003E1E RVA 0x00003E1E  0F 11 45 D0                                     movups    xmmword ptr [rbp - 0x30], xmm0
+VA 0x000180003E22 RVA 0x00003E22  E8 A9 B0 04 00                                  call      0x18004eed0
+VA 0x000180003E27 RVA 0x00003E27  48 8B F8                                        mov       rdi, rax
+VA 0x000180003E2A RVA 0x00003E2A  48 85 C0                                        test      rax, rax
+VA 0x000180003E2D RVA 0x00003E2D  0F 84 A0 00 00 00                               je        0x180003ed3
+VA 0x000180003E33 RVA 0x00003E33  33 D2                                           xor       edx, edx
+VA 0x000180003E35 RVA 0x00003E35  41 B8 02 00 00 00                               mov       r8d, 2
+VA 0x000180003E3B RVA 0x00003E3B  48 8B C8                                        mov       rcx, rax
+VA 0x000180003E3E RVA 0x00003E3E  E8 55 AA 04 00                                  call      0x18004e898
+VA 0x000180003E43 RVA 0x00003E43  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003E46 RVA 0x00003E46  E8 DD A4 04 00                                  call      0x18004e328
+VA 0x000180003E4B RVA 0x00003E4B  45 33 C0                                        xor       r8d, r8d
+VA 0x000180003E4E RVA 0x00003E4E  4C 63 F0                                        movsxd    r14, eax
+VA 0x000180003E51 RVA 0x00003E51  33 D2                                           xor       edx, edx
+VA 0x000180003E53 RVA 0x00003E53  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003E56 RVA 0x00003E56  E8 3D AA 04 00                                  call      0x18004e898
+VA 0x000180003E5B RVA 0x00003E5B  49 8B CE                                        mov       rcx, r14
+VA 0x000180003E5E RVA 0x00003E5E  E8 4D 9E 04 00                                  call      0x18004dcb0
+VA 0x000180003E63 RVA 0x00003E63  48 8B F0                                        mov       rsi, rax
+VA 0x000180003E66 RVA 0x00003E66  48 85 C0                                        test      rax, rax
+VA 0x000180003E69 RVA 0x00003E69  75 0A                                           jne       0x180003e75
+VA 0x000180003E6B RVA 0x00003E6B  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003E6E RVA 0x00003E6E  E8 09 A7 04 00                                  call      0x18004e57c
+VA 0x000180003E73 RVA 0x00003E73  EB 5E                                           jmp       0x180003ed3
+VA 0x000180003E75 RVA 0x00003E75  4C 8B CF                                        mov       r9, rdi
+VA 0x000180003E78 RVA 0x00003E78  4D 8B C6                                        mov       r8, r14
+VA 0x000180003E7B RVA 0x00003E7B  BA 01 00 00 00                                  mov       edx, 1
+VA 0x000180003E80 RVA 0x00003E80  48 8B CE                                        mov       rcx, rsi
+VA 0x000180003E83 RVA 0x00003E83  E8 CC B9 04 00                                  call      0x18004f854
+VA 0x000180003E88 RVA 0x00003E88  48 8B CF                                        mov       rcx, rdi
+VA 0x000180003E8B RVA 0x00003E8B  48 8B D8                                        mov       rbx, rax
+VA 0x000180003E8E RVA 0x00003E8E  E8 E9 A6 04 00                                  call      0x18004e57c
+VA 0x000180003E93 RVA 0x00003E93  48 8B CE                                        mov       rcx, rsi
+VA 0x000180003E96 RVA 0x00003E96  49 3B DE                                        cmp       rbx, r14
+VA 0x000180003E99 RVA 0x00003E99  74 07                                           je        0x180003ea2
+VA 0x000180003E9B RVA 0x00003E9B  E8 40 B7 04 00                                  call      0x18004f5e0
+VA 0x000180003EA0 RVA 0x00003EA0  EB 29                                           jmp       0x180003ecb
+VA 0x000180003EA2 RVA 0x00003EA2  48 8D 45 D0                                     lea       rax, [rbp - 0x30]
+VA 0x000180003EA6 RVA 0x00003EA6  49 8B D6                                        mov       rdx, r14
+VA 0x000180003EA9 RVA 0x00003EA9  4C 8D 05 28 01 08 00                            lea       r8, [rip + 0x80128]
+VA 0x000180003EB0 RVA 0x00003EB0  48 89 44 24 20                                  mov       qword ptr [rsp + 0x20], rax
+VA 0x000180003EB5 RVA 0x00003EB5  E8 26 E8 FF FF                                  call      0x1800026e0
+VA 0x000180003EBA RVA 0x00003EBA  85 C0                                           test      eax, eax
+VA 0x000180003EBC RVA 0x00003EBC  74 0D                                           je        0x180003ecb
+VA 0x000180003EBE RVA 0x00003EBE  48 8B 55 D8                                     mov       rdx, qword ptr [rbp - 0x28]
+VA 0x000180003EC2 RVA 0x00003EC2  48 8B 4D D0                                     mov       rcx, qword ptr [rbp - 0x30]
+VA 0x000180003EC6 RVA 0x00003EC6  E8 D5 11 04 00                                  call      0x1800450a0
+VA 0x000180003ECB RVA 0x00003ECB  48 8B CE                                        mov       rcx, rsi
+VA 0x000180003ECE RVA 0x00003ECE  E8 0D B7 04 00                                  call      0x18004f5e0
+VA 0x000180003ED3 RVA 0x00003ED3  48 8B 4D D0                                     mov       rcx, qword ptr [rbp - 0x30]
+VA 0x000180003ED7 RVA 0x00003ED7  48 85 C9                                        test      rcx, rcx
+VA 0x000180003EDA RVA 0x00003EDA  74 05                                           je        0x180003ee1
+VA 0x000180003EDC RVA 0x00003EDC  E8 FF B6 04 00                                  call      0x18004f5e0
+VA 0x000180003EE1 RVA 0x00003EE1  C7 05 F5 C8 09 00 00 00 00 00                   mov       dword ptr [rip + 0x9c8f5], 0
+VA 0x000180003EEB RVA 0x00003EEB  48 8B 8D 00 0A 00 00                            mov       rcx, qword ptr [rbp + 0xa00]
+VA 0x000180003EF2 RVA 0x00003EF2  48 33 CC                                        xor       rcx, rsp
+VA 0x000180003EF5 RVA 0x00003EF5  E8 26 FC 03 00                                  call      0x180043b20
+VA 0x000180003EFA RVA 0x00003EFA  4C 8D 9C 24 10 0B 00 00                         lea       r11, [rsp + 0xb10]
+VA 0x000180003F02 RVA 0x00003F02  49 8B 5B 30                                     mov       rbx, qword ptr [r11 + 0x30]
+VA 0x000180003F06 RVA 0x00003F06  49 8B 73 38                                     mov       rsi, qword ptr [r11 + 0x38]
+VA 0x000180003F0A RVA 0x00003F0A  49 8B 7B 40                                     mov       rdi, qword ptr [r11 + 0x40]
+VA 0x000180003F0E RVA 0x00003F0E  49 8B E3                                        mov       rsp, r11
+VA 0x000180003F11 RVA 0x00003F11  41 5F                                           pop       r15
+VA 0x000180003F13 RVA 0x00003F13  41 5E                                           pop       r14
+VA 0x000180003F15 RVA 0x00003F15  41 5D                                           pop       r13
+VA 0x000180003F17 RVA 0x00003F17  41 5C                                           pop       r12
+VA 0x000180003F19 RVA 0x00003F19  5D                                              pop       rbp
+
+URL POINTER TABLE (read as data, fourth entry is excluded by observed loop bound)
+VA 0x180084018 RVA 0x84018 BYTES 08 41 08 80 01 00 00 00 -> VA 0x180084108 https://update.aaasn.com/version
+VA 0x180084020 RVA 0x84020 BYTES 30 41 08 80 01 00 00 00 -> VA 0x180084130 https://update.tnkjmec.com/version
+VA 0x180084028 RVA 0x84028 BYTES 58 41 08 80 01 00 00 00 -> VA 0x180084158 http://update.wudrm.com/version
+VA 0x180084030 RVA 0x84030 BYTES 78 41 08 80 01 00 00 00 -> VA 0x180084178 http://update.steamcdn.com/version

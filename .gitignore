@@ -1,0 +1,8 @@
+*.dll
+*.exe
+*.zip
+*.ps1
+*.gpr
+*.rep/
+__pycache__/
+.DS_Store

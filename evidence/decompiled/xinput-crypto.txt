@@ -1,0 +1,72 @@
+EVIDENCE L-05
+Selected Ghidra decompilation
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+Auto-generated types and function boundaries are approximate; assembly governs disputed details.
+Inferred SIZE metadata was removed because overlapping function fragments make it unreliable.
+
+/* FUNCTION FUN_1800026e0 @ 1800026e0 */
+
+void FUN_1800026e0(ulonglong *param_1,ulonglong param_2,longlong param_3)
+
+{
+  ulonglong uVar1;
+  byte bVar2;
+  uint uVar3;
+  int iVar4;
+  ulonglong *puVar5;
+  undefined8 uVar6;
+  undefined1 *puVar7;
+  ulonglong uVar8;
+  undefined1 auStackY_1b8 [32];
+  uint auStack_188 [4];
+  int local_178 [72];
+  ulonglong local_58;
+  ulonglong uStack_50;
+  ulonglong local_48;
+  
+  local_48 = DAT_18008c340 ^ (ulonglong)auStackY_1b8;
+  if (((param_1 != (ulonglong *)0x0) && (0xf < param_2)) && (param_3 != 0)) {
+    local_58 = *param_1;
+    uStack_50 = param_1[1];
+    uVar1 = param_2 - 0x10;
+    uVar8 = param_2 - 0xf;
+    if (uVar1 == 0xffffffffffffffff) {
+      uVar8 = 0xffffffffffffffff;
+    }
+    puVar5 = (ulonglong *)_malloc_base(uVar8);
+    if (puVar5 != (ulonglong *)0x0) {
+      FUN_18000cd60((undefined1 (*) [32])local_178);
+      iVar4 = FUN_18000cd70(local_178,param_3,0x100);
+      if (iVar4 == 0) {
+        uVar6 = FUN_18000cb90(local_178,0,uVar1,&local_58,param_1 + 2,puVar5);
+        if ((int)uVar6 == 0) {
+          FUN_18000cd40((undefined1 *)local_178);
+          if (4 < uVar1) {
+            bVar2 = *(byte *)((longlong)puVar5 + (param_2 - 0x11));
+            if (((bVar2 < 0x11) && (bVar2 < uVar1)) &&
+               ((uVar3 = (uint)*puVar5, uVar3 != 0 && (uVar3 < 0xa00001)))) {
+              uVar8 = (ulonglong)(uVar3 + 1);
+              if (uVar3 == 0xffffffff) {
+                uVar8 = 0xffffffffffffffff;
+              }
+              puVar7 = (undefined1 *)_malloc_base(uVar8);
+              if (puVar7 != (undefined1 *)0x0) {
+                auStack_188[0] = uVar3;
+                FUN_180008a90(puVar7,(int *)auStack_188,(longlong)puVar5 + 4,
+                              ((int)uVar1 - (uint)bVar2) + -4);
+                thunk_FUN_18005dde0(puVar5);
+                return;
+              }
+            }
+          }
+          thunk_FUN_18005dde0(puVar5);
+          return;
+        }
+      }
+      thunk_FUN_18005dde0(puVar5);
+      return;
+    }
+  }
+  FUN_18000286a();
+  return;
+}

@@ -1,0 +1,277 @@
+Core 静态证据：Ghidra 精选业务摘录
+样本 SHA-256：FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D
+首选 ImageBase：0x180000000；VA/RVA 均为文件内静态地址，不是运行地址。
+目标 DLL 未加载、未执行。
+
+以下为相关业务片段的逐行原始反编译摘录；中间省略的代码用独立省略标记表示。
+Ghidra 类型、函数拆分可能失真；不以反编译 SIZE 字段代表完整控制流范围。
+已修复的导出优先使用。补充的触发、读取和序列化函数只在汇编附件中提供原始证据。
+
+===== FUN_18003f500 VA=0x18003f500 RVA=0x3f500 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0088   undefined8 *******local_6f8;
+L0089   longlong local_6f0;
+L0090   char *local_6e8 [2];
+L0091   undefined8 local_6d8;
+L0092   undefined8 ******ppppppuStack_6d0;
+L0093   ulonglong local_6c8;
+L0094   char **ppcStack_6c0;
+L0095   undefined4 local_6b8;
+L0096   undefined4 uStack_6b4;
+L0097   ulonglong uStack_6b0;
+L0098   ulonglong local_6a8;
+L0099   ulonglong uStack_6a0;
+
+[省略不相关中间片段]
+L0221   }
+L0222   local_738 = 0;
+L0223   lStack_730 = 0;
+L0224   local_728 = 0;
+L0225   if ((local_7c5 == '\0') && (cVar4 = FUN_180046450(param_2,param_3,&local_738), cVar4 == '\0')) {
+L0226     FUN_180004760(param_1,&local_768);
+L0227     FUN_1800047a0(&local_738);
+L0228     FUN_1800047a0(&local_768);
+L0229     goto LAB_1800414fe;
+L0230   }
+L0231   cVar4 = FUN_180047cc0(param_2);
+L0232   local_7c6 = cVar4;
+L0233   uVar9 = FUN_1800031f0(local_308,"/api/");
+L0234   pcVar24 = "";
+L0235   if (param_2 != (char *)0x0) {
+L0236     pcVar24 = param_2;
+L0237   }
+L0238   FUN_1800111f0(local_228,uVar9,pcVar24);
+L0239   FUN_180003380(local_308);
+L0240   FUN_180004630(local_328);
+L0241   iVar6 = DAT_1801ea038;
+L0242   local_700 = DAT_1801ea038;
+L0243   if (cVar4 != '\0') {
+L0244     uVar9 = FUN_18004c3f0(DAT_1801ea038,0x110000100000000);
+L0245     uVar9 = FUN_180031e20(local_308,uVar9);
+L0246     FUN_18000ca20(local_328,uVar9);
+L0247     FUN_180003380(local_308);
+L0248   }
+L0249   FUN_1800427d0(&local_750,param_4);
+L0250   cVar4 = local_7c6;
+
+[省略不相关中间片段]
+L0424 LAB_180041763:
+L0425           *(undefined8 *)(puVar41 + -8) = 0x180041770;
+L0426           FUN_18003f3e0(local_6f0 + local_750);
+L0427           *(undefined8 *)(puVar41 + -8) = 0x18004178a;
+L0428           FUN_180042d90(&local_488,&local_1a8,"X-Proto-Session");
+L0429           *(undefined8 *)(puVar41 + -8) = 0x1800417a8;
+L0430           FUN_180042d90(&local_2e8,&local_1a8,"X-Proto-Session-Expires");
+L0431           pppppppuVar13 = pppppppuVar17;
+L0432           if (local_2d8 != 0) {
+L0433             puVar25 = &local_2e8;
+L0434             if (0xf < local_2d0) {
+L0435               puVar25 = (undefined4 *)CONCAT44(uStack_2e4,local_2e8);
+L0436             }
+
+[省略不相关中间片段]
+L1256 LAB_18004069a:
+L1257         local_428 = pppppppcVar20;
+L1258         local_418 = pppppppuVar17;
+L1259         local_410 = pcVar24;
+L1260         *pppppppcVar44 = (char ******)s_X_Proto_SteamID__18019a5a0._0_8_;
+L1261         pppppppcVar44[1] = (char ******)s_X_Proto_SteamID__18019a5a0._8_8_;
+L1262         *(char *)(pppppppcVar44 + 2) = s_X_Proto_SteamID__18019a5a0[0x10];
+L1263         FUN_18018e3e0((char *)((longlong)pppppppcVar44 + 0x11),pppppppuVar13,lVar27);
+L1264         iVar6 = local_700;
+L1265         *(char *)((longlong)pppppppcVar44 + lVar27 + 0x11) = '\0';
+L1266         uStack_460 = 0;
+L1267         pppppppuVar17 = (undefined8 *******)0x0;
+L1268         local_458 = (undefined8 *******)0x0;
+
+[省略不相关中间片段]
+L1301               local_7e0 = local_4a8;
+L1302             }
+L1303             local_7e8 = (undefined8 *******)0x11;
+L1304             local_7d8 = pppppppuVar13;
+L1305             FUN_180011620(&local_488,cVar4,&local_4a8,"X-Proto-Session: ");
+L1306             if (0xf < local_450) {
+L1307               uVar45 = local_450 + 1;
+L1308               pppppppcVar44 = local_468;
+L1309               if (0xfff < uVar45) {
+L1310                 pppppppcVar44 = (char *******)local_468[-1];
+L1311                 if ((char *)0x1f < (char *)((longlong)local_468 + (-8 - (longlong)pppppppcVar44)))
+
+[省略不相关中间片段]
+L1427         local_678 = puVar11[0xc];
+L1428         uStack_670 = puVar11[0xd];
+L1429         local_668 = puVar11[0xe];
+L1430         local_6d8 = CONCAT44((int)((ulonglong)*puVar11 >> 0x20),1);
+L1431         ppppppuStack_6d0 = (undefined8 ******)&DAT_180196270;
+L1432         if (local_798[0] != local_798[1]) {
+L1433           ppppppuStack_6d0 = local_798[0];
+L1434         }
+L1435         local_6c8 = (longlong)local_798[1] - (longlong)local_798[0];
+L1436         ppcStack_6c0 = local_7c0;
+L1437         uStack_6b4 = (undefined4)((ulonglong)puVar11[4] >> 0x20);
+L1438         _local_6b8 = CONCAT44(uStack_6b4,(int)((longlong)plStack_7b8 - (longlong)local_7c0 >> 3));
+L1439         local_688 = 0x1e00000001;
+L1440         pppppppuVar13 = local_368;
+L1441         if (0xf < local_350) {
+L1442           pppppppuVar13 = local_368[0];
+L1443         }
+L1444         puVar11 = (undefined8 *)FUN_18001dec0(local_5e0,pppppppuVar13,&local_6d8);
+L1445         pppppppuVar18 = local_6f8;
+L1446         iVar8 = local_71c;
+L1447         param_2 = local_780;
+L1448         lVar27 = 2;
+L1449         piVar3 = &local_1a8;
+L1450         do {
+
+[省略不相关中间片段]
+L1767         }
+L1768       } while( true );
+L1769     }
+L1770     puVar10 = (ulonglong *)FUN_18001de70(local_658);
+L1771     ppppppuStack_6d0 = (undefined8 ******)puVar10[1];
+L1772     local_6c8 = puVar10[2];
+L1773     uStack_6b0 = puVar10[5];
+L1774     local_6a8 = puVar10[6];
+L1775     uStack_6a0 = puVar10[7];
+L1776     local_698 = puVar10[8];
+L1777     uStack_690 = puVar10[9];
+L1778     uStack_680 = puVar10[0xb];
+
+[省略不相关中间片段]
+L1788     pppppppuVar17 = local_368;
+L1789     if (0xf < local_350) {
+L1790       pppppppuVar17 = local_368[0];
+L1791     }
+L1792     puVar11 = (undefined8 *)FUN_18001dec0(local_5e0,pppppppuVar17,&local_6d8);
+L1793     lVar26 = 2;
+L1794     piVar3 = &local_1a8;
+L1795     do {
+L1796       piVar23 = piVar3;
+L1797       puVar16 = puVar11;
+L1798       uVar9 = puVar16[1];
+
+===== FUN_180044e70 VA=0x180044e70 RVA=0x44e70 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0001 /* FUNCTION FUN_180044e70 @ 180044e70 SIZE 264 */
+L0002 
+L0003 void FUN_180044e70(longlong param_1,int param_2)
+L0004 
+L0005 {
+L0006   code *pcVar1;
+L0007   char cVar2;
+L0008   int iVar3;
+L0009   longlong lVar4;
+L0010   undefined1 *puVar5;
+L0011   undefined1 auStack_48 [8];
+L0012   undefined1 auStack_40 [24];
+L0013   longlong local_28 [2];
+L0014   longlong local_18;
+L0015   
+L0016   if (param_2 != 0) {
+L0017     if ((param_1 != 0) && (cVar2 = FUN_180044f80(param_2), cVar2 == '\0')) {
+L0018       iVar3 = FUN_18013ab30(&DAT_1801e2220);
+L0019       if (iVar3 != 0) {
+L0020         FUN_18013adf0(5);
+L0021         pcVar1 = (code *)swi(3);
+L0022         (*pcVar1)();
+L0023         return;
+L0024       }
+L0025       if (DAT_1801e226c == 0x7fffffff) {
+L0026         DAT_1801e226c = 0x7ffffffe;
+L0027         FUN_18013adf0(6);
+L0028         pcVar1 = (code *)swi(3);
+L0029         (*pcVar1)();
+L0030         return;
+L0031       }
+L0032       cVar2 = FUN_180044f80(param_2);
+L0033       puVar5 = auStack_48;
+L0034       if (cVar2 == '\0') {
+L0035         FUN_1800123e0(&DAT_18019a430,param_2);
+L0036         FUN_18003f500(local_28,"BeginSession",0,param_1);
+L0037         puVar5 = auStack_48;
+L0038         if (local_28[0] != 0) {
+L0039           lVar4 = local_28[0];
+L0040           puVar5 = auStack_48;
+L0041           if ((0xfff < (ulonglong)(local_18 - local_28[0])) &&
+L0042              (lVar4 = *(longlong *)(local_28[0] + -8), puVar5 = auStack_48,
+L0043              0x1f < (local_28[0] - lVar4) - 8U)) {
+L0044             pcVar1 = (code *)swi(0x29);
+L0045             lVar4 = (*pcVar1)(5);
+L0046             puVar5 = auStack_40;
+L0047           }
+L0048           *(undefined8 *)(puVar5 + -8) = 0x180044f42;
+L0049           thunk_FUN_180157eb0(lVar4);
+L0050         }
+L0051       }
+L0052       *(undefined8 *)(puVar5 + -8) = 0x180044f4b;
+L0053       FUN_18013ac50(&DAT_1801e2220);
+L0054     }
+L0055   }
+L0056   return;
+L0057 }
+L0058 
+L0059 
+L0060 
+
+===== FUN_1800454f0 VA=0x1800454f0 RVA=0x454f0 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0043     sVar4 = strlen(local_128);
+L0044     FUN_180002e00(&local_148,local_128,sVar4);
+L0045     if (local_130 - local_138 < 0xb) {
+L0046       local_168 = 0xb;
+L0047       ppppuVar5 = (undefined8 ****)FUN_180008f20(&local_148,0xb,0,"st_sess.dat");
+L0048     }
+L0049     else {
+L0050       ppppuVar5 = &local_148;
+L0051       if (0xf < local_130) {
+L0052         ppppuVar5 = (undefined8 ****)local_148;
+L0053       }
+L0054       lVar7 = (longlong)ppppuVar5 + local_138;
+L0055       local_138 = local_138 + 0xb;
+L0056       FUN_18018e3e0(lVar7,"st_sess.dat",0xb);
+L0057       *(undefined1 *)(lVar7 + 0xb) = 0;
+L0058       ppppuVar5 = &local_148;
+L0059     }
+L0060     *param_1 = 0;
+L0061     param_1[1] = 0;
+L0062     param_1[2] = 0;
+
+===== FUN_180055410 VA=0x180055410 RVA=0x55410 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0074     }
+L0075     *(undefined8 *)(puVar14 + -8) = 0x1800554c2;
+L0076     FUN_18013ac50(&DAT_1801e2290);
+L0077     *(undefined8 *)(puVar14 + -8) = 0x1800554c7;
+L0078     local_c8 = (undefined8 ****)cJSON_CreateObject();
+L0079     pppppuVar12 = DAT_1801e26d0;
+L0080     if ((undefined8 *****)local_c8 == (undefined8 *****)0x0) {
+L0081       *param_1 = (undefined8 ****)0x0;
+L0082       param_1[1] = (undefined8 ****)0x0;
+L0083       param_1[2] = pppppuVar17;
+L0084       param_1[3] = (undefined8 ****)0xf;
+
+[省略不相关中间片段]
+L0154       if ((undefined8 *****)0xf < local_80) {
+L0155         pppppuVar13 = local_98;
+L0156       }
+L0157       *(undefined8 *)(puVar14 + -8) = 0x18005561e;
+L0158       FUN_18003f500(&lStack_b0,"GetCookie",pppppuVar8,pppppuVar13);
+L0159       if ((undefined8 *****)0xf < local_80) {
+L0160         pppppuVar11 = (undefined8 *****)((longlong)local_80 + 1);
+L0161         pppppuVar13 = local_98;
+L0162         if (pppppuVar11 < (undefined8 *****)0x1000) {
+L0163 LAB_180055655:
+L0164           *(undefined1 **)(puVar14 + -8) = &LAB_18005565a;
+
+[省略不相关中间片段]
+L0244       ppppuStack_68 = (undefined8 *****)0x0;
+L0245       uStack_60 = 0xf;
+L0246       ppppuStack_78 = (undefined8 *****)0x0;
+L0247       *(undefined8 *)(puVar14 + -8) = 0x1800556a0;
+L0248       cVar4 = FUN_180049a80(&lStack_b0,&ppppuStack_78);
+L0249       ppppuVar6 = ppppuStack_68;
+L0250       pppppuVar8 = (undefined8 *****)0x0;
+L0251       pppppuVar13 = (undefined8 *****)0xf;
+L0252       if (cVar4 != '\0') {
+L0253         pppppuVar12 = &ppppuStack_78;
+L0254         if (0xf < uStack_60) {

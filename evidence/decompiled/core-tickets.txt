@@ -1,0 +1,285 @@
+Core 静态证据：Ghidra 精选业务摘录
+样本 SHA-256：FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D
+首选 ImageBase：0x180000000；VA/RVA 均为文件内静态地址，不是运行地址。
+目标 DLL 未加载、未执行。
+
+以下为相关业务片段的逐行原始反编译摘录；中间省略的代码用独立省略标记表示。
+Ghidra 类型、函数拆分可能失真；不以反编译 SIZE 字段代表完整控制流范围。
+已修复的导出优先使用。补充的触发、读取和序列化函数只在汇编附件中提供原始证据。
+
+===== FUN_180055410 VA=0x180055410 RVA=0x55410 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0074     }
+L0075     *(undefined8 *)(puVar14 + -8) = 0x1800554c2;
+L0076     FUN_18013ac50(&DAT_1801e2290);
+L0077     *(undefined8 *)(puVar14 + -8) = 0x1800554c7;
+L0078     local_c8 = (undefined8 ****)cJSON_CreateObject();
+L0079     pppppuVar12 = DAT_1801e26d0;
+L0080     if ((undefined8 *****)local_c8 == (undefined8 *****)0x0) {
+L0081       *param_1 = (undefined8 ****)0x0;
+L0082       param_1[1] = (undefined8 ****)0x0;
+L0083       param_1[2] = pppppuVar17;
+L0084       param_1[3] = (undefined8 ****)0xf;
+
+[省略不相关中间片段]
+L0154       if ((undefined8 *****)0xf < local_80) {
+L0155         pppppuVar13 = local_98;
+L0156       }
+L0157       *(undefined8 *)(puVar14 + -8) = 0x18005561e;
+L0158       FUN_18003f500(&lStack_b0,"GetCookie",pppppuVar8,pppppuVar13);
+L0159       if ((undefined8 *****)0xf < local_80) {
+L0160         pppppuVar11 = (undefined8 *****)((longlong)local_80 + 1);
+L0161         pppppuVar13 = local_98;
+L0162         if (pppppuVar11 < (undefined8 *****)0x1000) {
+L0163 LAB_180055655:
+L0164           *(undefined1 **)(puVar14 + -8) = &LAB_18005565a;
+
+[省略不相关中间片段]
+L0244       ppppuStack_68 = (undefined8 *****)0x0;
+L0245       uStack_60 = 0xf;
+L0246       ppppuStack_78 = (undefined8 *****)0x0;
+L0247       *(undefined8 *)(puVar14 + -8) = 0x1800556a0;
+L0248       cVar4 = FUN_180049a80(&lStack_b0,&ppppuStack_78);
+L0249       ppppuVar6 = ppppuStack_68;
+L0250       pppppuVar8 = (undefined8 *****)0x0;
+L0251       pppppuVar13 = (undefined8 *****)0xf;
+L0252       if (cVar4 != '\0') {
+L0253         pppppuVar12 = &ppppuStack_78;
+L0254         if (0xf < uStack_60) {
+
+===== FUN_180057390 VA=0x180057390 RVA=0x57390 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0067   alStack_198[10] = 0;
+L0068   lVar9 = cJSON_CreateObject();
+L0069   puVar14 = auStack_1b8;
+L0070   if (lVar9 == 0) goto LAB_180057e79;
+L0071   cJSON_AddNumberToObject(lVar9,"appid");
+L0072   puVar11 = DAT_1801e26d0;
+L0073   puVar14 = auStack_1b8;
+L0074   if (0x7fffffffffffffffU - (longlong)DAT_1801e26d0 < 4) goto LAB_180057efb;
+L0075   ppppppuVar24 = &DAT_1801e26c0;
+L0076   if (0xf < DAT_1801e26d8) {
+L0077     ppppppuVar24 = DAT_1801e26c0;
+
+[省略不相关中间片段]
+L0126     pppppppuVar23 = &local_128;
+L0127     if ((undefined8 ******)0xf < local_110) {
+L0128       pppppppuVar23 = (undefined8 *******)local_128;
+L0129     }
+L0130     FUN_18003f500(alStack_198 + 0xb,"GetTicketList",lVar9,pppppppuVar23);
+L0131     if ((undefined8 ******)0xf < local_110) {
+L0132       ppppppuVar18 = (undefined8 ******)((longlong)local_110 + 1);
+L0133       pppppppuVar23 = (undefined8 *******)local_128;
+L0134       if (ppppppuVar18 < (undefined8 ******)0x1000) {
+L0135 LAB_18005753f:
+L0136         thunk_FUN_180157eb0(pppppppuVar23,ppppppuVar18);
+
+[省略不相关中间片段]
+L0193       if (iVar8 != 0) goto LAB_180057e79;
+L0194       *(undefined8 *******)(puVar21 + 0x20) = ppppppuVar24;
+L0195       *(undefined8 *)(puVar21 + -8) = 0x18005776f;
+L0196       iVar8 = FUN_180063914(*(undefined8 *)(puVar21 + 0x40),
+L0197                             "SELECT 1 FROM app_list2 WHERE AppID = ? LIMIT 1;",0xffffffff,
+L0198                             puVar21 + 0x38);
+L0199       if (iVar8 != 0) {
+L0200         *(undefined8 *)(puVar21 + -8) = 0x18005777d;
+L0201         FUN_1800613c8(*(undefined8 *)(puVar21 + 0x40));
+L0202         goto LAB_180057e79;
+L0203       }
+
+[省略不相关中间片段]
+L0219         *(undefined8 *)(puVar21 + -8) = 0x1800577dc;
+L0220         iVar8 = FUN_18006414c(*(undefined8 *)(puVar21 + 0x38));
+L0221         if (iVar8 != 100) {
+L0222           *(undefined8 *)(puVar21 + -8) = 0x1800577f0;
+L0223           FUN_18004d4a0(&uStack_a8,pppppppuVar23);
+L0224           *(undefined8 *)(puVar21 + -8) = 0x1800577fe;
+L0225           FUN_18000b910(&local_128,&uStack_a8);
+L0226           if ((undefined8 ******)0x28 < local_118) {
+L0227             *(undefined8 *)(puVar21 + -8) = 0x18005780b;
+L0228             puVar13 = (undefined4 *)cJSON_CreateObject();
+L0229             if (puVar13 != (undefined4 *)0x0) {
+L0230               *(undefined8 *)(puVar21 + -8) = 0x18005782a;
+L0231               cJSON_AddNumberToObject(puVar13,"appid",(double)(int)uVar2);
+L0232               pppppppuVar15 = &local_128;
+L0233               if ((undefined8 ******)0xf < local_110) {
+L0234                 pppppppuVar15 = (undefined8 *******)local_128;
+L0235               }
+L0236               *(undefined8 *)(puVar21 + -8) = 0x180057847;
+L0237               cJSON_AddStringToObject(puVar13,"ticket",pppppppuVar15);
+L0238               *(undefined8 *)(puVar21 + -8) = 0x180057852;
+L0239               cJSON_AddItemToArray(pcVar12,puVar13);
+L0240               puVar4 = *(uint **)(puVar21 + 0x50);
+L0241               if (puVar4 == *(uint **)(puVar21 + 0x58)) {
+L0242                 *(undefined8 *)(puVar21 + -8) = 0x180057877;
+L0243                 FUN_1800457e0(puVar21 + 0x48,puVar4,puVar21 + 0x30);
+
+[省略不相关中间片段]
+L0312         if ((undefined8 ******)0xf < local_110) {
+L0313           pppppppuVar15 = (undefined8 *******)local_128;
+L0314         }
+L0315         *(undefined8 *)(puVar21 + -8) = 0x180057a1b;
+L0316         FUN_18003f500(puVar21 + 0x78,"GetTicket",pcVar12,pppppppuVar15);
+L0317         if ((undefined8 ******)0xf < local_110) {
+L0318           ppppppuVar10 = (undefined8 ******)((longlong)local_110 + 1);
+L0319           pppppppuVar15 = (undefined8 *******)local_128;
+L0320           if ((undefined8 ******)0xfff < ppppppuVar10) {
+L0321             pppppppuVar15 = (undefined8 *******)local_128[-1];
+L0322             if (0x1f < (ulonglong)((longlong)local_128 + (-8 - (longlong)pppppppuVar15))) {
+
+[省略不相关中间片段]
+L0347           ppppppuVar18 = *(undefined8 *******)(puVar21 + 0x48);
+L0348           ppppppuVar20 = *(undefined8 *******)(puVar21 + 0x50);
+L0349           if (ppppppuVar18 != ppppppuVar20) {
+L0350             param_1 = (undefined8 *******)0x18019b341;
+L0351             pcVar12 = "INSERT OR REPLACE INTO app_list2 (AppID) VALUES (";
+L0352             pppppppuVar23 = (undefined8 *******)0x3b29;
+L0353             do {
+L0354               uVar2 = *(uint *)ppppppuVar18;
+L0355               if ((int)uVar2 < 0) {
+L0356                 *(undefined8 *)(puVar21 + -8) = 0x180057ae1;
+L0357                 lVar9 = FUN_1800210e0(auStack_53,-uVar2);
+
+[省略不相关中间片段]
+L0375                 pppppuStack_f0 = ppppppuVar24;
+L0376                 FUN_180002e00(&ppppppuStack_108,puVar14,auStack_53 + -(longlong)puVar14);
+L0377               }
+L0378               if ((ulonglong)((longlong)pppppuStack_f0 - (longlong)pppppuStack_f8) < 0x31) {
+L0379                 *(undefined8 *)(puVar21 + 0x28) = 0x31;
+L0380                 *(char **)(puVar21 + 0x20) = pcVar12;
+L0381                 *(undefined1 **)(puVar21 + -8) = &LAB_180057beb;
+L0382                 pppppppuVar15 = (undefined8 *******)FUN_180004290(&ppppppuStack_108,0x31,0,0);
+L0383               }
+L0384               else {
+L0385                 pppppppuVar23 = &ppppppuStack_108;
+
+===== FUN_18004d4a0 VA=0x18004d4a0 RVA=0x4d4a0 =====
+分析导出：extra.c；行号从该函数摘录开头计数。
+L0092   local_300 = (undefined8 *******)0x0;
+L0093   local_3e8[0] = param_1;
+L0094   local_3e8[1] = param_1;
+L0095   local_3d0 = param_2;
+L0096   FUN_180002f00(&local_318,L"userdata\\",9);
+L0097   pppppppuVar25 = local_300;
+L0098   pppppppuVar22 = local_308;
+L0099   pppppppuVar21 = local_318;
+L0100   puVar8 = auStack_448;
+L0101   if (local_308 == (undefined8 *******)0x7ffffffffffffffe) goto LAB_18004e444;
+L0102   pppppppuVar11 = &local_318;
+
+[省略不相关中间片段]
+L0169   pppppppWVar23 = (LPCWSTR ******)&local_3b8;
+L0170   if ((undefined *)0x7 < local_3a0) {
+L0171     pppppppWVar23 = local_3b8;
+L0172   }
+L0173   puVar8 = (undefined1 *)FindFirstFileW((LPCWSTR)pppppppWVar23,&_Stack_298);
+L0174   if ((undefined *)0x7 < local_3a0) {
+L0175     uVar15 = (longlong)local_3a0 * 2 + 2;
+L0176     pppppppWVar23 = local_3b8;
+L0177     if (0xfff < uVar15) {
+L0178       pppppppWVar23 = (LPCWSTR ******)local_3b8[-1];
+L0179       puVar18 = (undefined *)0x0;
+
+[省略不相关中间片段]
+L0222               pppppppuVar14 = pppppppuStack_358;
+L0223             }
+L0224             for (; pppppppuVar14 != (undefined8 *******)((longlong)pppppppuVar11 + lVar10);
+L0225                 pppppppuVar14 = (undefined8 *******)((longlong)pppppppuVar14 + 2)) {
+L0226               iVar5 = func_0x0001801710c4(*(undefined2 *)pppppppuVar14);
+L0227               if (iVar5 == 0) goto LAB_18004d7ea;
+L0228             }
+L0229             if (appppppWStack_400[1] == (LPCWSTR *****)lStack_3f0) {
+L0230               func_0x00018004cbd0(appppppWStack_400,appppppWStack_400[1],&pppppppuStack_358);
+L0231             }
+L0232             else {
+
+[省略不相关中间片段]
+L0248           }
+L0249           thunk_FUN_180157eb0(pppppppuVar11,uVar15);
+L0250         }
+L0251       }
+L0252       BVar6 = FindNextFileW(puVar8,&_Stack_298);
+L0253     } while (BVar6 != 0);
+L0254     FindClose(puVar8);
+L0255     ppppppWStack_3c8 = appppppWStack_400[1];
+L0256     if (appppppWStack_400[0] != appppppWStack_400[1]) {
+L0257       uVar15 = (ulonglong)abStack_408[0];
+L0258       ppppppWVar24 = appppppWStack_400[0];
+
+[省略不相关中间片段]
+L0274         FUN_1800163d0(&local_3b8,uVar15,&local_318,pppppppuVar22);
+L0275         if ((ulonglong)((longlong)local_3a0 - (longlong)local_3a8) < 0x17) {
+L0276           pppppppuStack_428 = (undefined8 *******)0x17;
+L0277           pppppppWVar23 =
+L0278                (LPCWSTR ******)FUN_180003030(&local_3b8,0x17,0,L"\\config\\localconfig.vdf");
+L0279         }
+L0280         else {
+L0281           pppppppWVar23 = (LPCWSTR ******)&local_3b8;
+L0282           if ((undefined *)0x7 < local_3a0) {
+L0283             pppppppWVar23 = local_3b8;
+L0284           }
+L0285           pWVar1 = (LPCWSTR)((longlong)pppppppWVar23 + (longlong)local_3a8 * 2);
+L0286           local_3a8 = local_3a8 + 0x17;
+L0287           FUN_18018e3e0(pWVar1,L"\\config\\localconfig.vdf",0x2e);
+L0288           pWVar1[0x17] = L'\0';
+L0289           pppppppWVar23 = (LPCWSTR ******)&local_3b8;
+L0290         }
+L0291         pppppppuVar22 = (undefined8 *******)0x0;
+L0292         ppppppWStack_2f8 = (LPCWSTR *****)0x0;
+L0293         ppppppWStack_2f0 = (LPCWSTR *****)0x0;
+
+[省略不相关中间片段]
+L0319 LAB_18004da61:
+L0320         local_3a8 = (undefined *)0x0;
+L0321         local_3a0 = (undefined *)0x7;
+L0322         local_3b8 = (LPCWSTR ******)((ulonglong)local_3b8 & 0xffffffffffff0000);
+L0323         FUN_180019320(appppppuStack_378,&ppppppWStack_2f8);
+L0324         ppppppWVar26 = ppppppWVar7;
+L0325         if (puStack_368 != (undefined *)0x0) {
+L0326           pppppppuVar21 = appppppuStack_378;
+L0327           if (0xf < uStack_360) {
+L0328             pppppppuVar21 =
+L0329                  (undefined8 *******)CONCAT71(appppppuStack_378[0]._1_7_,appppppuStack_378[0]._0_1_)
+L0330             ;
+L0331           }
+L0332           if (((puStack_368 < (undefined *)0xc) ||
+L0333               (puVar16 = puStack_368 + (longlong)pppppppuVar21,
+L0334               puVar18 = (undefined *)thunk_FUN_180139b80(pppppppuVar21,puVar16,"\"apptickets\"",0xc)
+L0335               , puVar18 == puVar16)) ||
+L0336              (puVar18 = puVar18 + -(longlong)pppppppuVar21,
+L0337              puVar18 == (undefined *)0xffffffffffffffff)) goto LAB_18004dfd2;
+L0338           puVar12 = (undefined1 *)appppppuStack_378;
+L0339           if (0xf < uStack_360) {
+L0340             puVar12 = (undefined1 *)CONCAT71(appppppuStack_378[0]._1_7_,appppppuStack_378[0]._0_1_);
+
+===== FUN_180058f70 VA=0x180058f70 RVA=0x58f70 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0054   puVar17 = auStackY_2208;
+L0055   puVar18 = auStackY_2208;
+L0056   local_48 = DAT_1801e6180 ^ (ulonglong)auStackY_2208;
+L0057   local_21d0 = param_1;
+L0058   FUN_180058f00(local_2148,"Software\\Valve\\Steam\\Apps\\%d",param_1);
+L0059   LVar5 = RegOpenKeyExA((HKEY)0xffffffff80000001,local_2148,0,0x20019,&local_21c0);
+L0060   if (LVar5 == 0) {
+L0061     FUN_18018ea90(local_2048,0,0x2000);
+L0062     local_21c8[0] = 0x2000;
+L0063     LVar5 = RegQueryValueExA(local_21c0,"nTicket",(LPDWORD)0x0,(LPDWORD)0x0,local_2048,local_21c8);
+L0064     if (LVar5 == 0) {
+L0065       RegCloseKey(local_21c0);
+L0066       if (*param_2 != param_2[1]) {
+L0067         param_2[1] = *param_2;
+L0068       }
+L0069       sVar6 = strlen((char *)local_2048);
+
+[省略不相关中间片段]
+L0186     ppppuVar16 = &local_2188;
+L0187     if (0xf < local_2170) {
+L0188       ppppuVar16 = (undefined8 ****)local_2188;
+L0189     }
+L0190     FUN_18003f500(&lStack_21a8,"GetTicket",lVar9,ppppuVar16);
+L0191     if (local_2170 < 0x10) {
+L0192 LAB_180059386:
+L0193       lVar12 = 0;
+L0194       local_2178 = 0;
+L0195       local_2170 = 0xf;
+L0196       local_2188 = (undefined8 ***)((ulonglong)local_2188 & 0xffffffffffffff00);

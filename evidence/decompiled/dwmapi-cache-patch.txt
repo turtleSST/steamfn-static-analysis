@@ -1,0 +1,124 @@
+EVIDENCE L-09
+Selected Ghidra decompilation
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+Auto-generated types and function boundaries are approximate; assembly governs disputed details.
+Inferred SIZE metadata was removed because overlapping function fragments make it unreliable.
+
+/* ADDRESS 180001000 NAME FUN_180001000 */
+
+void FUN_180001000(undefined8 param_1,int param_2)
+
+{
+  int iVar1;
+  FILE *_File;
+  ulonglong uVar2;
+  LPVOID _DstBuf;
+  int iVar3;
+  undefined1 auStack_48 [32];
+  undefined4 uStack_28;
+  undefined4 uStack_24;
+  undefined4 uStack_20;
+  undefined4 uStack_1c;
+  undefined4 auStack_18 [2];
+  ulonglong local_10;
+  
+  local_10 = DAT_18001d000 ^ (ulonglong)auStack_48;
+  if (param_2 != 1) {
+    FUN_180001170(local_10 ^ (ulonglong)auStack_48);
+    return;
+  }
+  uStack_28 = 0x4ee8;
+  uStack_24 = 0x6c696202;
+  uStack_20 = 0x676e696c;
+  uStack_1c = 0x65707974;
+  auStack_18[0] = 0x12020;
+  _File = (FILE *)FUN_180004df0("appcache\\packageinfo.vdf","r+b");
+  if (_File != (FILE *)0x0) {
+    FUN_18000523c((longlong *)_File,0,2);
+    uVar2 = FUN_180004c9c((longlong *)_File);
+    iVar1 = (int)uVar2;
+    FUN_1800053c4((int *)_File);
+    _DstBuf = _malloc_base((longlong)iVar1);
+    if (_DstBuf != (LPVOID)0x0) {
+      fread(_DstBuf,1,(longlong)iVar1,_File);
+      iVar3 = 0;
+      if (-1 < iVar1 + -0x10) {
+        do {
+          if ((*(longlong *)((longlong)iVar3 + (longlong)_DstBuf) == CONCAT44(uStack_24,uStack_28))
+             && (*(longlong *)((longlong)iVar3 + 8 + (longlong)_DstBuf) ==
+                 CONCAT44(uStack_1c,uStack_20))) {
+            FUN_18000523c((longlong *)_File,iVar3,0);
+            FUN_1800057c0(auStack_18,1,4,(longlong)_File);
+            break;
+          }
+          iVar3 = iVar3 + 1;
+        } while (iVar3 <= iVar1 + -0x10);
+      }
+      thunk_FUN_1800090f0(_DstBuf);
+    }
+    FUN_180004f20((int *)_File);
+  }
+  FUN_180001170(local_10 ^ (ulonglong)auStack_48);
+  return;
+}
+
+/* ADDRESS 18000137c NAME FUN_18000137c */
+
+int FUN_18000137c(undefined8 param_1,int param_2,longlong param_3)
+
+{
+  ulonglong uVar1;
+  int iVar2;
+  
+  if ((param_2 == 0) && (DAT_18001dad0 < 1)) {
+    return 0;
+  }
+  if (param_2 - 1U < 2) {
+    if (DAT_180013330 == 0) {
+      iVar2 = 1;
+    }
+    else {
+      iVar2 = (*(code *)PTR__guard_dispatch_icall_180013288)();
+    }
+    if (iVar2 == 0) {
+      return 0;
+    }
+    uVar1 = FUN_180001190(param_1,param_2,param_3);
+    if ((int)uVar1 == 0) {
+      return 0;
+    }
+  }
+  iVar2 = FUN_180001000(param_1,param_2);
+  if ((param_2 == 1) && (iVar2 == 0)) {
+    FUN_180001000(param_1,0);
+    FUN_1800012f8(param_3 != 0);
+    if (DAT_180013330 != 0) {
+      (*(code *)PTR__guard_dispatch_icall_180013288)(param_1,0,param_3);
+    }
+  }
+  if ((param_2 == 0) || (param_2 == 3)) {
+    uVar1 = FUN_180001190(param_1,param_2,param_3);
+    iVar2 = (int)uVar1;
+    if (iVar2 != 0) {
+      if (DAT_180013330 == 0) {
+        iVar2 = 1;
+      }
+      else {
+        iVar2 = (*(code *)PTR__guard_dispatch_icall_180013288)(param_1,param_2,param_3);
+      }
+    }
+  }
+  return iVar2;
+}
+
+/* ADDRESS 1800014a4 NAME entry */
+
+void entry(undefined8 param_1,int param_2,longlong param_3)
+
+{
+  if (param_2 == 1) {
+    FUN_180001660();
+  }
+  FUN_18000137c(param_1,param_2,param_3);
+  return;
+}

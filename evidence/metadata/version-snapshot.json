@@ -1,0 +1,51 @@
+{
+  "Version": 6,
+  "VersionTxt": "1.8 正式版",
+  "urls": [
+    "https://cdn-api.tnkjmec.com",
+    "https://cdn-api-v2b.tnkjmec.com"
+  ],
+  "Hash": "3f1d281c1a2047fb6858c671c1be9c8f4a494999",
+  "CardUrl": "https://cardx.tnkjmec.com/?action=verify_cdkey",
+  "DownloadUrl": "https://www.steamtools.net",
+  "DownloadZip": "https://cdn.wmpvp.com/steamWeb/B330D5F2F85F4FA784DD92B4D452BBD1-1731878923362.pdf",
+  "AppIdInOnline": "242760,1326470,413150,3097560,717690,2737070,2336220,1084600,1203620,632360,1377380,648800,429050,224060,2904000,2543510,550,3892270",
+  "AllFile": [
+    {
+      "FileName": "%USERPROFILE%/test/测试.txt",
+      "URL": "url",
+      "Hash": "2e4955e5930b6d9159a3d0ffbcd9f885",
+      "default": -1
+    }
+  ],
+  "WindowsFileStable": [
+    {
+      "FileName": "appcache/httpcache/3a/<mCode>",
+      "URL": "https://update.steamox.com/HID",
+      "Hash": "34e3c7f6709dbc5c762b2024687e83e7",
+      "default": 1
+    },
+    {
+      "FileName": "Steam.cfg",
+      "URL": "https://update.steamox.com/Steam.cfg",
+      "Hash": "d393a5e26d593247c6c4a136e622d302",
+      "default": -1
+    }
+  ],
+  "WindowsFile64Beta": [
+    {
+      "FileName": "appcache/httpcache/3b/<mCode>",
+      "URL": "https://update.steamox.com/CoreBeta",
+      "Hash": "527b0f41f25720f5c365a3cb752fef61",
+      "default": 1
+    }
+  ],
+  "WindowsFile64Stable": [
+    {
+      "FileName": "appcache/httpcache/3b/<mCode>",
+      "URL": "http://update.steamdemo.com/Core",
+      "Hash": "3c7b7eba52cfa28f15688d3b02b54843",
+      "default": 0
+    }
+  ]
+}

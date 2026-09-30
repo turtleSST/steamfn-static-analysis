@@ -1,0 +1,274 @@
+Core 静态证据：Ghidra 精选业务摘录
+样本 SHA-256：FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D
+首选 ImageBase：0x180000000；VA/RVA 均为文件内静态地址，不是运行地址。
+目标 DLL 未加载、未执行。
+
+以下为相关业务片段的逐行原始反编译摘录；中间省略的代码用独立省略标记表示。
+Ghidra 类型、函数拆分可能失真；不以反编译 SIZE 字段代表完整控制流范围。
+已修复的导出优先使用。补充的触发、读取和序列化函数只在汇编附件中提供原始证据。
+
+===== FUN_18005f330 VA=0x18005f330 RVA=0x5f330 =====
+分析导出：core_chain.c；行号从该函数摘录开头计数。
+L0094   psVar24 = param_2;
+L0095   if (sVar2 != 0x97) {
+L0096     lVar22 = param_1;
+L0097     if (sVar2 != 0x158a) {
+L0098       if (sVar2 == 0x22c7) {
+L0099         if (7 < param_3) {
+L0100           local_10b8 = (ulonglong)(*(int *)(param_2 + 2) + 8U);
+L0101           if (local_10b8 < param_3) {
+L0102             local_1088 = 0;
+L0103             puStack_1080 = (undefined4 *)0x0;
+L0104             local_1078 = (undefined4 *)0x0;
+
+[省略不相关中间片段]
+L0213             }
+L0214             lVar16 = local_10e8 * 2;
+L0215             lVar12 = thunk_FUN_180156fd0(lVar16);
+L0216             FUN_18018e3e0(lVar12,psVar24,uVar31);
+L0217             lVar16 = FUN_180050490(&local_1088,lVar12,lVar16,uVar31);
+L0218             FUN_180050680(&local_1088);
+L0219             if (((DAT_1801ea308 == '\0') && (DAT_1801ea2c8 != (code *)0x0)) && (lVar12 != 0)) {
+L0220               (*DAT_1801ea2c8)(lVar22,lVar12,lVar16 + uVar31);
+L0221             }
+L0222             thunk_FUN_180157eb0(lVar12);
+L0223             if (local_1070 != 0) {
+L0224               thunk_FUN_180157eb0();
+
+===== FUN_180050680 VA=0x180050680 RVA=0x50680 =====
+分析导出：extra.c；行号从该函数摘录开头计数。
+L0016   longlong *plVar11;
+L0017   ulonglong uVar12;
+L0018   longlong *plVar13;
+L0019   
+L0020   if (DAT_1801e2680 != DAT_1801e2688) {
+L0021     DAT_1801e2688 = DAT_1801e2680;
+L0022   }
+L0023   if (DAT_1801e2698 != 0) {
+L0024     thunk_FUN_180157eb0();
+L0025     DAT_1801e2698 = 0;
+L0026   }
+L0027   DAT_1801e26a0 = 0;
+L0028   plVar13 = (longlong *)param_1[1];
+L0029   puVar5 = DAT_1801e2688;
+L0030   for (plVar11 = (longlong *)*param_1; DAT_1801e2688 = puVar5, plVar11 != plVar13;
+L0031       plVar11 = plVar11 + 2) {
+L0032     if ((*plVar11 != 0) && (plVar11[1] != 0)) {
+L0033       if (puVar5 == DAT_1801e2690) {
+L0034         FUN_1800502f0(&DAT_1801e2680,puVar5,plVar11);
+L0035       }
+L0036       else {
+L0037         uVar2 = *(undefined4 *)((longlong)plVar11 + 4);
+L0038         lVar7 = plVar11[1];
+L0039         uVar3 = *(undefined4 *)((longlong)plVar11 + 0xc);
+L0040         *puVar5 = (int)*plVar11;
+L0041         puVar5[1] = uVar2;
+L0042         puVar5[2] = (int)lVar7;
+L0043         puVar5[3] = uVar3;
+L0044         DAT_1801e2688 = DAT_1801e2688 + 4;
+L0045       }
+L0046     }
+L0047     puVar5 = DAT_1801e2688;
+L0048   }
+L0049   if (param_1[4] == 0) {
+L0050     DAT_1801e26a0 = 0;
+L0051   }
+L0052   else {
+L0053     DAT_1801e26a0 = 0;
+L0054     uVar8 = 0;
+L0055     do {
+L0056       if (*(longlong *)(param_1[3] + uVar8 * 0x10) != 0) {
+L0057         DAT_1801e26a0 =
+L0058              (DAT_1801e26a0 + 1) - (ulonglong)(*(longlong *)(param_1[3] + 8 + uVar8 * 0x10) == 0);
+L0059       }
+L0060       uVar8 = uVar8 + 1;
+L0061     } while (uVar8 < (ulonglong)param_1[4]);
+L0062     if (DAT_1801e26a0 != 0) {
+L0063       auVar1._8_8_ = 0;
+L0064       auVar1._0_8_ = DAT_1801e26a0;
+L0065       uVar6 = SUB168(ZEXT816(0x10) * auVar1,0);
+L0066       if (SUB168(ZEXT816(0x10) * auVar1,8) != 0) {
+L0067         uVar6 = 0xffffffffffffffff;
+L0068       }
+L0069       lVar7 = thunk_FUN_180156fd0(uVar6);
+L0070       uVar8 = param_1[4];
+L0071       DAT_1801e2698 = lVar7;
+L0072       if (uVar8 != 0) {
+L0073         uVar12 = 0;
+L0074         lVar9 = 0;
+L0075         do {
+L0076           plVar13 = (longlong *)(uVar12 * 0x10 + param_1[3]);
+L0077           lVar10 = lVar9;
+L0078           if ((*plVar13 != 0) && (plVar13[1] != 0)) {
+L0079             lVar4 = plVar13[1];
+L0080             lVar10 = lVar9 + 1;
+L0081             plVar11 = (longlong *)(lVar7 + lVar9 * 0x10);
+L0082             *plVar11 = *plVar13;
+L0083             plVar11[1] = lVar4;
+L0084             uVar8 = param_1[4];
+L0085             lVar7 = DAT_1801e2698;
+L0086           }
+L0087           uVar12 = uVar12 + 1;
+L0088           lVar9 = lVar10;
+L0089         } while (uVar12 < uVar8);
+L0090         return;
+L0091       }
+
+===== FUN_180053fd0 VA=0x180053fd0 RVA=0x53fd0 =====
+分析导出：risk_repaired.c；行号从该函数摘录开头计数。
+L0140         }
+L0141         local_228[0] = uVar20 | 0x300000;
+L0142         if (local_140 - local_148 < 0x26) {
+L0143           local_238[1] = (char *)0x26;
+L0144           local_238[0] = "SELECT AppID FROM token WHERE AppID = ";
+L0145           pppppppuVar12 = (undefined8 *******)FUN_180004290(&local_158,0x26,0,0);
+L0146         }
+L0147         else {
+L0148           pppppppuVar12 = &local_158;
+L0149           if (0xf < local_140) {
+L0150             pppppppuVar12 = local_158;
+L0151           }
+L0152           if (((undefined8 *******)0x18019b36d < pppppppuVar12) ||
+L0153              ((char *)((longlong)pppppppuVar12 + local_148) <
+L0154               "SELECT AppID FROM token WHERE AppID = ")) {
+L0155             ppppppplVar16 = (longlong *******)0x26;
+L0156           }
+L0157           else {
+L0158             ppppppplVar16 = ppppppplVar9;
+L0159             if ("SELECT AppID FROM token WHERE AppID = " < pppppppuVar12) {
+L0160               ppppppplVar16 = pppppppuVar12 + -0x30033669;
+L0161             }
+L0162           }
+L0163           lVar25 = local_148 + 1;
+L0164           local_148 = local_148 + 0x26;
+L0165           FUN_18018e3e0((char *)((longlong)pppppppuVar12 + 0x26),pppppppuVar12,lVar25);
+L0166           FUN_18018e3e0(pppppppuVar12,"SELECT AppID FROM token WHERE AppID = ",ppppppplVar16);
+L0167           FUN_18018e3e0((char *)((longlong)ppppppplVar16 + (longlong)pppppppuVar12),
+L0168                         (undefined1 *)((longlong)ppppppplVar16 + 0x18019b36e),
+L0169                         0x26 - (longlong)ppppppplVar16);
+L0170           pppppppuVar12 = &local_158;
+L0171         }
+L0172         pcVar23 = "SELECT AppID FROM token WHERE AppID = ";
+L0173         local_198 = (longlong *******)0x0;
+L0174         ppppppuStack_190 = (undefined8 ******)0x0;
+L0175         local_188 = (undefined8 ******)0x0;
+L0176         ppppppuStack_180 = (undefined8 ******)0x0;
+L0177         local_198 = (longlong *******)*pppppppuVar12;
+L0178         ppppppuStack_190 = pppppppuVar12[1];
+
+[省略不相关中间片段]
+L0270   }
+L0271   puVar22 = auStack_258;
+L0272   if (DAT_1801e2680 != DAT_1801e2688) {
+L0273     pcVar23 = "";
+L0274     pcVar27 = "SELECT PackageID FROM packages WHERE PackageID = ";
+L0275     puVar22 = auStack_258;
+L0276     ppppppplVar30 = DAT_1801e2680;
+L0277     ppppppplVar29 = DAT_1801e2688;
+L0278     do {
+L0279       if ((*ppppppplVar30 != (longlong ******)0x0) && (ppppppplVar30[1] != (longlong ******)0x0)) {
+L0280         *(undefined8 *)(puVar22 + 0x38) = 0;
+
+[省略不相关中间片段]
+L0501           lVar13 = cJSON_CreateObject();
+L0502           if (lVar13 != 0) {
+L0503             uVar14 = *puVar31;
+L0504             *(undefined8 *)(puVar22 + -8) = 0x1800548a2;
+L0505             cJSON_AddNumberToObject(lVar13,"appid",(double)uVar14);
+L0506             uVar2 = *(undefined8 *)(puVar31 + 2);
+L0507             *(undefined8 *)(puVar22 + -8) = 0x1800548b2;
+L0508             puVar7 = (undefined1 *)FUN_1800045a0(local_7b,uVar2);
+L0509             local_198 = (longlong *******)0x0;
+L0510             ppppppuStack_190 = (undefined8 ******)0x0;
+L0511             local_188 = (undefined8 ******)0x0;
+
+[省略不相关中间片段]
+L0524             if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0525               ppppppplVar30 = local_198;
+L0526             }
+L0527             *(undefined8 *)(puVar22 + -8) = 0x18005491e;
+L0528             cJSON_AddStringToObject(lVar13,"token",ppppppplVar30);
+L0529             *(undefined8 *)(puVar22 + -8) = 0x180054929;
+L0530             cJSON_AddItemToArray(lVar25,lVar13);
+L0531             if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0532               ppppppuVar17 = (undefined8 ******)((longlong)ppppppuStack_180 + 1);
+L0533               ppppppplVar30 = local_198;
+L0534               if ((undefined8 ******)0xfff < ppppppuVar17) {
+
+[省略不相关中间片段]
+L0543             }
+L0544           }
+L0545         }
+L0546         *(undefined8 *)(puVar22 + -8) = 0x180054983;
+L0547         cJSON_AddItemToObject(ppppppplVar9,"appids",lVar25);
+L0548         *(undefined8 *)(puVar22 + -8) = 0x180054988;
+L0549         lVar25 = cJSON_CreateArray();
+L0550         if (lVar25 != 0) {
+L0551           puVar3 = *(ulonglong **)(puVar22 + 0x50);
+L0552           for (puVar24 = *(ulonglong **)(puVar22 + 0x48); puVar24 != puVar3; puVar24 = puVar24 + 2)
+L0553           {
+
+[省略不相关中间片段]
+L0555             lVar13 = cJSON_CreateObject();
+L0556             if (lVar13 != 0) {
+L0557               uVar18 = *puVar24;
+L0558               *(undefined8 *)(puVar22 + -8) = 0x1800549f7;
+L0559               cJSON_AddNumberToObject(lVar13,"packageid",(double)uVar18);
+L0560               uVar18 = puVar24[1];
+L0561               *(undefined8 *)(puVar22 + -8) = 0x180054a07;
+L0562               puVar7 = (undefined1 *)FUN_1800045a0(local_63,uVar18);
+L0563               local_198 = (longlong *******)0x0;
+L0564               ppppppuStack_190 = (undefined8 ******)0x0;
+L0565               local_188 = (undefined8 ******)0x0;
+
+[省略不相关中间片段]
+L0578               if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0579                 ppppppplVar30 = local_198;
+L0580               }
+L0581               *(undefined8 *)(puVar22 + -8) = 0x180054a73;
+L0582               cJSON_AddStringToObject(lVar13,"token",ppppppplVar30);
+L0583               *(undefined8 *)(puVar22 + -8) = 0x180054a7e;
+L0584               cJSON_AddItemToArray(lVar25,lVar13);
+L0585               if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0586                 ppppppuVar17 = (undefined8 ******)((longlong)ppppppuStack_180 + 1);
+L0587                 ppppppplVar30 = local_198;
+L0588                 if ((undefined8 ******)0xfff < ppppppuVar17) {
+
+[省略不相关中间片段]
+L0597               }
+L0598             }
+L0599           }
+L0600           *(undefined8 *)(puVar22 + -8) = 0x180054ad8;
+L0601           cJSON_AddItemToObject(ppppppplVar9,"packages",lVar25);
+L0602           lVar25 = DAT_1801e26d0;
+L0603           if (0x7fffffffffffffffU - DAT_1801e26d0 < 4) {
+L0604             *(undefined8 *)(puVar22 + -8) = 0x180055408;
+L0605             FUN_180003870();
+L0606 LAB_180055409:
+L0607             *(undefined8 *)(puVar22 + -8) = 0x18005540e;
+
+[省略不相关中间片段]
+L0636             if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0637               ppppppplVar29 = local_198;
+L0638             }
+L0639             *(undefined8 *)(puVar22 + -8) = 0x180054c0a;
+L0640             FUN_18003f500(puVar22 + 0x78,"UpToken",ppppppplVar9,ppppppplVar29);
+L0641             if ((undefined8 ******)0xf < ppppppuStack_180) {
+L0642               ppppppuVar17 = (undefined8 ******)((longlong)ppppppuStack_180 + 1);
+L0643               ppppppplVar29 = local_198;
+L0644               if ((undefined8 ******)0xfff < ppppppuVar17) {
+L0645                 ppppppplVar29 = (longlong *******)local_198[-1];
+L0646                 if ((undefined1 *)0x1f <
+
+[省略不相关中间片段]
+L0847               puVar31 = *(uint **)(puVar22 + 0x48);
+L0848               puVar32 = *(uint **)(puVar22 + 0x50);
+L0849               if (puVar31 != puVar32) {
+L0850                 ppppppplVar30 = (longlong *******)0x18019b3f9;
+L0851                 pcVar27 = "INSERT INTO packages (PackageID) VALUES (";
+L0852                 do {
+L0853                   uVar2 = *(undefined8 *)puVar31;
+L0854                   *(undefined8 *)(puVar22 + -8) = 0x18005500f;
+L0855                   puVar7 = (undefined1 *)FUN_1800045a0(auStack_4b,uVar2);
+L0856                   ppppppplStack_f8 = (longlong *******)0x0;
+L0857                   uStack_f0 = 0;

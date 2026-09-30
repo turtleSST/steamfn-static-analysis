@@ -1,0 +1,602 @@
+Core 静态证据：Ghidra 精选业务摘录
+样本 SHA-256：FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D
+首选 ImageBase：0x180000000；VA/RVA 均为文件内静态地址，不是运行地址。
+目标 DLL 未加载、未执行。
+
+以下为相关业务片段的逐行原始反编译摘录；中间省略的代码用独立省略标记表示。
+Ghidra 类型、函数拆分可能失真；不以反编译 SIZE 字段代表完整控制流范围。
+已修复的导出优先使用。补充的触发、读取和序列化函数只在汇编附件中提供原始证据。
+
+===== FUN_180027e70 VA=0x180027e70 RVA=0x27e70 =====
+分析导出：core_chain.c；行号从该函数摘录开头计数。
+L0039   if (DAT_1801ea2c0 != 0) {
+L0040     FUN_1800123e0(&DAT_180198510,DAT_1801ea2c0 - param_1);
+L0041     lVar5 = DAT_1801ea2c0;
+L0042     uStackX_10 = 0;
+L0043     cVar3 = FUN_180014ee0(DAT_1801ea2c0,FUN_18005f330,&uStackX_10);
+L0044     uVar2 = uStackX_10;
+L0045     if (cVar3 == '\0') {
+L0046       FUN_1800123e0(&DAT_180197fc0,"sendData2",lVar5,FUN_18005f330);
+L0047     }
+L0048     else {
+L0049       DAT_1801e9ba8 = lVar5;
+L0050       DAT_1801e9bb0 = uStackX_10;
+L0051       FUN_1800123e0(&DAT_180197ff8,"sendData2",lVar5,uStackX_10,FUN_18005f330);
+L0052       DAT_1801ea2c8 = uVar2;
+L0053     }
+L0054   }
+L0055   if (DAT_1801ea2f8 != 0) {
+L0056     DAT_1801ea2e0 = DAT_1801ea2f8;
+L0057     FUN_1800123e0(&DAT_180198558,DAT_1801ea2f8 - param_1);
+L0058     lVar5 = DAT_1801ea2e0;
+L0059     uStackX_10 = 0;
+L0060     cVar3 = FUN_180014ee0(DAT_1801ea2e0,FUN_18005ceb0,&uStackX_10);
+L0061     uVar2 = uStackX_10;
+L0062     if (cVar3 == '\0') {
+L0063       FUN_1800123e0(&DAT_180197fc0,"recvData2",lVar5,FUN_18005ceb0);
+L0064       return;
+L0065     }
+L0066     DAT_1801e9bb8 = lVar5;
+L0067     DAT_1801e9bc0 = uStackX_10;
+L0068     FUN_1800123e0(&DAT_180197ff8,"recvData2",lVar5,uStackX_10,FUN_18005ceb0);
+L0069     DAT_1801ea2e8 = uVar2;
+L0070   }
+L0071   return;
+L0072 }
+L0073 
+L0074 
+
+===== FUN_18005f330 VA=0x18005f330 RVA=0x5f330 =====
+分析导出：core_chain.c；行号从该函数摘录开头计数。
+L0390     psVar24 = local_10f8;
+L0391     param_1 = local_10d0;
+L0392     lVar22 = _DAT_1801e9e70;
+L0393     if ((pvVar29 != (void *)0x0) && ((int)pvVar25 != 0)) {
+L0394       iVar9 = memcmp(pvVar29,"Store.RegisterCDKey#1",(size_t)pvVar25);
+L0395       if ((iVar9 == 0) &&
+L0396          ((lVar22 = (local_10e8 - (longlong)psVar33) + (longlong)local_10f8,
+L0397           FUN_1800123e0("Found Store.RegisterCDKey#1 interface with %zu bytes of parameters",lVar22)
+L0398           , lVar22 != 0 && ((char)*psVar33 == '\n')))) {
+L0399         local_10f0 = 0;
+L0400         FUN_180006310(psVar33,&local_10f0);
+L0401         local_10e0 = (void *)0x0;
+L0402         uVar8 = FUN_180006310((char *)(local_10f0 + (longlong)psVar33),&local_10e0);
+L0403         FUN_18000f0e0(&DAT_1801e2750,
+L0404                       (longlong)param_2 + (longlong)local_10e0 + (ulonglong)uVar10 + local_10f0 + 8,
+L0405                       uVar8);
+L0406         puVar23 = &DAT_1801e2750;
+L0407         if (0xf < DAT_1801e2768) {
+L0408           puVar23 = DAT_1801e2750;
+L0409         }
+L0410         FUN_1800123e0("Got CDKey: %s",puVar23);
+L0411       }
+L0412       iVar9 = memcmp(pvVar29,"ContentServerDirectory.GetManifestRequestCode#1",(size_t)pvVar25);
+L0413       uVar31 = local_10e8;
+L0414       psVar24 = local_10f8;
+L0415       if (iVar9 == 0) {
+L0416         lVar22 = (local_10e8 - (longlong)psVar33) + (longlong)local_10f8;
+
+===== FUN_1800320d0 VA=0x1800320d0 RVA=0x320d0 =====
+分析导出：core_chain.c；行号从该函数摘录开头计数。
+L0068   local_150 = param_1;
+L0069   iVar14 = iVar13;
+L0070   if ((param_2 != (char *)0x0) &&
+L0071      (pppppuVar8 = (undefined8 *****)0x0, puVar10 = auStack_188, *param_2 != '\0')) {
+L0072     local_150 = (int *)cJSON_CreateObject();
+L0073     cJSON_AddStringToObject(local_150,"cdkey",param_2);
+L0074     local_168 = DAT_1801e26d0;
+L0075     uVar9 = 0x7fffffffffffffff;
+L0076     if (0x7fffffffffffffffU - DAT_1801e26d0 < 4) goto LAB_180032760;
+L0077     local_158 = &DAT_1801e26c0;
+L0078     if (0xf < DAT_1801e26d8) {
+L0079       local_158 = DAT_1801e26c0;
+
+[省略不相关中间片段]
+L0125       pppppuVar8 = &local_68;
+L0126       if (0xf < local_50) {
+L0127         pppppuVar8 = (undefined8 *****)local_68;
+L0128       }
+L0129       FUN_18003f500(&lStack_148,"CardActivate",local_150,pppppuVar8);
+L0130       if (local_50 < 0x10) {
+L0131 LAB_1800322e8:
+L0132         cJSON_Delete(piVar2);
+L0133         if (lStack_148 == lStack_140) {
+L0134           *param_1 = 4;
+L0135           *(ulonglong *)(param_1 + 2) = local_120[0];
+
+[省略不相关中间片段]
+L0169           uStack_80 = 0;
+L0170           uStack_78 = 0;
+L0171           uStack_70 = 0xf;
+L0172           local_88 = 0;
+L0173           cVar3 = FUN_180049600(&lStack_148,aiStack_d8);
+L0174           uVar15 = uStack_c0;
+L0175           iVar14 = aiStack_d8[0];
+L0176           if (cVar3 == '\0') {
+L0177             *param_1 = 4;
+L0178             *(ulonglong *)(param_1 + 2) = local_120[0];
+L0179             *(ulonglong *)(param_1 + 4) = local_120[1];
+
+===== FUN_18005ceb0 VA=0x18005ceb0 RVA=0x5ceb0 =====
+分析导出：core_chain.c；行号从该函数摘录开头计数。
+L0127   local_48 = DAT_1801e6180 ^ (ulonglong)auStack_1288;
+L0128   puVar38 = auStack_1288;
+L0129   local_1248 = param_2;
+L0130   local_1240 = param_1;
+L0131   if ((((DAT_1801ea308 != '\0') || (puVar38 = auStack_1288, DAT_1801ea2e8 == (code *)0x0)) ||
+L0132       (puVar38 = auStack_1288, param_1 == (longlong *)0x0)) ||
+L0133      (puVar38 = auStack_1288, param_2 == (undefined8 *)0x0)) goto LAB_18005f214;
+L0134   local_1228 = param_2 + 1;
+L0135   local_11f8 = (uint *)(param_2 + 2);
+L0136   local_1208 = (short *)0x0;
+L0137   local_1238 = (char *)0x0;
+
+[省略不相关中间片段]
+L0349       }
+L0350       else if (sVar2 == 0x300) {
+L0351         DAT_1801ea038 = *(int *)((longlong)local_1208 + 9);
+L0352         DAT_1801ea030 = FUN_180006380(local_1208 + 9,&local_1210);
+L0353         FUN_18005be90(0);
+L0354         puVar38 = auStack_1288;
+L0355       }
+L0356       else if (sVar2 == 0x311) {
+L0357         uVar12 = *(undefined4 *)(local_1208 + 0x12);
+L0358         if (*(int *)(local_1208 + 0x14) == 1) {
+L0359           FUN_1800123e0("AppID: %u already has CDKey: %.*s",uVar12,
+
+[省略不相关中间片段]
+L0449                             pcVar35[5] = '\0';
+L0450                             pcVar35[6] = '\0';
+L0451                             pcVar35[7] = '\0';
+L0452                             pcVar35[8] = '\0';
+L0453                             FUN_1800524f0(lVar26,iVar11,lVar21);
+L0454                             puVar38 = auStack_1288;
+L0455                             DAT_1801ea480 = lVar21;
+L0456                             DAT_1801ea488 = iVar11;
+L0457                           }
+L0458                           goto LAB_18005f1e3;
+L0459                         }
+
+[省略不相关中间片段]
+L0620                         pcVar1[0] = '\0';
+L0621                         pcVar1[1] = '\0';
+L0622                         pcVar1[2] = '\0';
+L0623                         pcVar1[3] = '\0';
+L0624                         lVar27 = FUN_180006b20(pcVar35 + lVar26 + 0xd,0x20,0);
+L0625                         lVar28 = FUN_180006b20(pcVar35 + lVar26 + lVar27 + 0xd,0x28,0);
+L0626                         lVar28 = lVar26 + lVar27 + lVar28;
+L0627                         lVar26 = FUN_180006b20(pcVar35 + lVar28 + 0xd,0x30,0);
+L0628                         lVar28 = lVar28 + lVar26;
+L0629                         lVar26 = FUN_180006b20(pcVar35 + lVar28 + 0xd,0x38,0x400);
+L0630                         lVar28 = lVar28 + lVar26;
+L0631                         (pcVar35 + lVar28 + 0xd)[0] = 'B';
+L0632                         (pcVar35 + lVar28 + 0xd)[1] = '\0';
+L0633                         lVar26 = FUN_180006b20(pcVar35 + lVar28 + 0xf,0x48,1);
+L0634                         lVar27 = FUN_180006b20(pcVar35 + lVar28 + lVar26 + 0xf,0x50,0);
+L0635                         lVar27 = lVar28 + lVar26 + lVar27;
+L0636                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x58,0);
+L0637                         lVar27 = lVar27 + lVar26;
+L0638                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x60);
+L0639                         lVar27 = lVar27 + lVar26;
+L0640                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x68);
+L0641                         lVar27 = lVar27 + lVar26;
+L0642                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x70);
+L0643                         lVar27 = lVar27 + lVar26;
+L0644                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x78);
+L0645                         lVar27 = lVar27 + lVar26;
+L0646                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x80);
+L0647                         lVar27 = lVar27 + lVar26;
+L0648                         lVar26 = FUN_180006b20(pcVar35 + lVar27 + 0xf,0x88);
+L0649                         lVar26 = lVar26 + lVar27;
+L0650                         pcVar35[1] = (char)lVar26 + '\r';
+L0651                         pcVar22 = pcVar22 + lVar26 + 0xf;
+L0652                         cVar10 = local_1230;
+L0653                       }
+L0654                       else {
+L0655                         local_1230 = '\0';
+L0656                         FUN_18005be90(0);
+L0657                         cVar10 = '\0';
+L0658                       }
+L0659                       uVar43 = uVar43 + 1;
+L0660                     } while (uVar43 < uVar41);
+L0661                   }
+L0662                   local_1238 = pcVar22;
+
+[省略不相关中间片段]
+L0745         }
+L0746       }
+L0747       goto LAB_18005f1db;
+L0748     }
+L0749     iVar11 = memcmp(_Buf1,"Store.RegisterCDKey#1",uVar41);
+L0750     if (iVar11 == 0) {
+L0751       puVar38 = auStack_1288;
+L0752       if ((local_1228 != (longlong *)0x0) && (puVar38 = auStack_1288, 7 < *puVar9)) {
+L0753         pcVar35 = (char *)(ulonglong)*puVar9;
+L0754         uVar14 = *(uint *)(psVar25 + 2);
+L0755         local_11f0 = (char *)(ulonglong)uVar14;
+L0756         pcVar22 = local_11f0 + 8;
+L0757         if (pcVar22 <= pcVar35) {
+L0758           pcVar35 = pcVar35 + -(longlong)pcVar22;
+L0759           FUN_1800123e0("Store.RegisterCDKey#1 paramSize: %zu",pcVar35);
+L0760           puVar38 = auStack_1288;
+L0761           if ((pcVar35 != (char *)0x0) &&
+L0762              (pcVar22 = pcVar22 + (longlong)psVar25, puVar38 = auStack_1288, *pcVar22 == '\b')) {
+L0763             plVar36 = (longlong *)0x0;
+L0764             local_1238 = (char *)0x0;
+L0765             uVar12 = FUN_180006310(pcVar22,&local_1238);
+L0766             local_1220 = (char *)0x0;
+L0767             iVar11 = FUN_180006310(pcVar22 + (longlong)local_1238,&local_1220);
+L0768             if ((local_1238 == (char *)0x0) ||
+L0769                ((local_1220 == (char *)0x0 || (pcVar35 < local_1220 + (longlong)local_1238)))) {
+L0770               FUN_1800123e0("Store.RegisterCDKey#1 invalid leb128 key=%zu val=%zu");
+L0771               puVar24 = local_1248;
+L0772               plVar36 = local_1240;
+L0773               goto joined_r0x00018005d4fe;
+L0774             }
+L0775             FUN_1800123e0("Store.RegisterCDKey#1 key: %u, value: %u",uVar12,iVar11);
+L0776             if (((iVar11 == 0xe) || (puVar38 = auStack_1288, iVar11 == 0x35)) &&
+L0777                (puVar38 = auStack_1288, DAT_1801e2760 != 0)) {
+L0778               puVar24 = &DAT_1801e2750;
+L0779               if (0xf < DAT_1801e2768) {
+L0780                 puVar24 = DAT_1801e2750;
+L0781               }
+L0782               FUN_1800123e0("Using CDKey: %s",puVar24);
+
+[省略不相关中间片段]
+L0799               puVar24 = &DAT_1801e2750;
+L0800               if (0xf < DAT_1801e2768) {
+L0801                 puVar24 = DAT_1801e2750;
+L0802               }
+L0803               uVar30 = FUN_1800320d0(&local_11a8,puVar24);
+L0804               FUN_18005cac0(local_1228,uVar30);
+L0805               FUN_180003380(&local_1180);
+L0806               FUN_180003380(&local_11a0);
+L0807               plVar29 = local_1228 + 1;
+L0808               if (0xf < (ulonglong)local_1228[4]) {
+L0809                 plVar29 = (longlong *)*plVar29;
+L0810               }
+L0811               FUN_1800123e0("Verify result code: %d, message: %s",(int)*local_1228,plVar29);
+L0812               plVar29 = local_1228;
+L0813               local_11d0 = &local_1228;
+L0814               pplStack_11c8 = &local_1240;
+L0815               local_11c0 = &local_1248;
+L0816               if ((int)*local_1228 != 0xe) {
+L0817                 FUN_18018ea90(local_1048,0,0x100);
+
+[省略不相关中间片段]
+L0833                 uStack_1050 = 0;
+L0834                 puVar24 = &local_10c8;
+L0835                 plVar29 = plVar36;
+L0836                 do {
+L0837                   lVar21 = FUN_180006b20(puVar24,(char)plVar36[0x30033855],
+L0838                                          (&DAT_18019c2c0)[(longlong)plVar36]);
+L0839                   plVar29 = (longlong *)((longlong)plVar29 + lVar21);
+L0840                   plVar36 = (longlong *)((longlong)plVar36 + 1);
+L0841                   puVar24 = (undefined8 *)((longlong)puVar24 + lVar21);
+L0842                 } while (plVar36 < (longlong *)0x11);
+L0843                 if (plVar29 < (longlong *)0x80) {
+L0844                   if (local_1228[7] == 0) {
+L0845 LAB_18005e4b9:
+L0846                     lVar21 = FUN_180006b20(local_1048,8,(longlong)(int)*local_1228);
+L0847                     lVar26 = FUN_180006b20(local_1048 + lVar21,0x12,plVar29);
+L0848                     uVar41 = (longlong)plVar29 + lVar26 + lVar21;
+L0849                     if (uVar41 < 0x101) {
+L0850                       FUN_18018e3e0(local_1048 + lVar26 + lVar21,&local_10c8,plVar29);
+L0851                       pcVar22 = local_11f0;
+L0852                       pcVar35 = local_11f0 + uVar41 + 8;
+L0853                       psVar23 = (short *)_malloc_base(pcVar35);
+
+[省略不相关中间片段]
+L0863                         uStack_1170 = local_1248[7];
+L0864                         uStack_1198._4_4_ = (undefined4)((ulonglong)local_1248[2] >> 0x20);
+L0865                         uStack_1198 = CONCAT44(uStack_1198._4_4_,(int)pcVar35);
+L0866                         local_11a0 = psVar23;
+L0867                         if (((DAT_1801ea308 == '\0') && (DAT_1801ea2e8 != (code *)0x0)) &&
+L0868                            (local_1240 != (longlong *)0x0)) {
+L0869                           (*DAT_1801ea2e8)(local_1240,&local_11a8);
+L0870                         }
+L0871                         if (((int)*local_1228 == 0) || ((int)*local_1228 == 9)) {
+L0872                           if (DAT_1801e99c8 == DAT_1801e99d0) {
+L0873                             FUN_18005be90(0);
+L0874                           }
+L0875                           else {
+L0876                             FUN_1800524f0((longlong)DAT_1801ea038,(longlong)DAT_1801ea038,0xf4241);
+L0877                           }
+L0878                         }
+L0879                         plVar36 = local_1228;
+L0880                         if (local_1228 != (longlong *)0x0) {
+L0881                           FUN_180003380(local_1228 + 5);
+L0882                           FUN_180003380(plVar36 + 1);
+
+[省略不相关中间片段]
+L0890                         *(undefined1 *)puVar24 = 0;
+L0891                         puVar38 = auStack_1288;
+L0892                         goto LAB_18005f214;
+L0893                       }
+L0894                       FUN_1800123e0("Store.RegisterCDKey#1 malloc failed: %zu",pcVar35);
+L0895                     }
+L0896                   }
+L0897                   else {
+L0898                     local_1158 = 0;
+L0899                     uStack_1150 = 0;
+L0900                     local_1148 = 0;
+
+[省略不相关中间片段]
+L0910                     local_10f8 = 0;
+L0911                     uStack_10f0 = 0;
+L0912                     local_10e8 = 0;
+L0913                     uStack_10e0 = 0;
+L0914                     lVar21 = FUN_180006b20(&local_1158,8,0);
+L0915                     lVar26 = FUN_180006b20((longlong)&local_1158 + lVar21,0x10,0);
+L0916                     uVar41 = local_1228[7];
+L0917                     if (100 < uVar41) {
+L0918                       uVar41 = 100;
+L0919                     }
+L0920                     lVar27 = FUN_180006b20((longlong)&local_1158 + lVar21 + lVar26,0x1a,uVar41);
+L0921                     lVar27 = lVar27 + lVar21 + lVar26;
+L0922                     uVar43 = uVar41 + lVar27;
+L0923                     if (uVar43 < 0x81) {
+L0924                       plVar36 = local_1228 + 5;
+L0925                       if (0xf < (ulonglong)local_1228[8]) {
+L0926                         plVar36 = (longlong *)*plVar36;
+L0927                       }
+L0928                       FUN_18018e3e0((longlong)&local_1158 + lVar27,plVar36,uVar41);
+L0929                       lVar21 = FUN_180006b20((longlong)&local_10c8 + (longlong)plVar29,0x92,uVar43);
+L0930                       if (lVar21 + uVar43 + (longlong)plVar29 < 0x81) {
+L0931                         FUN_18018e3e0((longlong)plVar29 + (longlong)&local_10c8 + lVar21,&local_1158
+L0932                                       ,uVar43);
+L0933                         plVar29 = (longlong *)((longlong)plVar29 + uVar43 + lVar21);
+L0934                         goto LAB_18005e4b9;
+L0935                       }
+
+[省略不相关中间片段]
+L0956           }
+L0957           goto LAB_18005f1db;
+L0958         }
+L0959 LAB_18005e14f:
+L0960         FUN_1800123e0("Store.RegisterCDKey#1 invalid segmentSize: %u, dataSize: %zu",uVar14,pcVar35)
+L0961         ;
+L0962         puVar38 = auStack_1288;
+L0963       }
+L0964       goto LAB_18005f1e3;
+L0965     }
+L0966     iVar11 = memcmp(_Buf1,"Store.RegisterCDKey#2",uVar41);
+L0967     if (iVar11 != 0) {
+L0968       iVar11 = memcmp(_Buf1,"ContentServerDirectory.GetManifestRequestCode#1",uVar41);
+L0969       uVar14 = local_1218[0];
+L0970       puVar38 = auStack_1288;
+L0971       if ((iVar11 == 0) &&
+L0972          (FUN_1800123e0(&DAT_18019c668,local_1218[0]), puVar38 = auStack_1288, uVar14 == 0xf)) {
+
+[省略不相关中间片段]
+L1038           }
+L1039           local_10d8 = 0;
+L1040           uStack_10d0 = 0;
+L1041           *(undefined8 *)(puVar38 + -8) = 0x18005f017;
+L1042           uVar30 = FUN_180006b20(&local_10d8,8,local_11f0);
+L1043           *(undefined8 *)(puVar38 + -8) = 0x18005f02e;
+L1044           FUN_180004010(&local_11d0,pplStack_11c8,&local_10d8,uVar30);
+L1045           pplVar37 = local_11d0;
+L1046           if ((((((puVar9 == (uint *)0x0) ||
+L1047                  (plVar36 = *(longlong **)(puVar38 + 0x60), plVar36 == (longlong *)0x0)) ||
+L1048                 (local_11d8[0] = *puVar9, local_11d8[0] < 8)) ||
+
+[省略不相关中间片段]
+L1126     local_11f0 = (char *)(ulonglong)uVar14;
+L1127     pcVar22 = local_11f0 + 8;
+L1128     if (pcVar35 < pcVar22) goto LAB_18005e14f;
+L1129     pcVar35 = pcVar35 + -(longlong)pcVar22;
+L1130     FUN_1800123e0("Store.RegisterCDKey#1 paramSize: %zu",pcVar35);
+L1131     puVar38 = auStack_1288;
+L1132     if ((pcVar35 == (char *)0x0) ||
+L1133        (pcVar22 = pcVar22 + (longlong)psVar25, puVar38 = auStack_1288, *pcVar22 != '\b'))
+L1134     goto LAB_18005f1db;
+L1135     piVar42 = (int *)0x0;
+L1136     local_1238 = (char *)0x0;
+L1137     uVar12 = FUN_180006310(pcVar22,&local_1238);
+L1138     if ((local_1238 == (char *)0x0) || (pcVar35 <= local_1238)) {
+L1139       pcVar35 = "Store.RegisterCDKey#1 invalid keyLength: %zu";
+L1140       pcVar22 = local_1238;
+L1141     }
+L1142     else {
+L1143       local_1220 = (char *)0x0;
+L1144       iVar11 = FUN_180006310(pcVar22 + (longlong)local_1238,&local_1220);
+L1145       if ((local_1220 != (char *)0x0) && (local_1238 + (longlong)local_1220 <= pcVar35)) {
+L1146         FUN_1800123e0("Store.RegisterCDKey#1 key: %u, value: %u",uVar12,iVar11);
+L1147         if (((iVar11 == 0xe) || (puVar38 = auStack_1288, iVar11 == 0x35)) &&
+L1148            (puVar38 = auStack_1288, DAT_1801e2760 != 0)) {
+L1149           puVar24 = &DAT_1801e2750;
+L1150           if (0xf < DAT_1801e2768) {
+L1151             puVar24 = DAT_1801e2750;
+L1152           }
+L1153           FUN_1800123e0("Using CDKey: %s",puVar24);
+
+[省略不相关中间片段]
+L1178           puVar24 = &DAT_1801e2750;
+L1179           if (0xf < DAT_1801e2768) {
+L1180             puVar24 = DAT_1801e2750;
+L1181           }
+L1182           uVar30 = FUN_1800320d0(&local_11a8,puVar24);
+L1183           FUN_18005cac0(piVar42,uVar30);
+L1184           FUN_180003380(&local_1180);
+L1185           FUN_180003380(&local_11a0);
+L1186           if (*(ulonglong *)(piVar42 + 8) < 0x10) {
+L1187             piVar31 = piVar42 + 2;
+L1188           }
+L1189           else {
+L1190             piVar31 = *(int **)(piVar42 + 2);
+L1191           }
+L1192           FUN_1800123e0("Verify result code: %d, message: %s",*piVar42,piVar31);
+L1193           if (*piVar42 != 0xe) {
+L1194             FUN_18018ea90(local_1048,0,0x100);
+L1195             local_1158 = 0;
+L1196             uStack_1150 = 0;
+L1197             local_1148 = 0;
+L1198             uStack_1140 = 0;
+
+[省略不相关中间片段]
+L1207             local_10f8 = 0;
+L1208             uStack_10f0 = 0;
+L1209             local_10e8 = 0;
+L1210             uStack_10e0 = 0;
+L1211             lVar21 = FUN_180006b20(&local_1158,8,0);
+L1212             lVar26 = FUN_180006b20((longlong)&local_1158 + lVar21,0x10,0);
+L1213             lVar27 = FUN_180006b20((longlong)&local_1158 + lVar21 + lVar26,0x18,1);
+L1214             lVar27 = lVar21 + lVar26 + lVar27;
+L1215             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x20,0);
+L1216             lVar27 = lVar27 + lVar21;
+L1217             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x28,0);
+L1218             lVar27 = lVar27 + lVar21;
+L1219             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x30,1);
+L1220             lVar27 = lVar27 + lVar21;
+L1221             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x38,0);
+L1222             lVar27 = lVar27 + lVar21;
+L1223             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x40,0);
+L1224             lVar27 = lVar27 + lVar21;
+L1225             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x48,0);
+L1226             lVar27 = lVar27 + lVar21;
+L1227             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x50,0);
+L1228             lVar27 = lVar27 + lVar21;
+L1229             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x58,0);
+L1230             lVar27 = lVar27 + lVar21;
+L1231             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x62,0);
+L1232             lVar27 = lVar27 + lVar21;
+L1233             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x6a,0);
+L1234             lVar27 = lVar27 + lVar21;
+L1235             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x72,0);
+L1236             lVar27 = lVar27 + lVar21;
+L1237             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x7a,0);
+L1238             lVar27 = lVar27 + lVar21;
+L1239             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x82,0);
+L1240             lVar27 = lVar27 + lVar21;
+L1241             lVar21 = FUN_180006b20((longlong)&local_1158 + lVar27,0x88,0);
+L1242             pcVar22 = (char *)(lVar21 + lVar27);
+L1243             if (pcVar22 < (char *)0x80) {
+L1244               if (*(longlong *)(piVar42 + 0xe) == 0) {
+L1245 LAB_18005ec10:
+L1246                 uVar41 = FUN_180006b20(local_1048,8,(longlong)*piVar42);
+L1247                 if (uVar41 < 0x100) {
+L1248                   lVar21 = FUN_180006b20(local_1048 + uVar41,0x12,pcVar22);
+L1249                   pcVar35 = pcVar22 + lVar21 + uVar41;
+L1250                   local_11e0 = pcVar35;
+L1251                   if (pcVar35 < (char *)0x101) {
+L1252                     FUN_18018e3e0(local_1048 + lVar21 + uVar41,&local_1158,pcVar22);
+L1253                     pcVar22 = pcVar35 + (longlong)(local_11f0 + 8);
+L1254                     if (pcVar22 < (char *)0x100000000) {
+
+[省略不相关中间片段]
+L1267                         uStack_1170 = local_1248[7];
+L1268                         local_11a0 = psVar25;
+L1269                         uStack_1198._4_4_ = (undefined4)((ulonglong)local_1248[2] >> 0x20);
+L1270                         uStack_1198 = CONCAT44(uStack_1198._4_4_,(int)pcVar22);
+L1271                         if (((DAT_1801ea308 == '\0') && (DAT_1801ea2e8 != (code *)0x0)) &&
+L1272                            (local_1240 != (longlong *)0x0)) {
+L1273                           (*DAT_1801ea2e8)(local_1240,&local_11a8);
+L1274                         }
+L1275                         if ((*piVar42 == 0) || (*piVar42 == 9)) {
+L1276                           if (DAT_1801e99c8 == DAT_1801e99d0) {
+L1277                             FUN_18005be90(0);
+L1278                           }
+L1279                           else {
+L1280                             FUN_1800524f0((longlong)DAT_1801ea038,(longlong)DAT_1801ea038,0xf4241);
+L1281                           }
+L1282                         }
+L1283                         FUN_180003380(piVar42 + 10);
+L1284                         FUN_180003380(piVar42 + 2);
+L1285                         thunk_FUN_180157eb0(piVar42,0x48);
+L1286                         DAT_1801e2760 = 0;
+
+[省略不相关中间片段]
+L1291                         *(undefined1 *)puVar24 = 0;
+L1292                         puVar38 = auStack_1288;
+L1293                         goto LAB_18005f214;
+L1294                       }
+L1295                       pcVar35 = "Store.RegisterCDKey#1 malloc newPacket failed: %zu";
+L1296                     }
+L1297                     else {
+L1298                       pcVar35 = "Store.RegisterCDKey#1 newPacketSize too large: %zu";
+L1299                     }
+L1300                     goto LAB_18005ea8c;
+L1301                   }
+L1302                   FUN_1800123e0("Store.RegisterCDKey#1 newData overflow with inner data");
+L1303                 }
+L1304                 else {
+L1305                   FUN_1800123e0("Store.RegisterCDKey#1 newData overflow after code");
+L1306                 }
+L1307               }
+L1308               else {
+L1309                 local_10c8 = 0;
+L1310                 uStack_10c0 = 0;
+L1311                 local_10b8 = 0;
+
+[省略不相关中间片段]
+L1321                 local_1068 = 0;
+L1322                 uStack_1060 = 0;
+L1323                 local_1058 = 0;
+L1324                 uStack_1050 = 0;
+L1325                 lVar21 = FUN_180006b20(&local_10c8,8,0);
+L1326                 lVar26 = FUN_180006b20((longlong)&local_10c8 + lVar21,0x10,0);
+L1327                 uVar41 = *(ulonglong *)(piVar42 + 0xe);
+L1328                 if (100 < uVar41) {
+L1329                   uVar41 = 100;
+L1330                 }
+L1331                 lVar27 = FUN_180006b20((longlong)&local_10c8 + lVar21 + lVar26,0x1a,uVar41);
+L1332                 local_1210 = (short *)(lVar27 + lVar21 + lVar26);
+L1333                 pcVar35 = (char *)((longlong)local_1210 + uVar41);
+L1334                 piVar31 = piVar42 + 10;
+L1335                 if (pcVar35 < (char *)0x81) {
+L1336                   if (0xf < *(ulonglong *)(piVar42 + 0x10)) {
+L1337                     piVar31 = *(int **)piVar31;
+L1338                   }
+L1339                   FUN_18018e3e0((char *)((longlong)local_1210 + (longlong)&local_10c8),piVar31,
+L1340                                 uVar41);
+L1341                   lVar21 = FUN_180006b20((char *)((longlong)&local_1158 + (longlong)pcVar22),0x92,
+L1342                                          pcVar35);
+L1343                   if (pcVar35 + lVar21 + (longlong)pcVar22 < (char *)0x81) {
+L1344                     pcVar35 = (char *)((longlong)local_1210 + uVar41);
+L1345                     FUN_18018e3e0((char *)((longlong)&local_1158 + (longlong)(pcVar22 + lVar21)),
+L1346                                   &local_10c8,pcVar35);
+L1347                     pcVar22 = pcVar35 + (longlong)(pcVar22 + lVar21);
+L1348                     goto LAB_18005ec10;
+L1349                   }
+L1350                   FUN_1800123e0("Store.RegisterCDKey#1 tempBuf overflow with subData");
+L1351                 }
+L1352                 else {
+L1353                   FUN_1800123e0("Store.RegisterCDKey#1 subData overflow");
+L1354                 }
+L1355               }
+L1356             }
+L1357             else {
+L1358               pcVar35 = "Store.RegisterCDKey#1 tempBuf overflow: %zu";
+L1359 LAB_18005ea8c:
+L1360               FUN_1800123e0(pcVar35,pcVar22);
+L1361             }
+L1362             FUN_180003380(piVar42 + 10);
+L1363             FUN_180003380(piVar42 + 2);
+L1364             thunk_FUN_180157eb0(piVar42,0x48);
+
+[省略不相关中间片段]
+L1383           puVar38 = auStack_1288;
+L1384         }
+L1385         goto LAB_18005f1db;
+L1386       }
+L1387       pcVar35 = "Store.RegisterCDKey#1 invalid valueLength: %zu";
+L1388       pcVar22 = local_1220;
+L1389     }
+L1390     FUN_1800123e0(pcVar35,pcVar22);
+L1391     puVar24 = local_1248;
+L1392     plVar36 = local_1240;
+L1393     puVar40 = auStack_1288;
+L1394   }
+L1395 joined_r0x00018005d4fe:
+L1396   puVar38 = puVar40;
+L1397   if (((DAT_1801ea308 == '\0') && (DAT_1801ea2e8 != (code *)0x0)) &&
+L1398      ((plVar36 != (longlong *)0x0 && (puVar24 != (undefined8 *)0x0)))) {
+L1399     *(undefined8 *)((longlong)puVar40 + -8) = 0x18005d528;
+L1400     (*DAT_1801ea2e8)();
+L1401   }
+L1402 LAB_18005f214:
+L1403   *(undefined8 *)(puVar38 + -8) = 0x18005f223;
+L1404   FUN_180157440(local_48 ^ (ulonglong)puVar38);
+L1405   return;
+L1406 }

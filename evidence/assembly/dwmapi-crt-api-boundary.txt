@@ -1,0 +1,75 @@
+EVIDENCE L-10
+Static Capstone x86-64 disassembly from original PE file bytes
+Sample: dwmapi.dll
+SHA-256: 1ce49ed63af004ad37a4d2921a5659a17001c4c0026d6245fcc0d543e9c265d0
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+
+WINDOW 0x18000C828 .. 0x18000CA08 (end exclusive)
+VA 0x00018000C828 RVA 0x0000C828  48 89 5C 24 08                                  mov       qword ptr [rsp + 8], rbx
+VA 0x00018000C82D RVA 0x0000C82D  48 89 6C 24 10                                  mov       qword ptr [rsp + 0x10], rbp
+VA 0x00018000C832 RVA 0x0000C832  48 89 74 24 20                                  mov       qword ptr [rsp + 0x20], rsi
+VA 0x00018000C837 RVA 0x0000C837  57                                              push      rdi
+VA 0x00018000C838 RVA 0x0000C838  41 54                                           push      r12
+VA 0x00018000C83A RVA 0x0000C83A  41 55                                           push      r13
+VA 0x00018000C83C RVA 0x0000C83C  41 56                                           push      r14
+VA 0x00018000C83E RVA 0x0000C83E  41 57                                           push      r15
+VA 0x00018000C840 RVA 0x0000C840  48 83 EC 20                                     sub       rsp, 0x20
+VA 0x00018000C844 RVA 0x0000C844  48 83 C8 FF                                     or        rax, 0xffffffffffffffff
+VA 0x00018000C848 RVA 0x0000C848  44 8B E1                                        mov       r12d, ecx
+VA 0x00018000C84B RVA 0x0000C84B  4D 8B F1                                        mov       r14, r9
+VA 0x00018000C84E RVA 0x0000C84E  49 8B F0                                        mov       rsi, r8
+VA 0x00018000C851 RVA 0x0000C851  4C 8B FA                                        mov       r15, rdx
+VA 0x00018000C854 RVA 0x0000C854  4D 3B C1                                        cmp       r8, r9
+VA 0x00018000C857 RVA 0x0000C857  0F 84 BB 00 00 00                               je        0x18000c918
+VA 0x00018000C85D RVA 0x0000C85D  4C 8D 2D 9C 37 FF FF                            lea       r13, [rip - 0xc864]
+VA 0x00018000C864 RVA 0x0000C864  8B 3E                                           mov       edi, dword ptr [rsi]
+VA 0x00018000C866 RVA 0x0000C866  49 8B 9C FD 40 EA 01 00                         mov       rbx, qword ptr [r13 + rdi*8 + 0x1ea40]
+VA 0x00018000C86E RVA 0x0000C86E  90                                              nop       
+VA 0x00018000C86F RVA 0x0000C86F  48 85 DB                                        test      rbx, rbx
+VA 0x00018000C872 RVA 0x0000C872  74 0E                                           je        0x18000c882
+VA 0x00018000C874 RVA 0x0000C874  48 3B D8                                        cmp       rbx, rax
+VA 0x00018000C877 RVA 0x0000C877  0F 85 43 01 00 00                               jne       0x18000c9c0
+VA 0x00018000C91A RVA 0x0000C91A  BF 0E 00 00 00                                  mov       edi, 0xe
+VA 0x00018000C91F RVA 0x0000C91F  8B CF                                           mov       ecx, edi
+VA 0x00018000C921 RVA 0x0000C921  E8 22 E1 FF FF                                  call      0x18000aa48
+VA 0x00018000C926 RVA 0x0000C926  83 64 24 60 00                                  and       dword ptr [rsp + 0x60], 0
+VA 0x00018000C92B RVA 0x0000C92B  48 8D 35 CE 46 01 00                            lea       rsi, [rip + 0x146ce]
+VA 0x00018000C932 RVA 0x0000C932  BD 00 01 00 00                                  mov       ebp, 0x100
+VA 0x00018000C937 RVA 0x0000C937  4C 8D 4C 24 60                                  lea       r9, [rsp + 0x60]
+VA 0x00018000C93C RVA 0x0000C93C  8B D5                                           mov       edx, ebp
+VA 0x00018000C93E RVA 0x0000C93E  44 8D 47 F6                                     lea       r8d, [rdi - 0xa]
+VA 0x00018000C942 RVA 0x0000C942  48 8B CE                                        mov       rcx, rsi
+VA 0x00018000C945 RVA 0x0000C945  FF 15 CD 68 00 00                               call      qword ptr [rip + 0x68cd] ; IAT VirtualProtect @ 0x180013218
+VA 0x00018000C94B RVA 0x0000C94B  85 C0                                           test      eax, eax
+VA 0x00018000C94D RVA 0x0000C94D  0F 84 81 00 00 00                               je        0x18000c9d4
+VA 0x00018000C953 RVA 0x0000C953  48 85 DB                                        test      rbx, rbx
+VA 0x00018000C956 RVA 0x0000C956  48 8B C3                                        mov       rax, rbx
+VA 0x00018000C959 RVA 0x0000C959  48 C7 C1 FF FF FF FF                            mov       rcx, 0xffffffffffffffff
+VA 0x00018000C960 RVA 0x0000C960  48 0F 44 C1                                     cmove     rax, rcx
+VA 0x00018000C964 RVA 0x0000C964  4A 87 04 E6                                     xchg      qword ptr [rsi + r12*8], rax
+VA 0x00018000C968 RVA 0x0000C968  4C 8D 4C 24 60                                  lea       r9, [rsp + 0x60]
+VA 0x00018000C96D RVA 0x0000C96D  8B D5                                           mov       edx, ebp
+VA 0x00018000C96F RVA 0x0000C96F  44 8D 47 F4                                     lea       r8d, [rdi - 0xc]
+VA 0x00018000C973 RVA 0x0000C973  48 8B CE                                        mov       rcx, rsi
+VA 0x00018000C976 RVA 0x0000C976  FF 15 9C 68 00 00                               call      qword ptr [rip + 0x689c] ; IAT VirtualProtect @ 0x180013218
+VA 0x00018000C97C RVA 0x0000C97C  85 C0                                           test      eax, eax
+VA 0x00018000C97E RVA 0x0000C97E  74 54                                           je        0x18000c9d4
+VA 0x00018000C980 RVA 0x0000C980  8B CF                                           mov       ecx, edi
+VA 0x00018000C982 RVA 0x0000C982  E8 15 E1 FF FF                                  call      0x18000aa9c
+VA 0x00018000C987 RVA 0x0000C987  48 8B 6C 24 58                                  mov       rbp, qword ptr [rsp + 0x58]
+VA 0x00018000C98C RVA 0x0000C98C  48 8B C3                                        mov       rax, rbx
+VA 0x00018000C98F RVA 0x0000C98F  48 8B 5C 24 50                                  mov       rbx, qword ptr [rsp + 0x50]
+VA 0x00018000C994 RVA 0x0000C994  48 8B 74 24 68                                  mov       rsi, qword ptr [rsp + 0x68]
+VA 0x00018000C999 RVA 0x0000C999  48 83 C4 20                                     add       rsp, 0x20
+VA 0x00018000C99D RVA 0x0000C99D  41 5F                                           pop       r15
+VA 0x00018000C99F RVA 0x0000C99F  41 5E                                           pop       r14
+VA 0x00018000C9A1 RVA 0x0000C9A1  41 5D                                           pop       r13
+VA 0x00018000C9A3 RVA 0x0000C9A3  41 5C                                           pop       r12
+VA 0x00018000C9A5 RVA 0x0000C9A5  5F                                              pop       rdi
+VA 0x00018000C9A6 RVA 0x0000C9A6  C3                                              ret       
+VA 0x00018000C9A7 RVA 0x0000C9A7  48 8B C3                                        mov       rax, rbx
+VA 0x00018000C9AA RVA 0x0000C9AA  49 87 84 FD 40 EA 01 00                         xchg      qword ptr [r13 + rdi*8 + 0x1ea40], rax
+VA 0x00018000C9B2 RVA 0x0000C9B2  48 85 C0                                        test      rax, rax
+VA 0x00018000C9B5 RVA 0x0000C9B5  74 09                                           je        0x18000c9c0
+VA 0x00018000C9B7 RVA 0x0000C9B7  48 8B CB                                        mov       rcx, rbx
+VA 0x00018000C9BA RVA 0x0000C9BA  FF 15 20 67 00 00                               call      qword ptr [rip + 0x6720] ; IAT FreeLibrary @ 0x1800130E0

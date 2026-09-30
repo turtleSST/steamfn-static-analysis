@@ -1,0 +1,349 @@
+Core 静态证据：Capstone 原始 PE 字节反汇编
+样本 SHA-256：FB1E042CD15B2EFA8A1E827B2C1F63BD147ADA4FDF8C85EC7AD464DFD8D88C8D
+首选 ImageBase：0x180000000；VA/RVA 均为文件内静态地址，不是运行地址。
+目标 DLL 未加载、未执行。
+
+格式：VA / RVA | 机器码 | 指令 | 静态注释。注释中的字符串、IAT 导入名及函数名来自文件数据和分析符号。
+窗口从函数入口连续解码后筛选；不从任意地址猜测指令边界。省略区间不代表死代码。
+
+===== FUN_18003f500 VA=0x18003f500 RVA=0x3f500 =====
+000000018003F597 / 0003F597 | 48 89 75 e0                    | mov     qword ptr [rbp - 0x20], rsi
+000000018003F59B / 0003F59B | 84 c0                          | test    al, al
+000000018003F59D / 0003F59D | 75 3b                          | jne     0x18003f5da
+000000018003F59F / 0003F59F | 4c 8d 45 d0                    | lea     r8, [rbp - 0x30]
+000000018003F5A3 / 0003F5A3 | 48 8b d3                       | mov     rdx, rbx
+000000018003F5A6 / 0003F5A6 | 49 8b cf                       | mov     rcx, r15
+000000018003F5A9 / 0003F5A9 | e8 a2 6e 00 00                 | call    0x180046450 ; 0x180046450 FUN_180046450
+000000018003F5AE / 0003F5AE | 84 c0                          | test    al, al
+000000018003F5B0 / 0003F5B0 | 75 28                          | jne     0x18003f5da
+000000018003F5B2 / 0003F5B2 | 48 8d 55 a0                    | lea     rdx, [rbp - 0x60]
+000000018003F5B6 / 0003F5B6 | 49 8b cd                       | mov     rcx, r13
+000000018003F5B9 / 0003F5B9 | e8 a2 51 fc ff                 | call    0x180004760 ; 0x180004760 FUN_180004760
+000000018003F5BE / 0003F5BE | 90                             | nop     
+000000018003F5BF / 0003F5BF | 48 8d 4d d0                    | lea     rcx, [rbp - 0x30]
+000000018003F5C3 / 0003F5C3 | e8 d8 51 fc ff                 | call    0x1800047a0 ; 0x1800047a0 FUN_1800047a0
+000000018003F5C8 / 0003F5C8 | 90                             | nop     
+
+[省略中间指令]
+000000018003F5D2 / 0003F5D2 | 49 8b c5                       | mov     rax, r13
+000000018003F5D5 / 0003F5D5 | e9 24 1f 00 00                 | jmp     0x1800414fe
+000000018003F5DA / 0003F5DA | 49 8b cf                       | mov     rcx, r15
+000000018003F5DD / 0003F5DD | e8 de 86 00 00                 | call    0x180047cc0 ; 0x180047cc0 FUN_180047cc0
+000000018003F5E2 / 0003F5E2 | 0f b6 d8                       | movzx   ebx, al
+000000018003F5E5 / 0003F5E5 | 88 44 24 42                    | mov     byte ptr [rsp + 0x42], al
+000000018003F5E9 / 0003F5E9 | 48 8d 15 b0 ad 15 00           | lea     rdx, [rip + 0x15adb0] ; 0x18019a3a0 '/api/'
+000000018003F5F0 / 0003F5F0 | 48 8d 8d 00 04 00 00           | lea     rcx, [rbp + 0x400]
+000000018003F5F7 / 0003F5F7 | e8 f4 3b fc ff                 | call    0x1800031f0 ; 0x1800031f0 FUN_1800031f0
+000000018003F5FC / 0003F5FC | 90                             | nop     
+000000018003F5FD / 0003F5FD | 4c 8d 05 6c 6c 15 00           | lea     r8, [rip + 0x156c6c] ; 0x180196270
+000000018003F604 / 0003F604 | 4d 85 ff                       | test    r15, r15
+000000018003F607 / 0003F607 | 4d 0f 45 c7                    | cmovne  r8, r15
+000000018003F60B / 0003F60B | 48 8b d0                       | mov     rdx, rax
+000000018003F60E / 0003F60E | 48 8d 8d e0 04 00 00           | lea     rcx, [rbp + 0x4e0]
+000000018003F615 / 0003F615 | e8 d6 1b fd ff                 | call    0x1800111f0 ; 0x1800111f0 FUN_1800111f0
+000000018003F61A / 0003F61A | 90                             | nop     
+000000018003F61B / 0003F61B | 48 8d 8d 00 04 00 00           | lea     rcx, [rbp + 0x400]
+000000018003F622 / 0003F622 | e8 59 3d fc ff                 | call    0x180003380 ; 0x180003380 FUN_180003380
+000000018003F627 / 0003F627 | 48 8d 8d e0 03 00 00           | lea     rcx, [rbp + 0x3e0]
+000000018003F62E / 0003F62E | e8 fd 4f fc ff                 | call    0x180004630 ; 0x180004630 FUN_180004630
+000000018003F633 / 0003F633 | 90                             | nop     
+000000018003F634 / 0003F634 | 44 8b 25 fd a9 1a 00           | mov     r12d, dword ptr [rip + 0x1aa9fd] ; 0x1801ea038
+000000018003F63B / 0003F63B | 44 89 65 08                    | mov     dword ptr [rbp + 8], r12d
+000000018003F63F / 0003F63F | 84 db                          | test    bl, bl
+000000018003F641 / 0003F641 | 74 3c                          | je      0x18003f67f
+000000018003F643 / 0003F643 | 48 ba 00 00 00 00 01 00 10 01  | movabs  rdx, 0x110000100000000
+000000018003F64D / 0003F64D | 41 8b cc                       | mov     ecx, r12d
+000000018003F650 / 0003F650 | e8 9b cd 00 00                 | call    0x18004c3f0 ; 0x18004c3f0 FUN_18004c3f0
+000000018003F655 / 0003F655 | 48 8b d0                       | mov     rdx, rax
+000000018003F658 / 0003F658 | 48 8d 8d 00 04 00 00           | lea     rcx, [rbp + 0x400]
+000000018003F65F / 0003F65F | e8 bc 27 ff ff                 | call    0x180031e20 ; 0x180031e20 FUN_180031e20
+000000018003F664 / 0003F664 | 48 8b d0                       | mov     rdx, rax
+000000018003F667 / 0003F667 | 48 8d 8d e0 03 00 00           | lea     rcx, [rbp + 0x3e0]
+000000018003F66E / 0003F66E | e8 ad d3 fc ff                 | call    0x18000ca20 ; 0x18000ca20 FUN_18000ca20
+000000018003F673 / 0003F673 | 48 8d 8d 00 04 00 00           | lea     rcx, [rbp + 0x400]
+000000018003F67A / 0003F67A | e8 01 3d fc ff                 | call    0x180003380 ; 0x180003380 FUN_180003380
+000000018003F67F / 0003F67F | 48 8b d7                       | mov     rdx, rdi
+
+[省略中间指令]
+000000018003F7DD / 0003F7DD | c7 45 50 01 00 00 00           | mov     dword ptr [rbp + 0x50], 1
+000000018003F7E4 / 0003F7E4 | 48 8d 95 a0 03 00 00           | lea     rdx, [rbp + 0x3a0]
+000000018003F7EB / 0003F7EB | 48 83 bd b8 03 00 00 0f        | cmp     qword ptr [rbp + 0x3b8], 0xf
+000000018003F7F3 / 0003F7F3 | 48 0f 47 95 a0 03 00 00        | cmova   rdx, qword ptr [rbp + 0x3a0]
+000000018003F7FB / 0003F7FB | 4c 8d 45 30                    | lea     r8, [rbp + 0x30]
+000000018003F7FF / 0003F7FF | 48 8d 8d 28 01 00 00           | lea     rcx, [rbp + 0x128]
+000000018003F806 / 0003F806 | e8 b5 e6 fd ff                 | call    0x18001dec0 ; 0x18001dec0 FUN_18001dec0
+000000018003F80B / 0003F80B | 48 8d 8d 60 05 00 00           | lea     rcx, [rbp + 0x560]
+000000018003F812 / 0003F812 | ba 02 00 00 00                 | mov     edx, 2
+000000018003F817 / 0003F817 | 66 0f 1f 84 00 00 00 00 00     | nop     word ptr [rax + rax]
+000000018003F820 / 0003F820 | 0f 10 00                       | movups  xmm0, xmmword ptr [rax]
+000000018003F823 / 0003F823 | 0f 11 01                       | movups  xmmword ptr [rcx], xmm0
+000000018003F826 / 0003F826 | 0f 10 48 10                    | movups  xmm1, xmmword ptr [rax + 0x10]
+000000018003F82A / 0003F82A | 0f 11 49 10                    | movups  xmmword ptr [rcx + 0x10], xmm1
+000000018003F82E / 0003F82E | 0f 10 40 20                    | movups  xmm0, xmmword ptr [rax + 0x20]
+000000018003F832 / 0003F832 | 0f 11 41 20                    | movups  xmmword ptr [rcx + 0x20], xmm0
+
+[省略中间指令]
+0000000180040685 / 00040685 | 4c 89 b5 e0 02 00 00           | mov     qword ptr [rbp + 0x2e0], r14
+000000018004068C / 0004068C | eb 0c                          | jmp     0x18004069a
+000000018004068E / 0004068E | bb 0f 00 00 00                 | mov     ebx, 0xf
+0000000180040693 / 00040693 | 4c 8d b5 e0 02 00 00           | lea     r14, [rbp + 0x2e0]
+000000018004069A / 0004069A | 4c 89 bd f0 02 00 00           | mov     qword ptr [rbp + 0x2f0], r15
+00000001800406A1 / 000406A1 | 48 89 9d f8 02 00 00           | mov     qword ptr [rbp + 0x2f8], rbx
+00000001800406A8 / 000406A8 | 0f 10 05 f1 9e 15 00           | movups  xmm0, xmmword ptr [rip + 0x159ef1] ; 0x18019a5a0 'X-Proto-SteamID: '
+00000001800406AF / 000406AF | 41 0f 11 06                    | movups  xmmword ptr [r14], xmm0
+00000001800406B3 / 000406B3 | 0f b6 05 f6 9e 15 00           | movzx   eax, byte ptr [rip + 0x159ef6] ; 0x18019a5b0
+00000001800406BA / 000406BA | 41 88 46 10                    | mov     byte ptr [r14 + 0x10], al
+00000001800406BE / 000406BE | 49 8d 4e 11                    | lea     rcx, [r14 + 0x11]
+00000001800406C2 / 000406C2 | 4d 8b c5                       | mov     r8, r13
+00000001800406C5 / 000406C5 | 49 8b d4                       | mov     rdx, r12
+00000001800406C8 / 000406C8 | e8 13 dd 14 00                 | call    0x18018e3e0 ; 0x18018e3e0 FUN_18018e3e0
+00000001800406CD / 000406CD | 43 c6 44 2e 11 00              | mov     byte ptr [r14 + r13 + 0x11], 0
+00000001800406D3 / 000406D3 | 0f 57 c0                       | xorps   xmm0, xmm0
+
+[省略中间指令]
+000000018004079F / 0004079F | 48 8d 85 60 02 00 00           | lea     rax, [rbp + 0x260]
+00000001800407A6 / 000407A6 | 49 83 fe 0f                    | cmp     r14, 0xf
+00000001800407AA / 000407AA | 48 0f 47 85 60 02 00 00        | cmova   rax, qword ptr [rbp + 0x260]
+00000001800407B2 / 000407B2 | 48 89 5c 24 30                 | mov     qword ptr [rsp + 0x30], rbx
+00000001800407B7 / 000407B7 | 48 89 44 24 28                 | mov     qword ptr [rsp + 0x28], rax
+00000001800407BC / 000407BC | 48 c7 44 24 20 11 00 00 00     | mov     qword ptr [rsp + 0x20], 0x11
+00000001800407C5 / 000407C5 | 4c 8d 0d ec 9d 15 00           | lea     r9, [rip + 0x159dec] ; 0x18019a5b8 'X-Proto-Session: '
+00000001800407CC / 000407CC | 4c 8d 85 60 02 00 00           | lea     r8, [rbp + 0x260]
+00000001800407D3 / 000407D3 | 40 0f b6 d7                    | movzx   edx, dil
+00000001800407D7 / 000407D7 | 48 8d 8d 80 02 00 00           | lea     rcx, [rbp + 0x280]
+00000001800407DE / 000407DE | e8 3d 0e fd ff                 | call    0x180011620 ; 0x180011620 FUN_180011620
+00000001800407E3 / 000407E3 | 48 8b 95 b8 02 00 00           | mov     rdx, qword ptr [rbp + 0x2b8]
+00000001800407EA / 000407EA | 48 83 fa 0f                    | cmp     rdx, 0xf
+00000001800407EE / 000407EE | 76 34                          | jbe     0x180040824
+00000001800407F0 / 000407F0 | 48 ff c2                       | inc     rdx
+00000001800407F3 / 000407F3 | 48 8b 8d a0 02 00 00           | mov     rcx, qword ptr [rbp + 0x2a0]
+
+[省略中间指令]
+0000000180040B97 / 00040B97 | c7 85 80 00 00 00 01 00 00 00  | mov     dword ptr [rbp + 0x80], 1
+0000000180040BA1 / 00040BA1 | 48 8d 95 a0 03 00 00           | lea     rdx, [rbp + 0x3a0]
+0000000180040BA8 / 00040BA8 | 48 83 bd b8 03 00 00 0f        | cmp     qword ptr [rbp + 0x3b8], 0xf
+0000000180040BB0 / 00040BB0 | 48 0f 47 95 a0 03 00 00        | cmova   rdx, qword ptr [rbp + 0x3a0]
+0000000180040BB8 / 00040BB8 | 4c 8d 45 30                    | lea     r8, [rbp + 0x30]
+0000000180040BBC / 00040BBC | 48 8d 8d 28 01 00 00           | lea     rcx, [rbp + 0x128]
+0000000180040BC3 / 00040BC3 | e8 f8 d2 fd ff                 | call    0x18001dec0 ; 0x18001dec0 FUN_18001dec0
+0000000180040BC8 / 00040BC8 | 48 8d 8d 60 05 00 00           | lea     rcx, [rbp + 0x560]
+0000000180040BCF / 00040BCF | ba 02 00 00 00                 | mov     edx, 2
+0000000180040BD4 / 00040BD4 | 0f 1f 40 00                    | nop     dword ptr [rax]
+0000000180040BD8 / 00040BD8 | 0f 1f 84 00 00 00 00 00        | nop     dword ptr [rax + rax]
+0000000180040BE0 / 00040BE0 | 0f 10 00                       | movups  xmm0, xmmword ptr [rax]
+0000000180040BE3 / 00040BE3 | 0f 11 01                       | movups  xmmword ptr [rcx], xmm0
+0000000180040BE6 / 00040BE6 | 0f 10 48 10                    | movups  xmm1, xmmword ptr [rax + 0x10]
+0000000180040BEA / 00040BEA | 0f 11 49 10                    | movups  xmmword ptr [rcx + 0x10], xmm1
+0000000180040BEE / 00040BEE | 0f 10 40 20                    | movups  xmm0, xmmword ptr [rax + 0x20]
+
+[省略中间指令]
+000000018004175A / 0004175A | cd 29                          | int     0x29
+000000018004175C / 0004175C | b9 05 00 00 00                 | mov     ecx, 5
+0000000180041761 / 00041761 | cd 29                          | int     0x29
+0000000180041763 / 00041763 | 48 8b 4d 18                    | mov     rcx, qword ptr [rbp + 0x18]
+0000000180041767 / 00041767 | 48 03 4d b8                    | add     rcx, qword ptr [rbp - 0x48]
+000000018004176B / 0004176B | e8 70 dc ff ff                 | call    0x18003f3e0 ; 0x18003f3e0 FUN_18003f3e0
+0000000180041770 / 00041770 | 4c 8d 05 59 8e 15 00           | lea     r8, [rip + 0x158e59] ; 0x18019a5d0 'X-Proto-Session'
+0000000180041777 / 00041777 | 48 8d 95 60 05 00 00           | lea     rdx, [rbp + 0x560]
+000000018004177E / 0004177E | 48 8d 8d 80 02 00 00           | lea     rcx, [rbp + 0x280]
+0000000180041785 / 00041785 | e8 06 16 00 00                 | call    0x180042d90 ; 0x180042d90 FUN_180042d90
+000000018004178A / 0004178A | 90                             | nop     
+000000018004178B / 0004178B | 49 8b dd                       | mov     rbx, r13
+000000018004178E / 0004178E | 4c 8d 05 4b 8e 15 00           | lea     r8, [rip + 0x158e4b] ; 0x18019a5e0 'X-Proto-Session-Expires'
+0000000180041795 / 00041795 | 48 8d 95 60 05 00 00           | lea     rdx, [rbp + 0x560]
+000000018004179C / 0004179C | 48 8d 8d 20 04 00 00           | lea     rcx, [rbp + 0x420]
+00000001800417A3 / 000417A3 | e8 e8 15 00 00                 | call    0x180042d90 ; 0x180042d90 FUN_180042d90
+00000001800417A8 / 000417A8 | 90                             | nop     
+00000001800417A9 / 000417A9 | 48 83 bd 30 04 00 00 00        | cmp     qword ptr [rbp + 0x430], 0
+00000001800417B1 / 000417B1 | 74 27                          | je      0x1800417da
+00000001800417B3 / 000417B3 | 48 8d 8d 20 04 00 00           | lea     rcx, [rbp + 0x420]
+00000001800417BA / 000417BA | 48 83 bd 38 04 00 00 0f        | cmp     qword ptr [rbp + 0x438], 0xf
+00000001800417C2 / 000417C2 | 48 0f 47 8d 20 04 00 00        | cmova   rcx, qword ptr [rbp + 0x420]
+
+===== FUN_180044e70 VA=0x180044e70 RVA=0x44e70 =====
+0000000180044E70 / 00044E70 | 85 d2                          | test    edx, edx
+0000000180044E72 / 00044E72 | 0f 84 e2 00 00 00              | je      0x180044f5a
+0000000180044E78 / 00044E78 | 48 89 5c 24 08                 | mov     qword ptr [rsp + 8], rbx
+0000000180044E7D / 00044E7D | 48 89 74 24 10                 | mov     qword ptr [rsp + 0x10], rsi
+0000000180044E82 / 00044E82 | 57                             | push    rdi
+0000000180044E83 / 00044E83 | 48 83 ec 40                    | sub     rsp, 0x40
+0000000180044E87 / 00044E87 | 8b da                          | mov     ebx, edx
+0000000180044E89 / 00044E89 | 48 8b f9                       | mov     rdi, rcx
+0000000180044E8C / 00044E8C | 48 85 c9                       | test    rcx, rcx
+0000000180044E8F / 00044E8F | 0f 84 b6 00 00 00              | je      0x180044f4b
+0000000180044E95 / 00044E95 | 8b ca                          | mov     ecx, edx
+0000000180044E97 / 00044E97 | e8 e4 00 00 00                 | call    0x180044f80 ; 0x180044f80 FUN_180044f80
+0000000180044E9C / 00044E9C | 84 c0                          | test    al, al
+0000000180044E9E / 00044E9E | 0f 85 a7 00 00 00              | jne     0x180044f4b
+0000000180044EA4 / 00044EA4 | 48 8d 35 75 d3 19 00           | lea     rsi, [rip + 0x19d375] ; 0x1801e2220
+0000000180044EAB / 00044EAB | 48 89 74 24 60                 | mov     qword ptr [rsp + 0x60], rsi
+0000000180044EB0 / 00044EB0 | 48 8b ce                       | mov     rcx, rsi
+0000000180044EB3 / 00044EB3 | e8 78 5c 0f 00                 | call    0x18013ab30 ; 0x18013ab30 FUN_18013ab30
+0000000180044EB8 / 00044EB8 | 85 c0                          | test    eax, eax
+0000000180044EBA / 00044EBA | 0f 85 ae 00 00 00              | jne     0x180044f6e
+0000000180044EC0 / 00044EC0 | 8b 05 a6 d3 19 00              | mov     eax, dword ptr [rip + 0x19d3a6] ; 0x1801e226c
+0000000180044EC6 / 00044EC6 | 3d ff ff ff 7f                 | cmp     eax, 0x7fffffff
+0000000180044ECB / 00044ECB | 0f 84 8a 00 00 00              | je      0x180044f5b
+0000000180044ED1 / 00044ED1 | 8b cb                          | mov     ecx, ebx
+0000000180044ED3 / 00044ED3 | e8 a8 00 00 00                 | call    0x180044f80 ; 0x180044f80 FUN_180044f80
+0000000180044ED8 / 00044ED8 | 84 c0                          | test    al, al
+0000000180044EDA / 00044EDA | 75 67                          | jne     0x180044f43
+0000000180044EDC / 00044EDC | 8b d3                          | mov     edx, ebx
+0000000180044EDE / 00044EDE | 48 8d 0d 4b 55 15 00           | lea     rcx, [rip + 0x15554b] ; 0x18019a430 'BeginSession: 为 steamid=%u 换令牌'
+0000000180044EE5 / 00044EE5 | e8 f6 d4 fc ff                 | call    0x1800123e0 ; 0x1800123e0 FUN_1800123e0
+0000000180044EEA / 00044EEA | 4c 8b cf                       | mov     r9, rdi
+0000000180044EED / 00044EED | 45 33 c0                       | xor     r8d, r8d
+0000000180044EF0 / 00044EF0 | 48 8d 15 51 54 15 00           | lea     rdx, [rip + 0x155451] ; 0x18019a348 'BeginSession'
+0000000180044EF7 / 00044EF7 | 48 8d 4c 24 20                 | lea     rcx, [rsp + 0x20]
+0000000180044EFC / 00044EFC | e8 ff a5 ff ff                 | call    0x18003f500 ; 0x18003f500 FUN_18003f500
+0000000180044F01 / 00044F01 | 48 8b 44 24 20                 | mov     rax, qword ptr [rsp + 0x20]
+0000000180044F06 / 00044F06 | 48 85 c0                       | test    rax, rax
+0000000180044F09 / 00044F09 | 74 38                          | je      0x180044f43
+0000000180044F0B / 00044F0B | 48 8b 54 24 30                 | mov     rdx, qword ptr [rsp + 0x30]
+0000000180044F10 / 00044F10 | 48 2b d0                       | sub     rdx, rax
+0000000180044F13 / 00044F13 | 48 81 fa 00 10 00 00           | cmp     rdx, 0x1000
+0000000180044F1A / 00044F1A | 72 1e                          | jb      0x180044f3a
+0000000180044F1C / 00044F1C | 48 8b 48 f8                    | mov     rcx, qword ptr [rax - 8]
+0000000180044F20 / 00044F20 | 48 2b c1                       | sub     rax, rcx
+0000000180044F23 / 00044F23 | 48 83 e8 08                    | sub     rax, 8
+0000000180044F27 / 00044F27 | 48 83 f8 1f                    | cmp     rax, 0x1f
+0000000180044F2B / 00044F2B | 77 06                          | ja      0x180044f33
+0000000180044F2D / 00044F2D | 48 83 c2 27                    | add     rdx, 0x27
+0000000180044F31 / 00044F31 | eb 0a                          | jmp     0x180044f3d
+0000000180044F33 / 00044F33 | b9 05 00 00 00                 | mov     ecx, 5
+0000000180044F38 / 00044F38 | cd 29                          | int     0x29
+0000000180044F3A / 00044F3A | 48 8b c8                       | mov     rcx, rax
+0000000180044F3D / 00044F3D | e8 de 20 11 00                 | call    0x180157020 ; 0x180157020 thunk_FUN_180157eb0
+0000000180044F42 / 00044F42 | 90                             | nop     
+0000000180044F43 / 00044F43 | 48 8b ce                       | mov     rcx, rsi
+0000000180044F46 / 00044F46 | e8 05 5d 0f 00                 | call    0x18013ac50 ; 0x18013ac50 FUN_18013ac50
+0000000180044F4B / 00044F4B | 48 8b 5c 24 50                 | mov     rbx, qword ptr [rsp + 0x50]
+0000000180044F50 / 00044F50 | 48 8b 74 24 58                 | mov     rsi, qword ptr [rsp + 0x58]
+0000000180044F55 / 00044F55 | 48 83 c4 40                    | add     rsp, 0x40
+0000000180044F59 / 00044F59 | 5f                             | pop     rdi
+0000000180044F5A / 00044F5A | c3                             | ret     
+0000000180044F5B / 00044F5B | ff c8                          | dec     eax
+0000000180044F5D / 00044F5D | 89 05 09 d3 19 00              | mov     dword ptr [rip + 0x19d309], eax ; 0x1801e226c
+0000000180044F63 / 00044F63 | b9 06 00 00 00                 | mov     ecx, 6
+0000000180044F68 / 00044F68 | e8 83 5e 0f 00                 | call    0x18013adf0 ; 0x18013adf0 FUN_18013adf0
+0000000180044F6D / 00044F6D | cc                             | int3    
+0000000180044F6E / 00044F6E | b9 05 00 00 00                 | mov     ecx, 5
+0000000180044F73 / 00044F73 | e8 78 5e 0f 00                 | call    0x18013adf0 ; 0x18013adf0 FUN_18013adf0
+0000000180044F78 / 00044F78 | cc                             | int3    
+
+===== FUN_1800454f0 VA=0x1800454f0 RVA=0x454f0 =====
+0000000180045596 / 00045596 | 48 89 44 24 50                 | mov     qword ptr [rsp + 0x50], rax
+000000018004559B / 0004559B | 48 8d 5c 24 40                 | lea     rbx, [rsp + 0x40]
+00000001800455A0 / 000455A0 | 48 83 fa 0f                    | cmp     rdx, 0xf
+00000001800455A4 / 000455A4 | 48 0f 47 5c 24 40              | cmova   rbx, qword ptr [rsp + 0x40]
+00000001800455AA / 000455AA | 48 03 d9                       | add     rbx, rcx
+00000001800455AD / 000455AD | 41 b8 0b 00 00 00              | mov     r8d, 0xb
+00000001800455B3 / 000455B3 | 48 8d 15 d6 4d 15 00           | lea     rdx, [rip + 0x154dd6] ; 0x18019a390 'st_sess.dat'
+00000001800455BA / 000455BA | 48 8b cb                       | mov     rcx, rbx
+00000001800455BD / 000455BD | e8 1e 8e 14 00                 | call    0x18018e3e0 ; 0x18018e3e0 FUN_18018e3e0
+00000001800455C2 / 000455C2 | 40 88 73 0b                    | mov     byte ptr [rbx + 0xb], sil
+00000001800455C6 / 000455C6 | 48 8d 44 24 40                 | lea     rax, [rsp + 0x40]
+00000001800455CB / 000455CB | eb 22                          | jmp     0x1800455ef
+00000001800455CD / 000455CD | 48 c7 44 24 20 0b 00 00 00     | mov     qword ptr [rsp + 0x20], 0xb
+00000001800455D6 / 000455D6 | 4c 8d 0d b3 4d 15 00           | lea     r9, [rip + 0x154db3] ; 0x18019a390 'st_sess.dat'
+00000001800455DD / 000455DD | 45 33 c0                       | xor     r8d, r8d
+00000001800455E0 / 000455E0 | ba 0b 00 00 00                 | mov     edx, 0xb
+00000001800455E5 / 000455E5 | 48 8d 4c 24 40                 | lea     rcx, [rsp + 0x40]
+00000001800455EA / 000455EA | e8 31 39 fc ff                 | call    0x180008f20 ; 0x180008f20 FUN_180008f20
+00000001800455EF / 000455EF | 0f 57 c0                       | xorps   xmm0, xmm0
+00000001800455F2 / 000455F2 | 0f 11 07                       | movups  xmmword ptr [rdi], xmm0
+00000001800455F5 / 000455F5 | 48 89 77 10                    | mov     qword ptr [rdi + 0x10], rsi
+00000001800455F9 / 000455F9 | 48 89 77 18                    | mov     qword ptr [rdi + 0x18], rsi
+00000001800455FD / 000455FD | 0f 10 00                       | movups  xmm0, xmmword ptr [rax]
+
+[省略中间指令]
+0000000180045653 / 00045653 | eb 33                          | jmp     0x180045688
+0000000180045655 / 00045655 | b9 05 00 00 00                 | mov     ecx, 5
+000000018004565A / 0004565A | cd 29                          | int     0x29
+000000018004565C / 0004565C | 0f 11 07                       | movups  xmmword ptr [rdi], xmm0
+000000018004565F / 0004565F | 48 c7 47 10 0b 00 00 00        | mov     qword ptr [rdi + 0x10], 0xb
+0000000180045667 / 00045667 | 48 c7 47 18 0f 00 00 00        | mov     qword ptr [rdi + 0x18], 0xf
+000000018004566F / 0004566F | f2 0f 10 05 19 4d 15 00        | movsd   xmm0, qword ptr [rip + 0x154d19] ; 0x18019a390 'st_sess.dat'
+0000000180045677 / 00045677 | f2 0f 11 07                    | movsd   qword ptr [rdi], xmm0
+000000018004567B / 0004567B | 8b 05 16 4d 15 00              | mov     eax, dword ptr [rip + 0x154d16] ; 0x18019a397 '.dat'
+0000000180045681 / 00045681 | 89 47 07                       | mov     dword ptr [rdi + 7], eax
+0000000180045684 / 00045684 | 40 88 77 0b                    | mov     byte ptr [rdi + 0xb], sil
+0000000180045688 / 00045688 | 48 8b c7                       | mov     rax, rdi
+000000018004568B / 0004568B | 48 8b 8c 24 70 01 00 00        | mov     rcx, qword ptr [rsp + 0x170]
+0000000180045693 / 00045693 | 48 33 cc                       | xor     rcx, rsp
+0000000180045696 / 00045696 | e8 a5 1d 11 00                 | call    0x180157440 ; 0x180157440 FUN_180157440
+000000018004569B / 0004569B | 4c 8d 9c 24 80 01 00 00        | lea     r11, [rsp + 0x180]
+
+===== FUN_180055410 VA=0x180055410 RVA=0x55410 =====
+00000001800554AC / 000554AC | 90                             | nop     
+00000001800554AD / 000554AD | 48 8b cb                       | mov     rcx, rbx
+00000001800554B0 / 000554B0 | e8 9b 57 0e 00                 | call    0x18013ac50 ; 0x18013ac50 FUN_18013ac50
+00000001800554B5 / 000554B5 | e9 e7 04 00 00                 | jmp     0x1800559a1
+00000001800554BA / 000554BA | 48 8b cb                       | mov     rcx, rbx
+00000001800554BD / 000554BD | e8 8e 57 0e 00                 | call    0x18013ac50 ; 0x18013ac50 FUN_18013ac50
+00000001800554C2 / 000554C2 | e8 d9 2c 0a 00                 | call    0x1800f81a0 ; 0x1800f81a0 cJSON_CreateObject
+00000001800554C7 / 000554C7 | 48 89 45 97                    | mov     qword ptr [rbp - 0x69], rax
+00000001800554CB / 000554CB | 48 85 c0                       | test    rax, rax
+00000001800554CE / 000554CE | 75 1c                          | jne     0x1800554ec
+00000001800554D0 / 000554D0 | 0f 57 c0                       | xorps   xmm0, xmm0
+00000001800554D3 / 000554D3 | 41 0f 11 06                    | movups  xmmword ptr [r14], xmm0
+00000001800554D7 / 000554D7 | 4d 89 7e 10                    | mov     qword ptr [r14 + 0x10], r15
+00000001800554DB / 000554DB | bf 0f 00 00 00                 | mov     edi, 0xf
+00000001800554E0 / 000554E0 | 49 89 7e 18                    | mov     qword ptr [r14 + 0x18], rdi
+00000001800554E4 / 000554E4 | 41 88 06                       | mov     byte ptr [r14], al
+
+[省略中间指令]
+00000001800555F3 / 000555F3 | 43 c6 44 2f 04 00              | mov     byte ptr [r15 + r13 + 4], 0
+00000001800555F9 / 000555F9 | 4c 8d 4d c7                    | lea     r9, [rbp - 0x39]
+00000001800555FD / 000555FD | 48 83 7d df 0f                 | cmp     qword ptr [rbp - 0x21], 0xf
+0000000180055602 / 00055602 | 4c 0f 47 4d c7                 | cmova   r9, qword ptr [rbp - 0x39]
+0000000180055607 / 00055607 | 48 8b 5d 97                    | mov     rbx, qword ptr [rbp - 0x69]
+000000018005560B / 0005560B | 4c 8b c3                       | mov     r8, rbx
+000000018005560E / 0005560E | 48 8d 15 43 4d 14 00           | lea     rdx, [rip + 0x144d43] ; 0x18019a358 'GetCookie'
+0000000180055615 / 00055615 | 48 8d 4d af                    | lea     rcx, [rbp - 0x51]
+0000000180055619 / 00055619 | e8 e2 9e fe ff                 | call    0x18003f500 ; 0x18003f500 FUN_18003f500
+000000018005561E / 0005561E | 90                             | nop     
+000000018005561F / 0005561F | 48 8b 55 df                    | mov     rdx, qword ptr [rbp - 0x21]
+0000000180055623 / 00055623 | 48 83 fa 0f                    | cmp     rdx, 0xf
+0000000180055627 / 00055627 | 76 31                          | jbe     0x18005565a
+0000000180055629 / 00055629 | 48 ff c2                       | inc     rdx
+000000018005562C / 0005562C | 48 8b 4d c7                    | mov     rcx, qword ptr [rbp - 0x39]
+0000000180055630 / 00055630 | 48 81 fa 00 10 00 00           | cmp     rdx, 0x1000
+0000000180055637 / 00055637 | 72 1c                          | jb      0x180055655
+0000000180055639 / 00055639 | 48 8b 41 f8                    | mov     rax, qword ptr [rcx - 8]
+
+[省略中间指令]
+0000000180055684 / 00055684 | 0f 11 45 e7                    | movups  xmmword ptr [rbp - 0x19], xmm0
+0000000180055688 / 00055688 | 48 89 5d f7                    | mov     qword ptr [rbp - 9], rbx
+000000018005568C / 0005568C | 48 89 7d ff                    | mov     qword ptr [rbp - 1], rdi
+0000000180055690 / 00055690 | 88 5d e7                       | mov     byte ptr [rbp - 0x19], bl
+0000000180055693 / 00055693 | 48 8d 55 e7                    | lea     rdx, [rbp - 0x19]
+0000000180055697 / 00055697 | 48 8d 4d af                    | lea     rcx, [rbp - 0x51]
+000000018005569B / 0005569B | e8 e0 43 ff ff                 | call    0x180049a80 ; 0x180049a80 FUN_180049a80
+00000001800556A0 / 000556A0 | 84 c0                          | test    al, al
+00000001800556A2 / 000556A2 | 0f 84 dc 00 00 00              | je      0x180055784
+00000001800556A8 / 000556A8 | 48 8b 5d f7                    | mov     rbx, qword ptr [rbp - 9]
+00000001800556AC / 000556AC | 4c 8d 6d e7                    | lea     r13, [rbp - 0x19]
+00000001800556B0 / 000556B0 | 48 83 7d ff 0f                 | cmp     qword ptr [rbp - 1], 0xf
+00000001800556B5 / 000556B5 | 4c 0f 47 6d e7                 | cmova   r13, qword ptr [rbp - 0x19]
+00000001800556BA / 000556BA | 48 83 fb 0f                    | cmp     rbx, 0xf
+00000001800556BE / 000556BE | 77 2c                          | ja      0x1800556ec
+00000001800556C0 / 000556C0 | 48 89 5d d7                    | mov     qword ptr [rbp - 0x29], rbx
+
+===== FUN_18001dec0 VA=0x18001dec0 RVA=0x1dec0 =====
+000000018001DF9C / 0001DF9C | 44 88 7b 3e                    | mov     byte ptr [rbx + 0x3e], r15b
+000000018001DFA0 / 0001DFA0 | e9 4e 06 00 00                 | jmp     0x18001e5f3 ; 0x18001e5f3 FUN_18001e5f3
+000000018001DFA5 / 0001DFA5 | 48 85 ff                       | test    rdi, rdi
+000000018001DFA8 / 0001DFA8 | 74 42                          | je      0x18001dfec
+000000018001DFAA / 0001DFAA | 48 8b d7                       | mov     rdx, rdi
+000000018001DFAD / 0001DFAD | 48 8d 4c 24 30                 | lea     rcx, [rsp + 0x30]
+000000018001DFB2 / 0001DFB2 | e8 49 0c 00 00                 | call    0x18001ec00 ; 0x18001ec00 FUN_18001ec00
+000000018001DFB7 / 0001DFB7 | 85 c0                          | test    eax, eax
+000000018001DFB9 / 0001DFB9 | 75 31                          | jne     0x18001dfec
+000000018001DFBB / 0001DFBB | 48 8d 43 20                    | lea     rax, [rbx + 0x20]
+000000018001DFBF / 0001DFBF | c7 03 02 00 00 00              | mov     dword ptr [rbx], 2
+000000018001DFC5 / 0001DFC5 | 48 85 c0                       | test    rax, rax
+000000018001DFC8 / 0001DFC8 | 0f 84 25 06 00 00              | je      0x18001e5f3 ; 0x18001e5f3 FUN_18001e5f3
+000000018001DFCE / 0001DFCE | 0f 10 05 23 9d 17 00           | movups  xmm0, xmmword ptr [rip + 0x179d23] ; 0x180197cf8 'Invalid HTTP options pointer'
+000000018001DFD5 / 0001DFD5 | 0f 10 0d 28 9d 17 00           | movups  xmm1, xmmword ptr [rip + 0x179d28] ; 0x180197d04 ' options pointer'
+000000018001DFDC / 0001DFDC | 0f 11 00                       | movups  xmmword ptr [rax], xmm0

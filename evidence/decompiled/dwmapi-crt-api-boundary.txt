@@ -1,0 +1,144 @@
+EVIDENCE L-10
+Selected Ghidra decompilation
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+Auto-generated types and function boundaries are approximate; assembly governs disputed details.
+Inferred SIZE metadata was removed because overlapping function fragments make it unreliable.
+
+/* ADDRESS 180002be0 NAME FUN_180002be0 */
+
+FARPROC FUN_180002be0(uint param_1,LPCSTR param_2,uint *param_3,uint *param_4)
+
+{
+  longlong lVar1;
+  wchar_t *lpLibFileName;
+  DWORD DVar2;
+  int iVar3;
+  HMODULE hLibModule;
+  FARPROC pFVar4;
+  ulonglong uVar5;
+  ulonglong uVar6;
+  
+  uVar6 = (ulonglong)param_1;
+  pFVar4 = *(FARPROC *)(&DAT_18001e198 + uVar6 * 8);
+  if (pFVar4 != (FARPROC)0xffffffffffffffff) {
+    if (pFVar4 != (FARPROC)0x0) {
+      return pFVar4;
+    }
+    if (param_3 != param_4) {
+      do {
+        uVar5 = (ulonglong)*param_3;
+        hLibModule = *(HMODULE *)(&DAT_18001e180 + uVar5 * 8);
+        if (hLibModule == (HMODULE)0x0) {
+          lpLibFileName = (wchar_t *)(&PTR_u_api_ms_win_core_fibers_l1_1_1_1800141e8)[uVar5];
+          hLibModule = LoadLibraryExW(lpLibFileName,(HANDLE)0x0,0x800);
+          if ((hLibModule != (HMODULE)0x0) ||
+             (((DVar2 = GetLastError(), DVar2 == 0x57 &&
+               (iVar3 = wcsncmp(lpLibFileName,L"api-ms-",7), iVar3 != 0)) &&
+              (hLibModule = LoadLibraryExW(lpLibFileName,(HANDLE)0x0,0), hLibModule != (HMODULE)0x0)
+              ))) {
+            LOCK();
+            lVar1 = *(longlong *)(&DAT_18001e180 + uVar5 * 8);
+            *(HMODULE *)(&DAT_18001e180 + uVar5 * 8) = hLibModule;
+            UNLOCK();
+            if (lVar1 != 0) {
+              FreeLibrary(hLibModule);
+            }
+            goto LAB_180002d11;
+          }
+          LOCK();
+          *(undefined8 *)(&DAT_18001e180 + uVar5 * 8) = 0xffffffffffffffff;
+          UNLOCK();
+        }
+        else if (hLibModule != (HMODULE)0xffffffffffffffff) {
+LAB_180002d11:
+          pFVar4 = GetProcAddress(hLibModule,param_2);
+          if (pFVar4 != (FARPROC)0x0) {
+            LOCK();
+            *(FARPROC *)(&DAT_18001e198 + uVar6 * 8) = pFVar4;
+            UNLOCK();
+            return pFVar4;
+          }
+          break;
+        }
+        param_3 = param_3 + 1;
+      } while (param_3 != param_4);
+    }
+    LOCK();
+    *(undefined8 *)(&DAT_18001e198 + uVar6 * 8) = 0xffffffffffffffff;
+    UNLOCK();
+  }
+  return (FARPROC)0x0;
+}
+
+/* ADDRESS 18000c828 NAME FUN_18000c828 */
+
+FARPROC FUN_18000c828(uint param_1,LPCSTR param_2,uint *param_3,uint *param_4)
+
+{
+  longlong lVar1;
+  uint uVar2;
+  wchar_t *lpLibFileName;
+  DWORD DVar3;
+  int iVar4;
+  BOOL BVar5;
+  HMODULE hLibModule;
+  FARPROC pFVar6;
+  FARPROC pFVar7;
+  DWORD local_res18 [2];
+  
+  if (param_3 != param_4) {
+    do {
+      uVar2 = *param_3;
+      hLibModule = (HMODULE)(&DAT_18001ea40)[uVar2];
+      if (hLibModule == (HMODULE)0x0) {
+        lpLibFileName = (wchar_t *)(&PTR_u_api_ms_win_core_datetime_l1_1_1_180014eb0)[uVar2];
+        hLibModule = LoadLibraryExW(lpLibFileName,(HANDLE)0x0,0x800);
+        if ((hLibModule != (HMODULE)0x0) ||
+           ((((DVar3 = GetLastError(), DVar3 == 0x57 &&
+              (iVar4 = wcsncmp(lpLibFileName,L"api-ms-",7), iVar4 != 0)) &&
+             (iVar4 = wcsncmp(lpLibFileName,L"ext-ms-",7), iVar4 != 0)) &&
+            (hLibModule = LoadLibraryExW(lpLibFileName,(HANDLE)0x0,0), hLibModule != (HMODULE)0x0)))
+           ) {
+          LOCK();
+          lVar1 = (&DAT_18001ea40)[uVar2];
+          (&DAT_18001ea40)[uVar2] = hLibModule;
+          UNLOCK();
+          if (lVar1 != 0) {
+            FreeLibrary(hLibModule);
+          }
+          goto LAB_18000c9c0;
+        }
+        LOCK();
+        (&DAT_18001ea40)[uVar2] = 0xffffffffffffffff;
+        UNLOCK();
+      }
+      else if (hLibModule != (HMODULE)0xffffffffffffffff) {
+LAB_18000c9c0:
+        pFVar7 = GetProcAddress(hLibModule,param_2);
+        goto LAB_18000c91a;
+      }
+      param_3 = param_3 + 1;
+    } while (param_3 != param_4);
+  }
+  pFVar7 = (FARPROC)0x0;
+LAB_18000c91a:
+  __acrt_lock(0xe);
+  local_res18[0] = 0;
+  BVar5 = VirtualProtect(&DAT_180021000,0x100,4,local_res18);
+  if (BVar5 != 0) {
+    pFVar6 = pFVar7;
+    if (pFVar7 == (FARPROC)0x0) {
+      pFVar6 = (FARPROC)0xffffffffffffffff;
+    }
+    LOCK();
+    (&DAT_180021000)[param_1] = pFVar6;
+    UNLOCK();
+    BVar5 = VirtualProtect(&DAT_180021000,0x100,2,local_res18);
+    if (BVar5 != 0) {
+      __acrt_unlock(0xe);
+      return pFVar7;
+    }
+  }
+                    /* WARNING: Subroutine does not return */
+  abort();
+}

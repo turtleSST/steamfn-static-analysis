@@ -1,0 +1,232 @@
+EVIDENCE L-01, L-02
+Selected Ghidra decompilation
+ImageBase: 0x180000000; RVA = VA - ImageBase.
+Auto-generated types and function boundaries are approximate; assembly governs disputed details.
+Inferred SIZE metadata was removed because overlapping function fragments make it unreliable.
+
+/* FUNCTION FUN_180001080 @ 180001080 */
+
+LPVOID FUN_180001080(ulonglong param_1,undefined8 param_2,undefined8 param_3,undefined8 param_4)
+
+{
+  ulonglong *puVar1;
+  undefined1 auVar2 [16];
+  ulonglong uVar3;
+  LPVOID pvVar4;
+  ulonglong uVar5;
+  ulonglong uVar6;
+  ushort *puVar7;
+  ulonglong *puVar8;
+  ulonglong local_res8;
+  ulonglong local_res10 [3];
+  
+  auVar2._8_8_ = 0;
+  auVar2._0_8_ = param_1 * 8 + 1;
+  uVar3 = SUB168(ZEXT816(2) * auVar2,0);
+  if (SUB168(ZEXT816(2) * auVar2,8) != 0) {
+    uVar3 = 0xffffffffffffffff;
+  }
+  local_res8 = param_1;
+  local_res10[0] = param_2;
+  local_res10[1] = param_3;
+  local_res10[2] = param_4;
+  pvVar4 = _malloc_base(uVar3);
+  if (pvVar4 != (LPVOID)0x0) {
+    uVar3 = 0;
+    if (local_res8 != 0) {
+      puVar8 = &local_res8;
+      puVar7 = (ushort *)((longlong)pvVar4 + 4);
+      do {
+        puVar1 = puVar8 + 1;
+        puVar8 = puVar8 + 1;
+        uVar6 = *puVar1 >> 1;
+        uVar3 = uVar3 + 1;
+        uVar6 = (*puVar1 * 2 ^ uVar6) & 0xaaaaaaaaaaaaaaaa ^ uVar6;
+        uVar5 = uVar6 >> 2;
+        uVar5 = (uVar6 * 4 ^ uVar5) & 0xcccccccccccccccc ^ uVar5;
+        uVar6 = uVar5 >> 4;
+        uVar6 = (uVar5 << 4 ^ uVar6) & 0xf0f0f0f0f0f0f0f0 ^ uVar6;
+        puVar7[-2] = (ushort)(byte)(uVar6 >> 0x38);
+        puVar7[-1] = (ushort)(uVar6 >> 0x30) & 0xff;
+        *puVar7 = (ushort)(uVar6 >> 0x28) & 0xff;
+        puVar7[1] = (ushort)(uVar6 >> 0x20) & 0xff;
+        puVar7[2] = (ushort)(uVar6 >> 0x18) & 0xff;
+        puVar7[3] = (ushort)(uVar6 >> 0x10) & 0xff;
+        puVar7[4] = (ushort)(uVar6 >> 8) & 0xff;
+        puVar7[5] = (ushort)(byte)uVar6;
+        puVar7 = puVar7 + 8;
+      } while (uVar3 < local_res8);
+    }
+    *(undefined2 *)((longlong)pvVar4 + param_1 * 0x10) = 0;
+    return pvVar4;
+  }
+  return (LPVOID)0x0;
+}
+
+/* FUNCTION FUN_180001220 @ 180001220 */
+
+void FUN_180001220(undefined8 param_1,undefined8 param_2,ushort *param_3)
+
+{
+  int iVar1;
+  undefined1 (*pauVar2) [16];
+  undefined1 (*pauVar3) [16];
+  longlong lVar4;
+  undefined8 uVar5;
+  ulonglong uVar6;
+  undefined1 auStack_258 [32];
+  short local_238 [264];
+  ulonglong local_28;
+  
+  local_28 = DAT_18008c340 ^ (ulonglong)auStack_258;
+  iVar1 = (*DAT_1800a07c0)();
+  if (((-1 < iVar1) && (param_3 != (ushort *)0x0)) && (*(longlong *)(param_3 + 4) != 0)) {
+    FUN_18006c580((undefined1 (*) [32])local_238,0,0x208);
+    uVar6 = (ulonglong)(*param_3 >> 1);
+    FUN_18004dcc0(local_238,0x104,*(longlong *)(param_3 + 4),uVar6);
+    FUN_18004db60((undefined1 (*) [32])local_238);
+    uVar5 = 0x2636a64e74263636;
+    pauVar2 = (undefined1 (*) [16])FUN_180001080(2,0xc64e86ce16168676,0x2636a64e74263636,uVar6);
+    pauVar3 = FUN_180045708((undefined1 (*) [16])local_238,pauVar2);
+    if (pauVar3 != (undefined1 (*) [16])0x0) {
+      if (DAT_18008cfd0 == 0) {
+        FUN_18000ecc0(DAT_1800a07c8);
+        lVar4 = DAT_1800a07c8;
+        FUN_18000ed80(DAT_1800a07c8);
+        FUN_1800039b0(lVar4,pauVar2,uVar5,uVar6);
+      }
+      else {
+        DAT_18008cfd0 = 0;
+      }
+    }
+  }
+  FUN_180043b20(local_28 ^ (ulonglong)auStack_258);
+  return;
+}
+
+/* FUNCTION FUN_180001320 @ 180001320 */
+
+void FUN_180001320(HMODULE param_1)
+
+{
+  LPWSTR *ppWVar1;
+  UINT UVar2;
+  DWORD DVar3;
+  undefined1 (*pauVar4) [16];
+  LPCWSTR pWVar5;
+  HMODULE pHVar6;
+  HMODULE pHVar7;
+  LPWSTR pWVar8;
+  LPWSTR *hMem;
+  longlong lVar9;
+  FARPROC pFVar10;
+  ulonglong uVar11;
+  HANDLE hHandle;
+  undefined8 uVar12;
+  int iVar13;
+  undefined8 uVar14;
+  LPCSTR lpName;
+  undefined1 auStack_4b8 [32];
+  DWORD DStack_498;
+  int aiStack_488 [4];
+  CHAR aCStack_478 [64];
+  WCHAR aWStack_438 [264];
+  WCHAR local_228 [264];
+  ulonglong local_18;
+  
+  local_18 = DAT_18008c340 ^ (ulonglong)auStack_4b8;
+  GetModuleFileNameW(param_1,local_228,0x104);
+  pauVar4 = FUN_18004591c((undefined1 (*) [16])local_228,0x5c);
+  if (pauVar4 != (undefined1 (*) [16])0x0) {
+    UVar2 = GetSystemDirectoryW(aWStack_438,0x104);
+    if (UVar2 - 1 < 0x104) {
+      FUN_180048930(aWStack_438,0x104,0x1800834bc);
+      FUN_180048930(aWStack_438,0x104,(longlong)(*pauVar4 + 2));
+    }
+    DStack_498 = GetCurrentProcessId();
+    FUN_180001010(aCStack_478,0x40,0xffffffffffffffff,0x1800834c0);
+    iVar13 = 1;
+    lpName = aCStack_478;
+    DAT_1800a07d0 = CreateEventA((LPSECURITY_ATTRIBUTES)0x0,1,0,lpName);
+    if (DAT_1800a07d0 != (HANDLE)0x0) {
+      DVar3 = GetLastError();
+      if (DVar3 == 0xb7) {
+        if (DAT_1800a07d0 != (HANDLE)0x0) {
+          CloseHandle(DAT_1800a07d0);
+        }
+      }
+      else {
+        pWVar5 = (LPCWSTR)FUN_180001080(2,0xce2ea686b6c63696,0xa6762e7426363600,lpName);
+        pHVar6 = GetModuleHandleW(pWVar5);
+        uVar12 = 0xca2ea686b6aa9274;
+        uVar14 = 0x2636360000000000;
+        pWVar5 = (LPCWSTR)FUN_180001080(2,0xca2ea686b6aa9274,0x2636360000000000,lpName);
+        pHVar7 = GetModuleHandleW(pWVar5);
+        if (pHVar6 == (HMODULE)0x0) {
+          if (pHVar7 == (HMODULE)0x0) {
+            aiStack_488[0] = 0;
+            pWVar8 = GetCommandLineW();
+            hMem = CommandLineToArgvW(pWVar8,aiStack_488);
+            if (hMem != (LPWSTR *)0x0) {
+              ppWVar1 = hMem;
+              if (1 < aiStack_488[0]) {
+                do {
+                  pWVar8 = ppWVar1[1];
+                  lVar9 = -1;
+                  do {
+                    if (pWVar8[lVar9 + 1] != L"-startupwait"[lVar9 + 1]) break;
+                    lVar9 = lVar9 + 2;
+                    if (lVar9 == 0xd) {
+                      LocalFree(hMem);
+                      hHandle = OpenEventA(0x100000,0,"Global\\Valve_SteamIPC_Class");
+                      if (hHandle != (HANDLE)0x0) {
+                        WaitForSingleObject(hHandle,3000);
+                        CloseHandle(hHandle);
+                      }
+                      goto LAB_18000150a;
+                    }
+                  } while (pWVar8[lVar9] == L"-startupwait"[lVar9]);
+                  iVar13 = iVar13 + 1;
+                  ppWVar1 = ppWVar1 + 1;
+                } while (iVar13 < aiStack_488[0]);
+              }
+              LocalFree(hMem);
+            }
+LAB_18000150a:
+            pWVar5 = (LPCWSTR)FUN_180001080(2,0x762e263636742636,0x3600000000000000,hMem);
+            pHVar6 = GetModuleHandleW(pWVar5);
+            if ((((pHVar6 != (HMODULE)0x0) &&
+                 (pFVar10 = GetProcAddress(pHVar6,"LdrLoadDll"), pFVar10 != (FARPROC)0x0)) &&
+                (uVar11 = FUN_18000ece0(), (int)uVar11 == 0)) &&
+               (iVar13 = FUN_18000ea30((undefined8 *)pFVar10,FUN_180001220,&DAT_1800a07c0),
+               iVar13 == 0)) {
+              FUN_18000ecd0((longlong)pFVar10);
+            }
+            goto FUN_1800015f7;
+          }
+        }
+        else if (pHVar7 == (HMODULE)0x0) goto FUN_1800015f7;
+        FUN_1800039b0(pWVar5,uVar12,uVar14,lpName);
+      }
+    }
+  }
+FUN_1800015f7:
+  FUN_180043b20(local_18 ^ (ulonglong)auStack_4b8);
+  return;
+}
+
+/* FUNCTION FUN_180001610 @ 180001610 */
+
+undefined8 FUN_180001610(HMODULE param_1,int param_2)
+
+{
+  if (param_2 == 1) {
+    FUN_180001320(param_1);
+    return 0;
+  }
+  if ((param_2 == 0) && (DAT_1800a07d0 != (HANDLE)0x0)) {
+    CloseHandle(DAT_1800a07d0);
+    DAT_1800a07d0 = (HANDLE)0x0;
+  }
+  return 1;
+}

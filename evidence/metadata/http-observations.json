@@ -1,0 +1,84 @@
+{
+  "collection_date": "2026-09-30",
+  "observations": [
+    {
+      "url": "https://steamfn.com/",
+      "request_user_agent": "ordinary HTTP client",
+      "response": {
+        "status_line": "HTTP/1.1 302 Found",
+        "headers": {
+          "Date": "Wed, 30 Sep 2026 11:24:17 GMT",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Location": "https://store.steampowered.com/"
+        }
+      }
+    },
+    {
+      "url": "https://steamfn.com/",
+      "request_user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.1",
+      "response": {
+        "status_line": "HTTP/1.1 200 OK",
+        "headers": {
+          "Date": "Wed, 30 Sep 2026 11:25:21 GMT",
+          "Content-Type": "text/plain; charset=UTF-8",
+          "Content-Disposition": "attachment; filename=\"m_pws_steam\""
+        }
+      },
+      "body_bytes": 16213,
+      "body_sha256": "b972fc6233b0efc32dcc78c59002cc71abe79fe8923eb92546b4f2f0804dc24c"
+    },
+    {
+      "url": "http://update.steamdemo.com/res.zip",
+      "response": {
+        "status_line": "HTTP/1.1 200 OK",
+        "headers": {
+          "Last-Modified": "Sun, 26 Jul 2026 10:37:30 GMT",
+          "Etag": "\"6a65e36a-60d14\"",
+          "Content-Type": "application/zip",
+          "Content-Length": "396564",
+          "Date": "Wed, 30 Sep 2026 11:25:40 GMT"
+        }
+      },
+      "body_sha256": "2b0e3ee9dc2b26c1b91bc9ebf6cdea35761f9f48553cf83e58bf909b84290572",
+      "archive_entries": [
+        {
+          "name": "xinput1_4.dll",
+          "bytes": 673720
+        },
+        {
+          "name": "dwmapi.dll",
+          "bytes": 136120
+        }
+      ]
+    },
+    {
+      "url": "https://update.tnkjmec.com/version",
+      "response": {
+        "status_code": 200,
+        "headers": {
+          "Last-Modified": "Sun, 20 Sep 2026 04:11:14 GMT",
+          "Etag": "\"6aaf5ce2-2b0\"",
+          "Content-Type": "application/octet-stream",
+          "Content-Length": "688",
+          "Date": "Wed, 30 Sep 2026 11:33:40 GMT"
+        }
+      },
+      "body_bytes": 688,
+      "body_sha256": "984845b7f1c351ce696f927cb422cd5ac6362c0a7954439f580272b300d1c811"
+    },
+    {
+      "url": "http://update.steamdemo.com/Core",
+      "response": {
+        "status_line": "HTTP/1.1 200 OK",
+        "headers": {
+          "Last-Modified": "Sun, 20 Sep 2026 04:11:15 GMT",
+          "Etag": "\"6aaf5ce3-1183c0\"",
+          "Content-Type": "application/octet-stream",
+          "Content-Length": "1147840",
+          "Date": "Wed, 30 Sep 2026 11:35:30 GMT"
+        }
+      }
+    }
+  ],
+  "selection": "Only status, resource identity, content and time fields retained; transient trace/reporting headers omitted."
+}
