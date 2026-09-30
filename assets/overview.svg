@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="650" viewBox="0 0 1160 650" role="img" aria-labelledby="title desc">
+  <title id="title">SteamFn 分发、加载与业务路径</title>
+  <desc id="desc">steamfn.com 按 User-Agent 返回 PowerShell 安装脚本。脚本部署 res.zip 中的 xinput1_4.dll 和 dwmapi.dll。前者获取 version 配置及 Core 加密数据，解密后的 Core 处理客户端激活响应、下载密钥和访问码，并具有账号标识、PICS token、应用票据上传路径。dwmapi.dll 是本地缓存补丁。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#526078"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; text-anchor: middle; fill: #17243a; font-size: 20px; }
+      .name { font-weight: 600; }
+      .box { fill: #f3f6fc; stroke: #778caa; stroke-width: 1.5; rx: 10; }
+      .core { fill: #edf5ff; stroke: #517caf; }
+      .result { fill: #f0f8f5; stroke: #5d927e; }
+      .edge { fill: none; stroke: #526078; stroke-width: 2; stroke-linejoin: round; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1160" height="650" fill="#ffffff"/>
+  <g class="edges">
+    <path class="edge" d="M348 88 H410"/>
+    <path class="edge" d="M696 88 H760"/>
+    <path class="edge" d="M936 128 V157 H208 V202"/>
+    <path class="edge" d="M936 128 V202"/>
+    <path class="edge" d="M208 282 V340"/>
+    <path class="edge" d="M348 380 H410"/>
+    <path class="edge" d="M696 380 H760"/>
+    <path class="edge" d="M936 420 V462 H208 V508"/>
+    <path class="edge" d="M936 420 V462 H570 V508"/>
+    <path class="edge" d="M936 420 V508"/>
+  </g>
+  <g id="source">
+    <rect class="box" x="48" y="48" width="300" height="80"/>
+    <text x="198" y="80" class="name">steamfn.com</text>
+    <text x="198" y="109">按 User-Agent 返回内容</text>
+  </g>
+  <g id="installer">
+    <rect class="box" x="410" y="48" width="286" height="80"/>
+    <text x="553" y="95">PowerShell 安装脚本</text>
+  </g>
+  <g id="archive">
+    <rect class="box" x="760" y="48" width="352" height="80"/>
+    <text x="936" y="95">res.zip 中的两枚 DLL</text>
+  </g>
+  <g id="loader">
+    <rect class="box" x="48" y="202" width="320" height="80"/>
+    <text x="208" y="235" class="name">xinput1_4.dll</text>
+    <text x="208" y="264">更新与加载器</text>
+  </g>
+  <g id="patch">
+    <rect class="box" x="760" y="202" width="352" height="80"/>
+    <text x="936" y="235" class="name">dwmapi.dll</text>
+    <text x="936" y="264">本地缓存补丁</text>
+  </g>
+  <g id="version">
+    <rect class="box" x="48" y="340" width="300" height="80"/>
+    <text x="198" y="387">远程 version 配置</text>
+  </g>
+  <g id="encrypted-core">
+    <rect class="box" x="410" y="340" width="286" height="80"/>
+    <text x="553" y="387">Core 加密数据</text>
+  </g>
+  <g id="core">
+    <rect class="box core" x="760" y="340" width="352" height="80"/>
+    <text x="936" y="387" class="name">解密后的 Core</text>
+  </g>
+  <g id="activation">
+    <rect class="box result" x="48" y="508" width="320" height="80"/>
+    <text x="208" y="541">激活响应</text>
+    <text x="208" y="570">与客户端列表修改</text>
+  </g>
+  <g id="downloads">
+    <rect class="box result" x="410" y="508" width="320" height="80"/>
+    <text x="570" y="541">下载密钥</text>
+    <text x="570" y="570">和访问码处理</text>
+  </g>
+  <g id="uploads">
+    <rect class="box result" x="760" y="508" width="352" height="80"/>
+    <text x="936" y="541">账号标识、PICS token</text>
+    <text x="936" y="570">应用票据上传路径</text>
+  </g>
+</svg>

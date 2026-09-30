@@ -1,0 +1,11 @@
+flowchart TD
+    A[steamfn.com 按 User-Agent 返回内容] --> B[PowerShell 安装脚本]
+    B --> C[res.zip 中的两枚 DLL]
+    C --> D[xinput1_4.dll 更新与加载器]
+    C --> E[dwmapi.dll 本地缓存补丁]
+    D --> F[远程 version 配置]
+    F --> G[Core 加密数据]
+    G --> H[解密后的 Core]
+    H --> I[激活响应与客户端列表修改]
+    H --> J[下载密钥和访问码处理]
+    H --> K[账号标识、PICS token、应用票据上传路径]

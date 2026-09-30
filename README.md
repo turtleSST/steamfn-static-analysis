@@ -22,19 +22,9 @@
 | [03 · Core 业务逻辑](reports/03-core.md) | 卡密处理、客户端数据修改、访问材料收集与上传 |
 | [证据索引](evidence/INDEX.md) | 结论到函数、反编译摘录、原始反汇编和元数据的映射 |
 
-```mermaid
-flowchart TD
-    A[steamfn.com 按 User-Agent 返回内容] --> B[PowerShell 安装脚本]
-    B --> C[res.zip 中的两枚 DLL]
-    C --> D[xinput1_4.dll 更新与加载器]
-    C --> E[dwmapi.dll 本地缓存补丁]
-    D --> F[远程 version 配置]
-    F --> G[Core 加密数据]
-    G --> H[解密后的 Core]
-    H --> I[激活响应与客户端列表修改]
-    H --> J[下载密钥和访问码处理]
-    H --> K[账号标识、PICS token、应用票据上传路径]
-```
+![SteamFn 分发、加载与业务路径](assets/overview.svg)
+
+[查看流程图大图](assets/overview.svg) · [Mermaid 源文件](assets/overview.mmd)
 
 ## 样本标识
 
